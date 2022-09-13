@@ -2,12 +2,14 @@ import { legacy_createStore as createStore, applyMiddleware, combineReducers } f
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 
-import { authReducer } from './auth/reducers';
-import { productsReducer } from './products/reducers';
+// import { authReducer } from './auth/reducers';
+import { productsReducer } from './products/productsReducer';
+// import { snackBarReducer } from './snackBar/reducer';
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  // auth: authReducer,
   products: productsReducer,
+ 
 });
 
 const composeEnhancer = process.env.NODE_ENV === 'production'
@@ -15,5 +17,3 @@ const composeEnhancer = process.env.NODE_ENV === 'production'
   : composeWithDevTools(applyMiddleware(thunkMiddleware));
 
 export const store = createStore(rootReducer, composeEnhancer);
-
-
