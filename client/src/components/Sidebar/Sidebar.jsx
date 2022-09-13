@@ -1,8 +1,9 @@
+import { Box } from '@mui/material';
 import React from 'react';
 
 function Sidebar() {
   return (
-    <div>Sidebar</div>
+    <Box bgcolor="coral">Sidebar</Box>
   );
 }
 

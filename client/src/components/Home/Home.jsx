@@ -1,10 +1,16 @@
+import { Box, Stack } from '@mui/material';
 import React from 'react';
+import ProductsList from '../ProductsSection/ProductsList';
+import Sidebar from '../Sidebar/Sidebar';
 
 function Home() {
   return (
-    <div>
-      <p>Вроде не отвалилось ничего</p>
-    </div>
+    <Box>
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Sidebar />
+        <ProductsList />
+      </Stack>
+    </Box>
   );
 }
 
