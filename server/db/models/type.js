@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasMany(models.Product, { foreignKey: 'type_id' });
-      this.belongsToMany(models.Brand, {through: TypeBrand});
+      // this.belongsToMany(models.Brand, {through: 'TypeBrand', foreignKey: 'type_id'});
     }
   }
   Type.init({
     name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'type',
+    modelName: 'Type',
   });
   return Type;
 };
