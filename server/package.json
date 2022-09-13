@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js --ignore sessions --ext js,jsx"
+    "dev": "nodemon src/app.js --ignore sessions --ext js,jsx",
+    "dbr": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
   }
 }
