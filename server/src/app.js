@@ -43,7 +43,6 @@ app.use(cors(corsOptions));
 
 
 app.use('/', productListRoutes);
-app.use('/', productsRoutes);
 app.use('/contacts', contactsRouter)
 
 app.use((req, res, next) => {

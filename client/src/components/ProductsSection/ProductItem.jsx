@@ -6,8 +6,10 @@ import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import BasicRating from './BasicRating';
+import { useSelector } from 'react-redux';
 
 function ProductItem() {
+  const products = useSelector((store) => store.products.product)
   return (
     <Card sx={{
       maxWidth: 345, minWidth: 345, marginLeft: 2, marginBottom: 2,
@@ -22,14 +24,14 @@ function ProductItem() {
       />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
-          Кресло
+          Кресло {/* {products.name} */}
         </Typography>
         <Typography gutterBottom variant="h4" component="div">
-          Lizard
+          Lizard {/* {products.rating} */}
         </Typography>
         <BasicRating />
         <Typography gutterBottom variant="h6" component="div">
-          10 500 Руб.
+          10 500 Руб. {/* {product.price}  */}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
