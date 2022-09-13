@@ -10,6 +10,10 @@ const dbConnectCheck = require('../db/dbConnectionCheck')
 
 
 const app = express();
+
+const contactsRouter = require("./routes/contactsRoute")
+
+
 app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, '../public')));
@@ -39,6 +43,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use('/', productsRoutes);
+app.use('/contacts', contactsRouter)
 
 app.use((req, res, next) => {
   console.log(req.session);
