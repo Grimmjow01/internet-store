@@ -6,6 +6,8 @@ const path = require('path');
 const morgan = require('morgan');
 const cors = require('cors');
 const productsRoutes = require('./routes/productsRoutes');
+const dbConnectCheck = require('../db/dbConnectionCheck')
+
 
 const app = express();
 app.use(morgan('dev'));
@@ -45,6 +47,7 @@ app.use((req, res, next) => {
 
 app.listen(PORT, async () => {
   try {
+    await dbConnectCheck();
     console.log('Соединение с базой установлено!');
   } catch (err) {
     console.log(err, 'Ошибка слушателя порта');
