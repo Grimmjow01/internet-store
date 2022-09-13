@@ -1,23 +1,18 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import './Layout.css'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Navbar from '../components/Navbar/Navbar';
+import './Layout.css';
 
 function Layout() {
-
-    return (
-        <>
-       
-        <div>
-        
-            <div className="Outlet">
-                <Outlet />
-            </div>
-          <div>TEST   hj</div>
-            </div>
-          
-
-        </>
-    )
+  return (
+    <div>
+      <Navbar />
+      <div className="Outlet">
+        <Outlet />
+      </div>
+      <div>TEST   hj</div>
+    </div>
+  );
 }
 
-export default Layout
+export default Layout;
