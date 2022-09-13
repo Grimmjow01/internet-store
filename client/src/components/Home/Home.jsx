@@ -1,5 +1,6 @@
 import { Box, Stack } from '@mui/material';
 import React, { useEffect } from 'react';
+import HeroSection from '../HeroSection/HeroSection';
 import ProductsList from '../ProductsSection/ProductsList';
 import Sidebar from '../Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
@@ -25,6 +26,7 @@ useEffect(() => {
 
   return (
     <Box>
+      <HeroSection />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList />

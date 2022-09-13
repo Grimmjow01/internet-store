@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ProductItem from './ProductItem';
@@ -9,7 +9,22 @@ function ProductsList() {
   
 
   return (
-    <Box bgcolor="lightblue" flex={3}><ProductItem /></Box>
+    <Box bgcolor="lightblue" flex={3} p={3}>
+      <div>
+        <Stack
+          direction="row"
+          spacing={0}
+          sx={{ flexWrap: 'wrap' }}
+        >
+          <ProductItem sx={{ marginLeft: 2 }} />
+          <ProductItem sx={{ marginLeft: 2 }} />
+          <ProductItem sx={{ marginLeft: 2 }} />
+          <ProductItem sx={{ marginLeft: 2 }} />
+          <ProductItem sx={{ marginLeft: 2 }} />
+
+        </Stack>
+      </div>
+    </Box>
   );
 }
 

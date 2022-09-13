@@ -11,13 +11,16 @@ import { useNavigate } from 'react-router-dom';
 function Navbar() {
   const navigate = useNavigate(); // или используй Navlink
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => navigate('/')}>
           <StoreRoundedIcon />
           Internet Store
         </Typography>
         <Stack direction="row" spacing={2}>
+        <Button color="inherit" onClick={() => navigate('/contacts')}>
+            Связатся с нами
+          </Button>
           <Button color="inherit" onClick={() => navigate('/login')}>
             <AccountCircleIcon fontSize="large" />
             Войти
