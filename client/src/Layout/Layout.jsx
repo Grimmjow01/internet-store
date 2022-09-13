@@ -10,7 +10,7 @@ function Layout() {
       <div className="Outlet">
         <Outlet />
       </div>
-      
+
     </div>
   );
 }
