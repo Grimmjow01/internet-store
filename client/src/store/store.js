@@ -7,7 +7,7 @@ import { productsReducer } from './products/reducers';
 import { snackBarReducer } from './snackBar/reducer';
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  // auth: authReducer,
   products: productsReducer,
   snackbarState: snackBarReducer,
 });
@@ -17,5 +17,3 @@ const composeEnhancer = process.env.NODE_ENV === 'production'
   : composeWithDevTools(applyMiddleware(thunkMiddleware));
 
 export const store = createStore(rootReducer, composeEnhancer);
-
-

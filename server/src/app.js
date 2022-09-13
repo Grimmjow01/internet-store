@@ -5,9 +5,8 @@ const FileStore = require('session-file-store')(session);
 const path = require('path');
 const morgan = require('morgan');
 const cors = require('cors');
-const productsRoutes = require('./routes/productsRoutes');
 const dbConnectCheck = require('../db/dbConnectionCheck')
-
+const productListRoutes = require('./routes/productListRoutes');
 
 const app = express();
 
@@ -42,6 +41,8 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
+
+app.use('/', productListRoutes);
 app.use('/', productsRoutes);
 app.use('/contacts', contactsRouter)
 
