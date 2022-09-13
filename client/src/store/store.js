@@ -14,6 +14,6 @@ const composeEnhancer = process.env.NODE_ENV === 'production'
   ? applyMiddleware(thunkMiddleware)
   : composeWithDevTools(applyMiddleware(thunkMiddleware));
 
-const store = createStore(rootReducer, composeEnhancer);
+export const store = createStore(rootReducer, composeEnhancer);
 
-export default store;
+

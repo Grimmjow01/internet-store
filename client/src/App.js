@@ -1,19 +1,20 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import store from './store/store';
 import Home from './components/Home/Home';
+import Layout from './Layout/Layout';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Provider store={store}>
-        <div className="App">
-          <Home />
-        </div>
-      </Provider>
-    </BrowserRouter>
+  return ( 
+  <div className="App">
+    <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>
+  </Routes>
+  </div>
   );
 }
 
