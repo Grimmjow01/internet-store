@@ -1,8 +1,11 @@
 import React from 'react';
 import {
-  AppBar, Button, Toolbar, Typography,
+  AppBar, Badge, Button, Toolbar, Typography,
 } from '@mui/material';
 import { Stack } from '@mui/system';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
 import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
@@ -11,12 +14,22 @@ function Navbar() {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <StoreRoundedIcon />
           Internet Store
         </Typography>
         <Stack direction="row" spacing={2}>
-          <Button color="inherit" onClick={() => navigate('/login')}>Login</Button>
-          <Button color="inherit" onClick={() => navigate('/basket')}>Basket</Button>
+          <Button color="inherit" onClick={() => navigate('/login')}>
+            <AccountCircleIcon fontSize="large" />
+            Войти
+          </Button>
+          <Button color="inherit" onClick={() => navigate('/basket')}>
+            <Badge badgeContent={5} color="error">
+              <ShoppingCartRoundedIcon fontSize="large" />
+            </Badge>
+          </Button>
+
         </Stack>
+
       </Toolbar>
     </AppBar>
   );
