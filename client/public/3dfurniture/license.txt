@@ -1,0 +1,11 @@
+Model Information:
+* title:	High Poly Sofa
+* source:	https://sketchfab.com/3d-models/high-poly-sofa-7ef0d9d98ec0437bbbfe352ed9e0e707
+* author:	Viggo (https://sketchfab.com/Viggoa)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "High Poly Sofa" (https://sketchfab.com/3d-models/high-poly-sofa-7ef0d9d98ec0437bbbfe352ed9e0e707) by Viggo (https://sketchfab.com/Viggoa) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
