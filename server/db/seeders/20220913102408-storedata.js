@@ -170,7 +170,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Спальный гарнитур: шкаф, стол-комод, тумбочки',
+        name: 'Спальный гарнитур',
         price: 1000,
         rating: 4,
         img: '',
@@ -181,7 +181,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },{
-        name: 'шкаф',
+        name: 'Шкаф',
         price: 2000,
         rating: 4,
         img: '',
@@ -193,7 +193,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'стол-комод',
+        name: 'Стол-комод',
         price: 900,
         rating: 2,
         img: '',
@@ -204,7 +204,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },{
-        name: 'тумбочкa',
+        name: 'Тумбочкa',
         price: 1000,
         rating: 5,
         img: '',

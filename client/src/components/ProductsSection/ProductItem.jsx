@@ -25,12 +25,12 @@ function ProductItem({product}) {
         alt="Kreslo"
       />
       <CardContent>
-
+        <Typography gutterBottom variant="h6" component="div">
+          {product.name}
+        </Typography>
         <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="flex-end">
           <Box>
-            <Typography gutterBottom variant="h6" component="div">
-              {product.name}
-            </Typography>
+            
             <Typography gutterBottom variant="h4" component="div">
               Lizard
             </Typography>
@@ -40,7 +40,7 @@ function ProductItem({product}) {
             </Typography>
           </Box>
           <Box>
-            <Button variant="outlined" color="secondary"><AddIcon /></Button>
+            <Button variant="outlined" color="secondary" startIcon={<AddIcon />}>В корзину</Button>
           </Box>
         </Stack>
 

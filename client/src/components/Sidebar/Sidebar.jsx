@@ -6,13 +6,12 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
 import SegmentIcon from '@mui/icons-material/Segment';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import HomeIcon from '@mui/icons-material/Home';
 
 function Sidebar() {
   const [open, setOpen] = React.useState(true);
@@ -36,13 +35,13 @@ function Sidebar() {
         >
           <ListItemButton>
             <ListItemIcon>
-              <SendIcon />
+              <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="На главную" />
           </ListItemButton>
           <ListItemButton>
             <ListItemIcon>
-              <DraftsIcon />
+              <ShoppingCartRoundedIcon />
             </ListItemIcon>
             <ListItemText primary="Корзина" />
           </ListItemButton>
@@ -57,43 +56,43 @@ function Sidebar() {
             <List component="div" disablePadding>                      
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <SendIcon />
+                  <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon >
                 <ListItemText primary="Кухонные гарнитуры" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <DraftsIcon />
+                  <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
                 <ListItemText primary="Шкафы" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <DraftsIcon />
+                  <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
                 <ListItemText primary="Спальни" />
               </ListItemButton >
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <DraftsIcon />
+                  <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
                 <ListItemText primary="Мебель для бизнеса" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <DraftsIcon />
+                  <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
                 <ListItemText primary="Офисная мебель" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <DraftsIcon />
+                  <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
                 <ListItemText primary="Раритетная мебель" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <DraftsIcon />
+                  <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
                 <ListItemText primary="Спецзаказы" />
               </ListItemButton>
