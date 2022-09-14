@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography';
 import { Box, Button, Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import BasicRating from './BasicRating';
-import { useSelector } from 'react-redux';
 
-function ProductItem() {
-  const products = useSelector((store) => store.products.product)
+function ProductItem({product}) {
+  // const products = useSelector((store) => store.products.product);
+  
   return (
     <Card sx={{
       maxWidth: 345, minWidth: 345, marginLeft: 2, marginBottom: 2,
@@ -28,14 +28,14 @@ function ProductItem() {
         <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="flex-end">
           <Box>
             <Typography gutterBottom variant="h6" component="div">
-              Кресло
+              {product.name}
             </Typography>
             <Typography gutterBottom variant="h4" component="div">
               Lizard
             </Typography>
             <BasicRating />
             <Typography gutterBottom variant="h6" component="div" color="secondary" fontWeight="bold">
-              10 500 Руб.
+              {product.price} руб.
             </Typography>
           </Box>
           <Box>
