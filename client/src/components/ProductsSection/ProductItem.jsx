@@ -20,7 +20,7 @@ function ProductItem() {
       <CardMedia
         component="img"
         height="300"
-        image="./img/kreslo-flame-velutto-56_1.jpeg"
+        image="./images/example.jpg"
         alt="Kreslo"
       />
       <CardContent>
