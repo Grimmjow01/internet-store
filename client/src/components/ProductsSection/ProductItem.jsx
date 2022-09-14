@@ -19,7 +19,8 @@ function ProductItem({product}) {
 
       <CardMedia
         component="img"
-        height="300"
+        // height="300"
+        maxWidth="300"
         image="./images/example.jpg"
         alt="Kreslo"
       />
