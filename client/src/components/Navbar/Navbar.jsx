@@ -25,7 +25,7 @@ function Navbar() {
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => navigate('/')}>
           <StoreRoundedIcon />
-          Internet Store
+          Магазин мебели
         </Typography>
         <Stack direction="row" spacing={2}>
         <Button color="inherit" onClick={() => navigate('/contacts')}>

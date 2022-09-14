@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ProductItem from './ProductItem';
@@ -6,11 +6,14 @@ import ProductItem from './ProductItem';
 function ProductsList() {
 
   const products = useSelector((store) => store.products)
+  console.log('products', products)
 
     return (
-    <Box bgcolor="lightblue" flex={5} p={3}>
-
+    <Box flex={5} p={3}>
       <div>
+        <Typography gutterBottom variant="h4" component="div">
+          Все товары
+        </Typography>
         <Stack
           direction="row"
           spacing={0}
@@ -19,8 +22,9 @@ function ProductsList() {
           {!products.product?.length  
           ? <p>Товары закончились</p>
           : products.product.map((product) => (
-            <ProductItem sx={{ marginLeft: 2 }} 
+            <ProductItem product={product} sx={{ marginLeft: 2 }} 
             key={product.id}
+            // {console.log('product', product)}
           />
           ))}
         </Stack>
