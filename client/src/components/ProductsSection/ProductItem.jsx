@@ -7,10 +7,13 @@ import Typography from '@mui/material/Typography';
 import { Box, Button, Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import BasicRating from './BasicRating';
+import ClearIcon from '@mui/icons-material/Clear';
+import EditIcon from '@mui/icons-material/Edit';
 
 function ProductItem({product}) {
   // const products = useSelector((store) => store.products.product);
-  
+  const isAdmin = true;
+
   return (
     <Card sx={{
       maxWidth: 345, minWidth: 345, marginLeft: 2, marginBottom: 2,
@@ -40,7 +43,15 @@ function ProductItem({product}) {
             </Typography>
           </Box>
           <Box>
-            <Button variant="outlined" color="secondary" startIcon={<AddIcon />}>В корзину</Button>
+            {isAdmin &&            
+              <Stack direction="row" spacing={2}>
+                <Button variant="contained" color="primary"><EditIcon /></Button>
+                <Button variant="contained" color="error"><ClearIcon /></Button>             
+              </Stack>
+              }
+            {!isAdmin && 
+              <Button variant="outlined" color="secondary" startIcon={<AddIcon />}>В корзину</Button>
+              }
           </Box>
         </Stack>
 
