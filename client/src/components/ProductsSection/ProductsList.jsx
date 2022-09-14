@@ -12,7 +12,7 @@ function ProductsList() {
     <Box flex={5} p={3}>
       <div>
         <Typography gutterBottom variant="h4" component="div">
-          Все товары
+          Популярные товары
         </Typography>
         <Stack
           direction="row"
