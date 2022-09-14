@@ -7,7 +7,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const dbConnectCheck = require('../db/dbConnectionCheck')
 const productListRoutes = require('./routes/productListRoutes');
-
+const adminAddProduct = require('./routes/adminAddProductRouter');
+const loadImg = require('./routes/loadImgRouter');
 const app = express();
 
 const contactsRouter = require("./routes/contactsRoute")
@@ -16,6 +17,7 @@ const contactsRouter = require("./routes/contactsRoute")
 app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, '../public')));
+app.use('/images', express.static(path.join(__dirname, '../images')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -41,9 +43,11 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-
 app.use('/', productListRoutes);
 app.use('/contacts', contactsRouter)
+app.use('/adminAddProduct', adminAddProduct)
+app.use('/loadImg', loadImg)
+
 
 app.use((req, res, next) => {
   console.log(req.session);
