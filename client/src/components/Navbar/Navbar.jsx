@@ -6,6 +6,7 @@ import { Stack } from '@mui/system';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
+import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../Auth/Auth'
 
@@ -20,6 +21,9 @@ function Navbar() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const isAdmin = false;
+
   return (
     <AppBar position="sticky">
       <Toolbar>
@@ -27,8 +31,8 @@ function Navbar() {
           <StoreRoundedIcon />
           Магазин мебели
         </Typography>
-        <Stack direction="row" spacing={2}>
-        <Button color="inherit" onClick={() => navigate('/contacts')}>
+        <Stack direction="row" spacing={2}>        
+          <Button color="inherit" onClick={() => navigate('/contacts')}>
             Связатся с нами
           </Button>
           <Button color="inherit" onClick={handClickOpen}>
@@ -38,11 +42,19 @@ function Navbar() {
           <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <Auth />
           </Dialog>
-          <Button color="inherit" onClick={() => navigate('/basket')}>
-            <Badge badgeContent={5} color="error">
-              <ShoppingCartRoundedIcon fontSize="large" />
-            </Badge>
-          </Button>
+          {
+            isAdmin &&
+            <Button variant="contained" color="success" startIcon={<AddIcon />}>Добавить</Button>
+          }
+          {
+            !isAdmin &&
+              <Button color="inherit" onClick={() => navigate('/basket')}>
+                <Badge badgeContent={5} color="error">
+                  <ShoppingCartRoundedIcon fontSize="large" />
+                </Badge>
+              </Button>
+          }
+          
 
         </Stack>
 

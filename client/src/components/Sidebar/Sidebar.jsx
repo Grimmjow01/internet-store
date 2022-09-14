@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card } from '@mui/material';
+import { Box, Card, InputBase } from '@mui/material';
 import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -12,6 +12,7 @@ import SegmentIcon from '@mui/icons-material/Segment';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search';
 
 function Sidebar() {
   const [open, setOpen] = React.useState(true);
@@ -29,7 +30,7 @@ function Sidebar() {
           aria-labelledby="nested-list-subheader"
           subheader={
             <ListSubheader component="div" id="nested-list-subheader">
-              Search...
+              <InputBase placeholder="Найти..." />
             </ListSubheader>
           }
         >
