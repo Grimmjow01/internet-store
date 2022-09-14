@@ -25,7 +25,6 @@ useEffect(() => {
 const products = useSelector((store) => store.products)
   return (
     <Box>
-      <HeroSection />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />
