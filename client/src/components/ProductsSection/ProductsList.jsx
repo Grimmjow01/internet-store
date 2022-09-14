@@ -4,10 +4,12 @@ import { useSelector } from 'react-redux';
 import ProductItem from './ProductItem';
 
 function ProductsList() {
+
   const products = useSelector((store) => store.products)
 
     return (
-    <Box bgcolor="lightblue" flex={3} p={3}>
+    <Box bgcolor="lightblue" flex={5} p={3}>
+
       <div>
         <Stack
           direction="row"

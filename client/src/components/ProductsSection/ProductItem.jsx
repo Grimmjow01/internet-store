@@ -4,7 +4,8 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 import BasicRating from './BasicRating';
 import { useSelector } from 'react-redux';
 
@@ -18,25 +19,33 @@ function ProductItem() {
 
       <CardMedia
         component="img"
-        height="194"
+        height="300"
         image="./img/kreslo-flame-velutto-56_1.jpeg"
         alt="Kreslo"
       />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
-          Кресло {/* {products.name} */}
-        </Typography>
-        <Typography gutterBottom variant="h4" component="div">
-          Lizard {/* {products.rating} */}
-        </Typography>
-        <BasicRating />
-        <Typography gutterBottom variant="h6" component="div">
-          10 500 Руб. {/* {product.price}  */}
-        </Typography>
+
+        <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="flex-end">
+          <Box>
+            <Typography gutterBottom variant="h6" component="div">
+              Кресло
+            </Typography>
+            <Typography gutterBottom variant="h4" component="div">
+              Lizard
+            </Typography>
+            <BasicRating />
+            <Typography gutterBottom variant="h6" component="div" color="secondary" fontWeight="bold">
+              10 500 Руб.
+            </Typography>
+          </Box>
+          <Box>
+            <Button variant="outlined" color="secondary"><AddIcon /></Button>
+          </Box>
+        </Stack>
+
+
       </CardContent>
-      <CardActions disableSpacing>
-        <Button variant="contained">В корзину</Button>
-      </CardActions>
+      <CardActions disableSpacing />
     </Card>
   );
 }

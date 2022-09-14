@@ -1,9 +1,12 @@
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import React from 'react';
 
 function HeroSection() {
   return (
-    <Box bgcolor="darkgrey" p={3}>HeroSection</Box>
+    <Container>
+      HeroSection
+    </Container>
+    // <Box bgcolor="darkgrey" p={3}>HeroSection</Box>
   );
 }
 
