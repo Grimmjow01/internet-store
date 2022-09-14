@@ -1,8 +1,8 @@
 import { Box, Stack } from '@mui/material';
 import React, { useEffect } from 'react';
-import HeroSection from '../HeroSection/HeroSection';
-import ProductsList from '../ProductsSection/ProductsList';
-import Sidebar from '../Sidebar/Sidebar';
+import HeroSection from '../../components/HeroSection/HeroSection';
+import ProductsList from '../../components/ProductsSection/ProductsList';
+import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
 import { getAllProduct } from '../../store/products/action';
 import { useSelector } from 'react-redux';
@@ -25,6 +25,8 @@ useEffect(() => {
 const products = useSelector((store) => store.products)
   return (
     <Box>
+      <HeroSection /> 
+      
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />

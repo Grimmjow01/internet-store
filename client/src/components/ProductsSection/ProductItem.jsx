@@ -1,17 +1,26 @@
 import React from 'react';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
+import {CardMedia, CardContent, CardActions, Typography, Card} from '@mui/material';
 import { Box, Button, Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import BasicRating from './BasicRating';
+import BasicRating from './BasicRating';import { useDispatch, useSelector } from 'react-redux';
+import { snackBarStatus } from '../../store/snackBar/action'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 
 function ProductItem({product}) {
-  // const products = useSelector((store) => store.products.product);
+
+  const dispatch = useDispatch();
+
+  let snackbarState = useSelector((store)=> store.snackbarState)
+
+  const addItemToBasket = async () => {
+    /* const response = await axios.post('http://localhost:3100/contacts/sendemail',
+       {contactinfo : input}     
+    ) */
+    dispatch(snackBarStatus(true))
+    console.log('status', snackbarState)
+  }
+  
   const isAdmin = false;
 
   return (
