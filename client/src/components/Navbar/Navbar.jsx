@@ -18,6 +18,9 @@ function Navbar() {
           Internet Store
         </Typography>
         <Stack direction="row" spacing={2}>
+        <Button color="inherit" onClick={() => navigate('/contacts')}>
+            Связатся с нами
+          </Button>
           <Button color="inherit" onClick={() => navigate('/login')}>
             <AccountCircleIcon fontSize="large" />
             Войти

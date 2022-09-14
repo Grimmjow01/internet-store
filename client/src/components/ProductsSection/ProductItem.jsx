@@ -7,8 +7,10 @@ import Typography from '@mui/material/Typography';
 import { Box, Button, Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import BasicRating from './BasicRating';
+import { useSelector } from 'react-redux';
 
 function ProductItem() {
+  const products = useSelector((store) => store.products.product)
   return (
     <Card sx={{
       maxWidth: 345, minWidth: 345, marginLeft: 2, marginBottom: 2,
@@ -22,6 +24,7 @@ function ProductItem() {
         alt="Kreslo"
       />
       <CardContent>
+
         <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="flex-end">
           <Box>
             <Typography gutterBottom variant="h6" component="div">
@@ -39,6 +42,7 @@ function ProductItem() {
             <Button variant="outlined" color="secondary"><AddIcon /></Button>
           </Box>
         </Stack>
+
 
       </CardContent>
       <CardActions disableSpacing />
