@@ -22,7 +22,7 @@ function Navbar() {
     setOpen(false);
   };
 
-  const isAdmin = true;
+  const isAdmin = false;
 
   return (
     <AppBar position="sticky">

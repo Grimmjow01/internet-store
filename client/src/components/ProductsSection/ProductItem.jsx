@@ -12,7 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 function ProductItem({product}) {
   // const products = useSelector((store) => store.products.product);
-  const isAdmin = true;
+  const isAdmin = false;
 
   return (
     <Card sx={{
@@ -34,9 +34,9 @@ function ProductItem({product}) {
         <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="flex-end">
           <Box>
             
-            <Typography gutterBottom variant="h4" component="div">
+            {/* <Typography gutterBottom variant="h4" component="div">
               Lizard
-            </Typography>
+            </Typography> */}
             <BasicRating />
             <Typography gutterBottom variant="h6" component="div" color="secondary" fontWeight="bold">
               {product.price} руб.
