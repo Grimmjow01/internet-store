@@ -28,7 +28,7 @@ const products = useSelector((store) => store.products)
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />
-      </Stack>
+       </Stack>
     </Box>
   );
 }

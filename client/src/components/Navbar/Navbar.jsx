@@ -31,8 +31,12 @@ function Navbar() {
           <StoreRoundedIcon />
           Магазин мебели
         </Typography>
-        <Stack direction="row" spacing={2}>        
-          <Button color="inherit" onClick={() => navigate('/contacts')}>
+        <Stack direction="row" spacing={2}>
+        <Button color="inherit" onClick={() => navigate('/admin')}>
+            Admin
+          </Button>
+        <Button color="inherit" onClick={() => navigate('/contacts')}>
+
             Связатся с нами
           </Button>
           <Button color="inherit" onClick={handClickOpen}>

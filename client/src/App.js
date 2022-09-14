@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Layout from './Layout/Layout';
 import ContactInfo from './pages/ContactUs/ContactInfo';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import AdminPanel from './pages/AdminPanel/AdminPanel';
 
 function App() {
   return ( 
@@ -15,6 +16,7 @@ function App() {
       <Route path="*" element={<NotFoundPage />} />
 
       <Route path="/contacts" element={<ContactInfo />}/>
+      <Route path="/admin" element={<AdminPanel />}/>
     </Route>
   </Routes>
   </div>
