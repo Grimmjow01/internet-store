@@ -1,6 +1,7 @@
 export const productTypes = {
   GET_ALL_PRODUCT : 'GET_ALL_PRODUCT',
-  ADD_PRODUCT: 'ADD_PRODUCT'
+  ADD_PRODUCT: 'ADD_PRODUCT',
+  DELETE_PRODUCT : 'DELETE_PRODUCT',
  }
  
 export const snackBarTypes = {

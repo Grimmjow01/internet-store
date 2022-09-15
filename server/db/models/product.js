@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     this.hasOne(models.BasketProduct, { foreignKey: 'product_id' });
     this.belongsTo(models.Brand, { foreignKey: 'brand_id' });
     this.belongsTo(models.Type, { foreignKey: 'type_id' });
-    this.hasMany(models.ProductInfo, { foreignKey: 'product_id' });
-    this.hasMany(models.Rating, { foreignKey: 'product_id' });
+    this.hasMany(models.ProductInfo, { foreignKey: 'product_id', onDelete: 'cascade' });
+    this.hasMany(models.Rating, { foreignKey: 'product_id', onDelete: 'cascade' });
     this.hasMany(models.ProductImage, { foreignKey: 'product_id' });
   }
   }
