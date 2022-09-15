@@ -1,12 +1,17 @@
 import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteProductHandler } from '../../store/products/action';
 import ProductItem from './ProductItem';
 
 function ProductsList() {
 
-  const products = useSelector((store) => store.products)
-  console.log('products', products)
+  const products = useSelector((store) => store.products);
+  const dispatch = useDispatch();
+
+  const deleteProductHandle = (id) => {
+    dispatch(deleteProductHandler(id))
+  };
 
     return (
     <Box flex={5} p={3}>
@@ -22,9 +27,11 @@ function ProductsList() {
           {!products.product?.length  
           ? <p>Товары закончились</p>
           : products.product.map((product) => (
-            <ProductItem product={product} sx={{ marginLeft: 2 }} 
-            key={product.id}
-            // {console.log('product', product)}
+            <ProductItem 
+              product={product} 
+              sx={{ marginLeft: 2 }} 
+              key={product.id}
+              deleteProductHandle={deleteProductHandle}
           />
           ))}
         </Stack>

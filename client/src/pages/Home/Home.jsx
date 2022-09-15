@@ -7,22 +7,24 @@ import { useDispatch } from 'react-redux';
 import { getAllProduct } from '../../store/products/action';
 import { useSelector } from 'react-redux';
 
-function Home() {
+function Home() { 
   const dispatch = useDispatch();
-useEffect(() => {
-  ( async () => {
-    const res = await fetch('http://localhost:3100/', {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const products = await res.json();
-    dispatch(getAllProduct(products))
-   })()
-}, []);
-const products = useSelector((store) => store.products)
+  const products = useSelector((store) => store.products);
+  
+  useEffect(() => {
+    ( async () => {
+      const res = await fetch('http://localhost:3100/api/products', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const products = await res.json();
+      dispatch(getAllProduct(products))
+    })()
+  }, [dispatch]);
+  
   return (
     <Box>
       <HeroSection /> 

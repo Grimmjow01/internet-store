@@ -44,11 +44,10 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-app.use('/', productListRoutes);
+app.use('/api/products', productListRoutes);
 app.use('/contacts', contactsRouter)
 app.use('/adminAddProduct', adminAddProduct)
 app.use('/loadImg', loadImg)
-
 
 app.use((req, res, next) => {
   console.log(req.session);

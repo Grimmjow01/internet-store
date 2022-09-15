@@ -20,6 +20,7 @@ module.exports = {
           model: 'Products',
           key: 'id'
         },
+        onDelete: 'cascade',
         type: Sequelize.INTEGER
       },
       rating: {

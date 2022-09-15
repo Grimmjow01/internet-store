@@ -8,7 +8,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import Snackbar from "../../components/Snackbar/Snackbar";
 
-function ProductItem({product}) {
+function ProductItem({ product, deleteProductHandle }) {
 
   const dispatch = useDispatch();
 
@@ -56,7 +56,7 @@ function ProductItem({product}) {
             {isAdmin &&            
               <Stack direction="row" spacing={2}>
                 <Button variant="contained" color="primary"><EditIcon /></Button>
-                <Button variant="contained" color="error"><ClearIcon /></Button>             
+                <Button variant="contained" color="error" onClick={() => deleteProductHandle(product.id)}><ClearIcon /></Button>             
               </Stack>
               }
             {!isAdmin && 

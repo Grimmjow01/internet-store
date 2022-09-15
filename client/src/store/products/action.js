@@ -16,3 +16,13 @@ export const addProductDatabase = (obj) => async (dispatch) => {
   const obj2 = await res.json()
  dispatch(addProductAction({...obj, id: obj2.id}));
  };
+
+export const delProductAction = (id) => ({type: productTypes.DELETE_PRODUCT, payload: { id } });
+
+
+export const deleteProductHandler = (id) => async (dispatch) => {
+  await fetch(`http://localhost:3100/api/products/${id}`, {
+    method: 'DELETE',
+  });
+  dispatch(delProductAction(id));
+};
