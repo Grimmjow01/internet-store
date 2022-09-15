@@ -46,7 +46,7 @@ app.use(cors(corsOptions));
 
 app.use('/api/products', productListRoutes);
 app.use('/contacts', contactsRouter)
-app.use('/adminAddProduct', adminAddProduct)
+app.use('/admin', adminAddProduct)
 app.use('/loadImg', loadImg)
 
 app.use((req, res, next) => {

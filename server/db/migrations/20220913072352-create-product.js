@@ -17,8 +17,8 @@ module.exports = {
       rating: {
         type: Sequelize.INTEGER
       },
-      img: {
-        type: Sequelize.STRING
+      description: {
+        type: Sequelize.TEXT
       },
       type_id: {
         references: {

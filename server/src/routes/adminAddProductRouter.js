@@ -17,6 +17,6 @@ const upload = multer({ storage });
 router
 .route('/')
 .get(getProductsAdminProfile)
-.post(upload.single('file'), controllers.addProductsAdmin)
+.post(upload.array('file', 10), controllers.addProductsAdmin)
 
 module.exports =router;

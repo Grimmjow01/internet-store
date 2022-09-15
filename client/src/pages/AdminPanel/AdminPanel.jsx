@@ -1,6 +1,6 @@
 import React, {useState, useCallback} from "react";
 import Box from "@mui/material/Box";
-import {Button, FormControl, TextField, MenuItem, Select} from "@mui/material";
+import {Button, FormControl, TextField, MenuItem, Select, Grid} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import "./Adminpanel.css";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
@@ -12,24 +12,8 @@ import { PreviewBox } from './PreviewBox';
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
-  // let snackbarState = useSelector((store)=> store.snackbarState)
-  //  const [img, setImg] = useState(null)
-  
-  //   const [input, setInput] = useState({
-    //     name_product: "",
-    //     categoriya: "",
-    //     price: "",
-    //     img: img?.name || ''
-    //   });
-//   console.log("AdminPanel ~ input", input)
+  let snackbarState = useSelector((store)=> store.snackbarState)
 
-//   const handleInput = (event) => {
-  //       setInput((prev) => ({...prev, [event.target.name] : event.target.value}));
-//   } 
-// const handlerImg = (e) => {
-  //   setImg((prev) => ({...prev, [e.target.name] : e.target.files[0]?.name}));
-  //   console.log("handlerImg ~ e.target.files[0]?.name)", e.target.files[0])
-  // }
   const [fileStore, setFileStore] = useState([]);
 
 const [inputs, setInputs] = useState({});
@@ -54,14 +38,13 @@ const submitHandler = async (e) => {
   e.preventDefault();
   const formData = new FormData();
   formData.append('name_product', inputs.name_product);
-  formData.append('categoriya', inputs.categoriya);
+  formData.append('types', inputs.types);
+  formData.append('brand', inputs.brand);
   formData.append('price', inputs.price);
   formData.append('rating', 0);
   formData.append('file', inputs.file);
-  for (let key of formData.keys()) {
-    console.log(`${key}: ${formData.get(key)}`);
-  }
-  const response = await fetch('http://localhost:3100/adminaddproduct', {
+  formData.append('description', inputs.description);
+  const response = await fetch('http://localhost:3100/admin', {
     method: 'POST',
     body: formData,
   });
@@ -81,17 +64,23 @@ for (let i = 0; i < fileStore.length; i++) {
     body: dataFile,
   });
   }
-
     dispatch(addProductDatabase(data));
+    dispatch(snackBarStatus(true))
   }
-
 };
+const addFoto = () => {
 
-
+}
   return (
-    <Box component="span" sx={{ p: 25, border: "1px solid grey",  boxShadow: 20, borderRadius: 2}} className="contactUsBox">
-    {/* форма добавления--------------------------------------------------------------------------------- */}
-    <h1>Форма добавления</h1>
+    <Grid
+    container
+    direction="column"
+    justifyContent="space-evenly"
+    alignItems="center"
+   component="span" sx={{ p: 25, border: "1px solid grey",  boxShadow: 20, borderRadius: 2}} className="contactUsBox">
+   
+   {/* форма добавления--------------------------------------------------------------------------------- */}
+    <h1>Форма добавления товара</h1>
       <div className="column-center">
     <FormControl className="feedbackForm">
 
@@ -104,48 +93,50 @@ for (let i = 0; i < fileStore.length; i++) {
         required
         id="username"/>
       <br />
+      </FormControl>
 
-    {/* Categoriya ------------------------------------------------------------------------------------------ */}
-      <label id="demo-simple-select-label" >Выберите категорию <span className="red">*</span></label>
+      {/* Types ------------------------------------------------------------------------------------------ */}
+      <FormControl className="feedbackForm">
+      <label id="demo-simple-select-label" >Выберите тип <span className="red">*</span></label>
     <br/>
-      <Select className="menuItem"  value={inputs.categoriya} onChange={inputHandler}
+      <Select className="menuItem"  value={inputs.types} onChange={inputHandler}
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        label="Выберите категорию"
-        name="categoriya" 
+        label="Выберите тип"
+        name="types" 
         >
         
-        <MenuItem value={20} >Кухонная мебель</MenuItem>
-        <MenuItem value={'Раритет'}>Раритет</MenuItem>
-        <MenuItem value={'Спальня'}>Спальня</MenuItem>
-        <MenuItem value={'Шкафы'}>Шкафы</MenuItem>
-        <MenuItem value={'Офисная'}>Офисная</MenuItem>
-        <MenuItem value={30}>Прочее</MenuItem>
+        <MenuItem value={'Мебель для спальни'} >Мебель для спальни</MenuItem>
+        <MenuItem value={'Мягкая мебель'}>Мягкая мебель</MenuItem>
+        <MenuItem value={'Мебель для кухни'}>Мебель для кухни</MenuItem>
+        <MenuItem value={'Мебель для бизнеса'}>Мебель для бизнеса</MenuItem>
+        <MenuItem value={'Мебель для гостиной'}>Мебель для гостиной</MenuItem>
+        <MenuItem value={'Мебель для детской'}>Мебель для детской</MenuItem>
+        <MenuItem value={'Столы и стулья'}>Столы и стулья</MenuItem>
+        <MenuItem value={'Спецзаказы'}>Спецзаказы</MenuItem>
       </Select>
       <br/>
-      
-
-      {/* <label> Брэнд: <span className="red">*</span></label>
+      </FormControl>
+          {/* Brand ------------------------------------------------------------------------------------------ */}
+          <FormControl className="feedbackForm">
+      <label> Выберите брэнд: <span className="red">*</span></label>
       <br />
-      <Select className="menuItem" onChange={handleInput}
+      <Select className="menuItem" onChange={inputHandler}
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        label="Выберите тему"
-        name="select_theme" 
-        value={input.select_theme}>
+        label="Выберите брэнд"
+        name="brand" 
+        value={inputs.brand}>
         
-        <MenuItem value={20} >Фабрика «Ваш Стиль»</MenuItem>
-        <MenuItem value={'Раритет'}>Hellen Farben</MenuItem>
-        <MenuItem value={'Спальня'}>Sagrande mobili</MenuItem>
-        <MenuItem value={'Шкафы'}>Графская кухня</MenuItem>
-        <MenuItem value={'Офисная'}>Биомебель</MenuItem>
-        <MenuItem value={'Офисная'}>Диодорс</MenuItem>
-        <MenuItem value={'Офисная'}>Мебельный комбинат Фома</MenuItem>
-        <MenuItem value={'Офисная'}>Фабрика «Аврора»</MenuItem>
-        <MenuItem value={'Офисная'}>Второй мебельный комбинат</MenuItem>
-        <MenuItem value={30}>Прочее</MenuItem>
+        <MenuItem value={'IKEA'} >IKEA</MenuItem>
+        <MenuItem value={'Мебель-стиль'}>Мебель-стиль</MenuItem>
+        <MenuItem value={'Williams-Sonoma'}>Williams-Sonoma</MenuItem>
+        <MenuItem value={'Король диванов'}>Король диванов</MenuItem>
+        <MenuItem value={'Аскона'}>Аскона</MenuItem>
+        <MenuItem value={'Русскуя мебельная компания'}>Русскуя мебельная компания</MenuItem>
+        <MenuItem value={'Орма Мебель'}>Орма Мебель</MenuItem>
       </Select>
-      <br /> */}
+      <br />
 
     {/* price ------------------------------------------------------------------------------------------ */}
 <label> Цена <span className="red">*</span></label>
@@ -157,17 +148,21 @@ for (let i = 0; i < fileStore.length; i++) {
         required
         id="username"/>
       <br />
-
+      </FormControl>
+      <FormControl>
+      <br />
 {/* добавление фото ----------------------------- ------------------------------------------------------------- */}
       <PreviewBox fileStore={fileStore}/>
       <label>Добавить фото <span className="red">*</span></label>
       <br />
-      <TextField encType="multipart/form-data" method="post" onChange={inputHandler} multiple
+      <TextField inputProps={{multiple: true}} encType="multipart/form-data" action="/profile-upload-multiple" method="POST" onChange={inputHandler} type="file" name="file"
         className="menuItem"
-        required
-        name="multi-files"
+        required 
         accept='image/*'
-        id="file" type="file"/>
+        id="file"/> 
+    
+        <Snackbar message={'Фото закреплено'}/>
+      
         <FormControl fullWidth>
       
    {/* Description product------------------------------------------------------------------------------------------ */}
@@ -193,8 +188,8 @@ for (let i = 0; i < fileStore.length; i++) {
       </Button>
     </FormControl>
     </div>
-    {/* <Snackbar message={'Товар добавлен в базу'}/> */}
-  </Box>
+    <Snackbar message={'Товар добавлен в базу'}/>
+  </Grid>
 );
 };
 
