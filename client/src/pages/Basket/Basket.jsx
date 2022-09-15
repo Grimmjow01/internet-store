@@ -19,7 +19,7 @@ function Basket() {
                 spacing={30}>
 
             <Box>
-            <h1>Ваша корзина.</h1>
+            <h1>Ваша корзина:</h1>
 
             {products.basket.map((el,index) => (
                  <BasketItem key ={index} el={el}></BasketItem>
@@ -34,6 +34,7 @@ function Basket() {
         <Box className='paymentBox'>
 
         <span>Товары:</span>
+        <br />
         <br />
         <span>Скидка:</span>
         <br />

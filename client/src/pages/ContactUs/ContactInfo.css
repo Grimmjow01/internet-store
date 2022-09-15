@@ -16,8 +16,7 @@
     height: 400px;
 }
 
-.column-center{
-    background: url(http://localhost:3000/static/media/ugli.d5333f4….jpg) repeat scroll 0 0 rgba(43, 99, 255, 0.47);;
+.column-center1{
     float: right;
     margin: 0 15px 15px 0;
     padding: 25px;
@@ -25,6 +24,7 @@
     max-width: 709px;
     border-radius: 7px;
     min-height: 820px;
+    border-style: ridge;
 }
 
 
@@ -50,4 +50,8 @@ h1{
 
 #privacylink{
     color: rgb(55, 0, 255);
+}
+
+.mapYandex{
+    padding-top: 75px;
 }
