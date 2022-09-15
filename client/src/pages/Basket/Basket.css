@@ -1,0 +1,10 @@
+.Card {
+    display:flex;
+    flex-direction: row;
+    ustify-content: space-evenly;
+
+}
+.Card * {
+    margin-left: 10px
+}
+

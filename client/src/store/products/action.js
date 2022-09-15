@@ -1,4 +1,6 @@
-import { productTypes } from '../types';
+import { productTypes, basketTypes } from '../types';
+
+export const changeQuantity = (basket) => ({ type: basketTypes.CHANGE_QUANTITY, payload: { basket } });
 export const getAllProduct = (product) => ({type: productTypes.GET_ALL_PRODUCT, payload: product });
 export const addProductAction = (obj) => ({type: productTypes.ADD_PRODUCT, payload: obj});
 

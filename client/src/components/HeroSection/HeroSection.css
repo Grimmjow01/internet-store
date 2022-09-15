@@ -1,3 +1,6 @@
 .heroSection{
     height: 400px !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-end;
 }
