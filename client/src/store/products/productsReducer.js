@@ -1,12 +1,19 @@
-import { productTypes } from '../types';
+import { productTypes, basketTypes } from '../types';
 export const addProductAction = (obj) => ({type: productTypes.ADD_PRODUCT, payload: obj});
 
-const initState = {}
+const initState = {basket:[{id:1,quantity:5}, {id:2,quantity:5}]}
+
 
 export const productsReducer = (state = initState, action) => {
+
   switch (action.type) {
       case productTypes.GET_ALL_PRODUCT:
       return {...state, product: action.payload}
+
+      case basketTypes.CHANGE_QUANTITY:
+        console.log(action.payload.basket, 'Reducer - basket')
+        return {...state, basket: action.payload.basket};
+
       case productTypes.ADD_PRODUCT:
       return {...state, products: [...state.products, action.payload ]}
     default:
