@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Box from "@mui/material/Box";
-import {Button, FormControl, TextField, MenuItem, Select, InputLabel} from "@mui/material";
+import {Button, FormControl, TextField, MenuItem, Select, InputLabel, Stack} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import "./ContactInfo.css";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
@@ -46,28 +46,15 @@ const ContactInfo = () => {
   }
 
   return (
-    <Box component="span" sx={{ p: 25, border: "1px solid grey",  boxShadow: 20, borderRadius: 2}} className="contactUsBox">
-      <h1>Контакты:</h1>
-      <p>
-        <span className="contHead">Нижний Новгород, ул. Костина,13</span>
-      </p>
-      <div>
-        +7 (902) 300-30-30
-        <br />
-        <br />
-        +7 (831) 230-00-00
-        <br />
-        <br /> +7 (831) 4-244-243
-        <br />
-        <br /> E-mail: vsemlavash@mail.ru
-      </div>
-      <span>
-        По вопросам качества продукции обращайтесь по телефону: <br />
-        <span>+7 (910) 884-31-97</span>
-        <br />
-        <br />
-      </span>
-      <div className="column-center">
+    <>
+    <Stack direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                spacing={10}
+                >
+    <Box component="span"  className="contactUsBox">
+    
+      <div className="column-center1">
       <h1>Обратная связь:</h1>
       <FormControl className="feedbackForm">
       <label>Ваше имя: <span className="red">*</span></label>
@@ -110,10 +97,10 @@ const ContactInfo = () => {
           name="select_theme" 
           value={input.select_theme}>
           
-          <MenuItem value={10} >Директору</MenuItem>
+          <MenuItem value={'Директору'} >Директору</MenuItem>
           <MenuItem value={'Мэнеджеру'}>Мэнеджеру</MenuItem>
           <MenuItem value={'Сотрудничество'}>Сотрудничество</MenuItem>
-          <MenuItem value={30}>Прочее</MenuItem>
+          <MenuItem value={'Прочее'}>Прочее</MenuItem>
         </Select>
         </FormControl>
     
@@ -140,6 +127,32 @@ const ContactInfo = () => {
       </div>
       <Snackbar message={'Email отправлен!'}/>
     </Box>
+    <Box className="mapYandex">
+    <h1>Контакты:</h1>
+      <p>
+        <span className="contHead">ул. Сыганак, 14/1, Нур-Султан (Астана), Казахстан</span>
+      </p>
+      <div>
+        +7 (902) 300-30-30
+        <br />
+        <br />
+        +7 (831) 230-00-00
+        <br />
+        <br /> +7 (831) 4-244-243
+        <br />
+        <br /> E-mail: onlinemebel@mail.ru
+      </div>
+      <span>
+        По вопросам качества продукции обращайтесь по телефону: <br />
+        <span>+7 (910) 884-31-97</span>
+        <br />
+        <br />
+      </span>
+    <h1>Где нас найти:</h1>
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a4db5d8312b144d91ad48897075a8fdef4c45fff83b8dce5dfab862e805528a&amp;source=constructor" width="500" height="442" frameborder="0"></iframe>
+    </Box>
+    </Stack>
+   </>
   );
 };
 
