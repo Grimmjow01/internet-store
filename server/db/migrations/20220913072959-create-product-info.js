@@ -6,13 +6,14 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       product_id: {
         references: {
           model: 'Products',
-          key: 'id'
+          key: 'id',
         },
+        onDelete: 'cascade',
         type: Sequelize.INTEGER
       },
       title: {
