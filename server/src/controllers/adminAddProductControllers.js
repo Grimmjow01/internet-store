@@ -1,4 +1,4 @@
-const { Product } = require('../../db/models');
+const { Product, Brand, Type } = require('../../db/models');
 
 const getProductsAdminProfile = async (req, res) => {
   const allProducts = await Product.findAll()
@@ -9,11 +9,16 @@ const getProductsAdminProfile = async (req, res) => {
 
 const addProductsAdmin = async (req, res) => {
   try {
-    const { name_product, rating, price } = req.body;
-      const newProduct = await Product.create({
+    const { name_product, rating, price, brand, description, types } = req.body;
+    const currentIdBrand = await Brand.findOne({where: {name: brand} })
+    const currentIdTypes = await Type.findOne({where: {name: types} })
+    const newProduct = await Product.create({
       name: name_product,
       price: price,
       rating: 0,
+      description,
+      type_id: currentIdTypes.id,
+      brand_id: currentIdBrand.id
     });
     res.json({ message: "Продукт в базу данных добавлен", newProduct });
   } catch (e) {

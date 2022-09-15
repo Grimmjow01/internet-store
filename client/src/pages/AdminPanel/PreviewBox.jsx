@@ -13,8 +13,7 @@ export const PreviewBox = ({ fileStore }) => {
       {fileStore.map((file) => 
       (
         <Grid  direction="column">
-        <Avatar alt="Remy Sharp" src="/images/folder.jpeg" />
-        <div> какой то текст </div>
+       
         </Grid>
       ))}
 
