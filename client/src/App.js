@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import io from 'socket.io-client';
 import Home from './pages/Home/Home';
 import Layout from './Layout/Layout';
 import ContactInfo from './pages/ContactUs/ContactInfo';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Basket from './pages/Basket/Basket';
 import AdminPanel from './pages/AdminPanel/AdminPanel';
+import Chat from './components/Chat/Chat';
+
+const socket = io.connect('http://localhost:3001')
+
+
 
 function App() {
+
+const [room, setRoom] = useState('');
+
+socket.emit("join_room", room)
+
   return ( 
+    
   <div className="App">
     <Routes>
     <Route path="/" element={<Layout />}>
@@ -18,6 +30,7 @@ function App() {
       <Route path="/basket" element={<Basket />}/>
       <Route path="/contacts" element={<ContactInfo />}/>
       <Route path="/admin" element={<AdminPanel />}/>
+      <Route path="/chat" element={<Chat />}/>
     </Route>
   </Routes>
   </div>

@@ -17,8 +17,8 @@ const CanvasModel = () => {
        const scene = new THREE.Scene();
        scene.background = new THREE.Color('#FFFFFF');
        const camera = new THREE.PerspectiveCamera();
-       let renderer = new THREE.WebGLRenderer({antialias : true,  maxLights: 3 });
-       renderer.setSize(450, 400);
+       let renderer = new THREE.WebGLRenderer({antialias : true,  maxLights: 4 });
+       renderer.setSize(480, 400);
        mountRef.current.appendChild(renderer.domElement);
 
        const loader = new GLTFLoader();
@@ -26,43 +26,43 @@ const CanvasModel = () => {
        const controls = new OrbitControls(camera, renderer.domElement);
 
        // test box geometry
-       const box = new THREE.BoxGeometry(20, 20 ,20);
+       /* const box = new THREE.BoxGeometry(220, 220 ,220);
        const material = new THREE.MeshBasicMaterial({color : '#FF2D00'});
        const boxMesh = new THREE.Mesh(box, material);
       // scene.add(boxMesh);
-       boxMesh.geometry.center();
+       boxMesh.geometry.center(); */
 
        const chair = new THREE.Group();
        
-       const light = new THREE.PointLight('#FFFFFF', 5);
+       const light = new THREE.PointLight('#FFFFFF', 3.5);
 
-
+       const light2 = new THREE.AmbientLight('#FFFFFF', 2);
        
 
        light.position.z = 1000;
-       light.position.x = -1000;
+       light2.position.x = -1000;
        light.position.y = 1000;
 
        //model loader
        console.log("LOADER", loader)
        loader.load('./3dfurniture/scene.gltf', (gltf) => {
         console.log('GLTF ====', gltf)
-         gltf.scene.scale.set(130, 130, 130);
+         gltf.scene.scale.set(30, 30, 30);
          chair.add(gltf.scene);
        })
 
-       scene.add(chair, light)
+       scene.add(chair, light, light2)
 
 
        // animate function
        const animate = () => {
           let animateId = requestAnimationFrame(animate);
-          chair.rotation.y += 0.005;
+          chair.rotation.y += 0.002;
 
           renderer.render(scene, camera);
        }
        animate();
-       camera.position.z = 250;
+       camera.position.z = 80;
 
        console.log(scene)
 

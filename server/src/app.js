@@ -10,10 +10,19 @@ const productListRoutes = require('./routes/productListRoutes');
 const adminAddProduct = require('./routes/adminAddProductRouter');
 const loadImg = require('./routes/loadImgRouter');
 const app = express();
-const serverhttp = require('http');
+// socket.io
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ["GET", "POST"]
+  }
+} );
+//socket.io
 
 const contactsRouter = require("./routes/contactsRoute")
-
 
 app.use(morgan('dev'));
 
@@ -49,9 +58,26 @@ app.use('/contacts', contactsRouter)
 app.use('/admin', adminAddProduct)
 app.use('/loadImg', loadImg)
 
+io.on('connection', (socket) => {
+  console.log('a user connected', socket.id);
+ 
+  socket.on("join_room"), (data) => {
+    socket.join(data);
+    console.log(`User with id: ${socket.id} joined room ${data}`)
+  }
+
+  socket.on("disconnect", () => {
+    console.log("user disconnected", socket.id)
+  })
+});
+
 app.use((req, res, next) => {
   console.log(req.session);
   next();
+})
+
+server.listen(3001, () =>{
+  console.log("chat is up")
 })
 
 app.listen(PORT, async () => {
@@ -63,3 +89,5 @@ app.listen(PORT, async () => {
   }
   console.log(`Серв еще не отломился на ${PORT} порту!`);
 });
+
+
