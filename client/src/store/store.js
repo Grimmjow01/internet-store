@@ -2,12 +2,12 @@ import { legacy_createStore as createStore, applyMiddleware, combineReducers } f
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 
-// import { authReducer } from './auth/reducers';
+import { authReducers } from './auth/authReducers';
 import { productsReducer } from './products/productsReducer';
 import { snackBarReducer } from './snackBar/reducer';
 
 const rootReducer = combineReducers({
-  // auth: authReducer,
+  auth: authReducers,
   products: productsReducer,
   snackbarState: snackBarReducer,
   basket : productsReducer,
