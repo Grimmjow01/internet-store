@@ -4,6 +4,8 @@ import {
 } from '@mui/material';
 import './Auth.css';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
+import { useDispatch } from 'react-redux';
+import { getLoginThunk } from '../../store/auth/action';
 
 const avatarStyle = { backgroundColor: '#5491d3', margin: '15px 0' };
 
@@ -22,6 +24,7 @@ const logStyle = { margin: '20px 75px' };
 const Auth = () => {
 
 const [signOpen, signSetOpen] = useState(false);
+const dispatch = useDispatch();
 
 const handClickOpen = () => {
     signSetOpen(true);
@@ -31,25 +34,46 @@ const handleClose = () => {
     signSetOpen(false);
 };
 
+const [inputLogin, setInputLogin] = useState('');
+
+const inputChange = (e) => {
+  setInputLogin({ ...inputLogin, [e.target.name]: e.target.value });
+};
+
   return (
     <Grid>
       <Paper className="paperStyle">
         <Grid align="center">
           <Avatar style={avatarStyle}><LockPersonIcon /></Avatar>
-          <h2 style={textStyle2}>Sign In</h2>
+          <h2 style={textStyle2}>Авторизация</h2>
         </Grid>
-        <TextField label="Username" placeholder="Enter username" fullWidth required />
-        <TextField label="Password" placeholder="Enter password" type="password" style={textStyle} fullWidth required />
-        <Button type="submit" color="primary" variant="contained" style={btnStyle} fullWidth>Login</Button>
+        <TextField 
+        label="Username" 
+        placeholder="Enter username" 
+        onChange={inputChange} 
+        type="email" 
+        name="email"
+        value={inputLogin.email} 
+        fullWidth required />
+        <TextField 
+        label="Password" 
+        placeholder="Enter password" 
+        onChange={inputChange}
+        type="password" 
+        name="password"
+        value={inputLogin.password}
+        style={textStyle}
+        fullWidth required />
+        <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(getLoginThunk(inputLogin))} style={btnStyle} fullWidth>Войти</Button>
         <Typography style={orStyle}>
-          or
+          или
         </Typography>
         <div style={signStyle}>
           <Typography>
             {' '}
-            Don't have account?
+            Нет аккаунта?
             <Button onClick={handClickOpen}>
-              Sign Up
+            Зарегистрироваться
             </Button>
           </Typography>
         </div>
@@ -58,22 +82,22 @@ const handleClose = () => {
         <Paper className="paperStyle">
           <Grid align="center">
             <Avatar style={avatarStyle}><LockPersonIcon /></Avatar>
-            <h2>Create Your Account</h2>
-            <p>Please fill all fields to continue</p>
+            <h2>Создать учетную запись</h2>
+            <p>Пожалуйста, заполните все поля, чтобы продолжить</p>
           </Grid>
           <TextField label="Username" placeholder="Enter username" fullWidth required />
           <TextField label="Email" placeholder="Enter email" type="email" style={textStyle} fullWidth required />
           <TextField label="Password" placeholder="Enter password" type="password" fullWidth required />
-          <Button type="submit" color="primary" variant="contained" style={btnStyle} fullWidth>Create account</Button>
+          <Button type="submit" color="primary" variant="contained" style={btnStyle} fullWidth>Зарегистрироваться</Button>
           <Typography style={orStyle}>
-            or
+            или
           </Typography>
           <div style={logStyle}>
             <Typography>
               {' '}
-              Have an account?
+              Есть аккаунт?
               <Button onClick={handleClose}>
-                Login
+              Авторизоваться
               </Button>
             </Typography>
           </div>

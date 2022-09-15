@@ -9,7 +9,10 @@ import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
-import Auth from '../Auth/Auth'
+import Auth from '../Auth/Auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { isAuth } from '../../store/auth/action';
+import $api from '../../http';
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -32,6 +35,9 @@ const Search = styled("div")({
 function Navbar() {
   const navigate = useNavigate(); // или используй Navlink
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const setAuth = useSelector((store) => store.auth.setAuth);
 
   const handClickOpen = () => {
     setOpen(true);
@@ -39,6 +45,13 @@ function Navbar() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handClickExit = async() => {
+    await $api.post('/logout');
+    localStorage.removeItem('token');
+    console.log('localStorage==', localStorage);
+    dispatch(isAuth(false));
   };
 
   const isAdmin = false;
@@ -67,10 +80,17 @@ function Navbar() {
               <Button color="inherit" onClick={() => navigate('/contacts')}>
                 Связатся с нами
               </Button>
-              <Button color="inherit" onClick={handClickOpen}>
-                <AccountCircleIcon fontSize="large" />
+              {!setAuth ? 
+            <Button color="inherit" onClick={handClickOpen}>
+              <AccountCircleIcon fontSize="large" />
                 Войти
-              </Button>
+             </Button>
+              :
+              <Button color="inherit" onClick={handClickExit}>
+              <AccountCircleIcon fontSize="large" />
+                Выйти
+                </Button>
+              }
               <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <Auth />
               </Dialog>

@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const dbConnectCheck = require('../db/dbConnectionCheck')
 const productListRoutes = require('./routes/productListRoutes');
+const cookieParser = require('cookie-parser');
 const adminAddProduct = require('./routes/adminAddProductRouter');
 const loadImg = require('./routes/loadImgRouter');
 const app = express();
@@ -22,7 +23,10 @@ const io = new Server(server, {
 } );
 //socket.io
 
-const contactsRouter = require("./routes/contactsRoute")
+const contactsRouter = require("./routes/contactsRoute");
+const loginRoute = require('./routes/loginRoute');
+
+const errorMiddlewares = require('./middlewares/errorMiddlewares');
 
 app.use(morgan('dev'));
 
@@ -44,7 +48,7 @@ const sessionConfig = {
     httpOnly: true,
   },
 };
-
+app.use(cookieParser());
 app.use(session(sessionConfig));
 
 const corsOptions = {
@@ -54,7 +58,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use('/api/products', productListRoutes);
-app.use('/contacts', contactsRouter)
+app.use('/contacts', contactsRouter);
+app.use('/api', loginRoute);
+app.use(errorMiddlewares);
 app.use('/admin', adminAddProduct)
 app.use('/loadImg', loadImg)
 
