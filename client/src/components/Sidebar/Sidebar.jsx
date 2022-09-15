@@ -12,9 +12,10 @@ import SegmentIcon from '@mui/icons-material/Segment';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from 'react-router-dom';
 
 function Sidebar() {
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -25,22 +26,21 @@ function Sidebar() {
     <Box flex={1} p={3} bgcolor="lightgrey">
       <Card>
         <List
-          // sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
           component="nav"
           aria-labelledby="nested-list-subheader"
-          subheader={
-            <ListSubheader component="div" id="nested-list-subheader">
-              <InputBase placeholder="Найти..." />
-            </ListSubheader>
-          }
+          // subheader={
+          //   <ListSubheader component="div" id="nested-list-subheader">
+          //     <InputBase placeholder="Найти..." />
+          //   </ListSubheader>
+          // }
         >
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate('/')}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="На главную" />
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate('/basket')}>
             <ListItemIcon>
               <ShoppingCartRoundedIcon />
             </ListItemIcon>
@@ -59,19 +59,19 @@ function Sidebar() {
                 <ListItemIcon>
                   <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon >
-                <ListItemText primary="Кухонные гарнитуры" />
+                <ListItemText primary="Мебель для спальни" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
                   <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
-                <ListItemText primary="Шкафы" />
+                <ListItemText primary="Мягкая мебель" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
                   <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
-                <ListItemText primary="Спальни" />
+                <ListItemText primary="Мебель для кухни" />
               </ListItemButton >
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
@@ -83,19 +83,25 @@ function Sidebar() {
                 <ListItemIcon>
                   <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
-                <ListItemText primary="Офисная мебель" />
+                <ListItemText primary="Мебель для гостиной" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
                   <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
-                <ListItemText primary="Раритетная мебель" />
+                <ListItemText primary="Мебель для детской" />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
                   <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
-                <ListItemText primary="Спецзаказы" />
+                <ListItemText primary="Столы и стулья" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <FiberManualRecordIcon fontSize='small' />
+                </ListItemIcon>
+                <ListItemText primary="Спецзаказ" />
               </ListItemButton>
             </List>
           </Collapse>
