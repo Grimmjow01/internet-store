@@ -1,8 +1,6 @@
 import { productTypes } from '../types';
 
-const initState = {
-  // products: [],
-};
+const initState = {};
 
 console.log('reducers', 3);
 export const productsReducer = (state = initState, action) => {
