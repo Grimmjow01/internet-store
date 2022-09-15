@@ -6,6 +6,7 @@ import BasicRating from './BasicRating';import { useDispatch, useSelector } from
 import { snackBarStatus } from '../../store/snackBar/action'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
+import Snackbar from "../../components/Snackbar/Snackbar";
 
 function ProductItem({product}) {
 
@@ -13,7 +14,7 @@ function ProductItem({product}) {
 
   let snackbarState = useSelector((store)=> store.snackbarState)
 
-  const addItemToBasket = async () => {
+  const addToBasket = async () => {
     /* const response = await axios.post('http://localhost:3100/contacts/sendemail',
        {contactinfo : input}     
     ) */
@@ -59,7 +60,7 @@ function ProductItem({product}) {
               </Stack>
               }
             {!isAdmin && 
-              <Button variant="outlined" color="secondary" startIcon={<AddIcon />}>В корзину</Button>
+              <Button variant="outlined" color="secondary" startIcon={<AddIcon />} onClick={addToBasket}>В корзину</Button>
               }
           </Box>
         </Stack>
@@ -67,7 +68,9 @@ function ProductItem({product}) {
 
       </CardContent>
       <CardActions disableSpacing />
+      <Snackbar message={'Товар добавлен в корзину!'}/>
     </Card>
+    
   );
 }
 

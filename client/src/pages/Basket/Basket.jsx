@@ -31,18 +31,18 @@ function Basket() {
         
         <br />
 
-        <Box>
-        <FormControl >
+        <Box className='paymentBox'>
+
         <span>Товары:</span>
         <br />
         <span>Скидка:</span>
         <br />
         <br />
-        <h1>Общая стоимость :</h1>
+        <h2>Общая стоимость :</h2>
         <Button variant="contained" alignItems="center" style={{maxWidth: 180 }}>
-          Перейти к оплате
+        Оформить заказ:
         </Button>
-        </FormControl>
+
     
 
       

@@ -39,54 +39,54 @@ module.exports = {
 
     const brands = [
       {
-        name: 'IKEA',
+        name: "IKEA",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Kartell',
+        name: "Мебель-Стиль",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Williams-Sonoma',
+        name: "Williams-Sonoma",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Raymour & Flanigan',
+        name: "Король диванов",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'American Signature',
+        name: "Аскона",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Русскуя мебельная компания',
+        name: "Русскуя мебельная компания",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-    ]
+      {
+        name: "Орма Мебель",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ];
     const types = [
       {
-        name: 'Кухонные гарнитуры',
+        name: 'Мебель для спальни',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Шкафы',
+        name: 'Мягкая мебель',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Спецзаказы',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'Спальни',
+        name: 'Мебель для кухни',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -96,12 +96,22 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Офисная мебель',
+        name: 'Мебель для гостиной',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Раритетная мебель',
+        name: 'Мебель для детской',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Столы и стулья',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Спецзаказы',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

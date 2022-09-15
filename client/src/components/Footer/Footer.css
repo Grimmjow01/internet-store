@@ -1,8 +1,10 @@
 .footer{
     background-color: #1976d2 !important;
-    position: absolute; 
-    bottom: 1;
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
     width: 100%;
+    color: white;
     text-align: center;
 }
 
