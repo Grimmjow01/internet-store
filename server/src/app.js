@@ -42,8 +42,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-app.use('/', productListRoutes);
-app.use('/contacts', contactsRouter)
+app.use('/api/products', productListRoutes);
+app.use('/contacts', contactsRouter);
 
 app.use((req, res, next) => {
   console.log(req.session);
