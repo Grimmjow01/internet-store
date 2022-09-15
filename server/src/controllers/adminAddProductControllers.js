@@ -2,7 +2,6 @@ const { Product, Brand, Type } = require('../../db/models');
 
 const getProductsAdminProfile = async (req, res) => {
   const allProducts = await Product.findAll()
-  console.log("productListControllers ~ allProducts", allProducts)
   res.json(allProducts)
 
 }
