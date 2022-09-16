@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import Home from './pages/Home/Home';
 import Layout from './Layout/Layout';
 import ContactInfo from './pages/ContactUs/ContactInfo';
@@ -11,7 +11,7 @@ import AdminPanel from './pages/AdminPanel/AdminPanel';
 import Chat from './components/Chat/Chat';
 import ProductItemPage from './pages/ProductItemPage/ProductItemPage';
 
-const socket = io.connect('http://localhost:3001')
+// const socket = io.connect('http://localhost:3001')
 
 
 
@@ -19,7 +19,7 @@ function App() {
 
 const [room, setRoom] = useState('');
 
-socket.emit("join_room", room)
+// socket.emit("join_room", room)
 
   return ( 
     
@@ -33,6 +33,7 @@ socket.emit("join_room", room)
       <Route path="/admin" element={<AdminPanel />}/>
       <Route path="/chat" element={<Chat />}/>
       <Route path="/products/:id" element={<ProductItemPage />}/>
+
     </Route>
   </Routes>
   </div>

@@ -1,16 +1,17 @@
-const { Product, Brand, Type } = require('../../db/models');
+const { Product, Brand, Type, ProductImage } = require('../../db/models');
 
 const getProductsAdminProfile = async (req, res) => {
   const allProducts = await Product.findAll()
   res.json(allProducts)
-
 }
 
 const addProductsAdmin = async (req, res) => {
   try {
-    const { name_product, rating, price, brand, description, types } = req.body;
+    const { name_product, rating, price, brand, types, description } = req.body;
+    // console.log("addProductsAdmin ~ name_product, rating, price, brand, types, description", name_product, rating, price, brand, types, description)
     const currentIdBrand = await Brand.findOne({where: {name: brand} })
     const currentIdTypes = await Type.findOne({where: {name: types} })
+    
     const newProduct = await Product.create({
       name: name_product,
       price: price,
@@ -21,7 +22,7 @@ const addProductsAdmin = async (req, res) => {
     });
     res.json({ message: "Продукт в базу данных добавлен", newProduct });
   } catch (e) {
-    console.log(e);
+    console.log('Ошибка добавления продукта в базу', e);
     res.status(400).json({ message: 'error' });
   }
 }

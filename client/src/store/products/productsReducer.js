@@ -1,5 +1,5 @@
 import { productTypes, basketTypes } from '../types';
-export const addProductAction = (obj) => ({type: productTypes.ADD_PRODUCT, payload: obj});
+// export const addProductAction = (obj) => ({type: productTypes.ADD_PRODUCT, payload: obj});
 
 const initState = {basket:[{id:1,quantity:5}, {id:2,quantity:5}], product: {}}
 
@@ -13,8 +13,8 @@ export const productsReducer = (state = initState, action) => {
         console.log(action.payload.basket, 'Reducer - basket')
         return {...state, basket: action.payload.basket};
 
-      case productTypes.ADD_PRODUCT:
-      return {...state, products: [...state.products, action.payload ]}
+      // case productTypes.ADD_PRODUCT:
+      // return {...state, product: action.payload }
 
       case productTypes.DELETE_PRODUCT:
       console.log(state.product);
