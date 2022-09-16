@@ -63,7 +63,7 @@ function Navbar() {
           <Box>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => navigate('/')}>
               <StoreRoundedIcon />
-              Магазин мебели
+              Мебель и точка
             </Typography>
           </Box>
           <Box>

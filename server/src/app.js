@@ -13,16 +13,11 @@ const loadImg = require('./routes/loadImgRouter');
 const app = express();
 const multer = require('multer')
 // socket.io
-// const http = require('http');
-// const server = http.createServer(app);
+const http = require('http');
+const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server, {
-  cors: {
-    origin: 'http://localhost:3000/*',  
-    methods: ["GET", "POST"]
-  }
-} );
-socket.io
+
+//socket.io
 
 const contactsRouter = require("./routes/contactsRoute");
 const loginRoute = require('./routes/loginRoute');
@@ -65,27 +60,39 @@ app.use(errorMiddlewares);
 app.use('/admin', adminAddProduct)
 app.use('/loadImg', loadImg)
 
-// io.on('connection', (socket) => {
-//   console.log('a user connected', socket.id);
- 
-//   socket.on("join_room"), (data) => {
-//     socket.join(data);
-//     console.log(`User with id: ${socket.id} joined room ${data}`)
-//   }
+const io = new Server(server, {
+  cors: {
+    origin: '*',  
+    methods: ["GET", "POST"]
+  }
+} );
 
-//   socket.on("disconnect", () => {
-//     console.log("user disconnected", socket.id)
-//   })
-// });
+io.on('connection', (socket) => {
+  console.log('a user connected', socket.id);
+
+  socket.on("join_room", (data) =>{
+    socket.join(data);
+    console.log(`User with id ${socket.id} joined room ${data}`)
+  })
+
+  socket.on("send_message", (data) => {
+    socket.to(data.room).emit("receive_message", data);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected', socket.id);
+  });
+});
+
 
 app.use((req, res, next) => {
   console.log(req.session);
   next();
 })
 
-// server.listen(3001, () =>{
-//   console.log("chat is up")
-// })
+server.listen(3001, () =>{
+  console.log("chat is up")
+})
 
 app.listen(PORT, async () => {
   try {

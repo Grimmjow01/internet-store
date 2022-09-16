@@ -40,7 +40,7 @@ function ProductItem({ product, deleteProductHandle }) {
         component="img"
         // height="300"
         maxWidth="300"
-        image="./images/example.jpg"
+        image="./images/test333.jpeg"
         alt="Kreslo"
       />
       <CardContent>
