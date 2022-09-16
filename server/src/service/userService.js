@@ -8,14 +8,14 @@ const UserDto = require('../dtos/userDto');
 const MailService = require('./mailService');
 const ApiError = require('../exceptions/apiError');
 
-const registrationService = async (email, password) => {
+const registrationService = async (login, email, password) => {
     const candidate = await Models.User.findOne({ where: { email } });
         if(candidate) {
             throw ApiError.BadRequest(`Пользователь с почтовым адресом ${email} уже существует`);
         }
     const hashPassword = await bcrypt.hash(password, 3);
     const activationLink = uuid.v4();
-    const user = await Models.User.create({ email, password: hashPassword, activationLink });
+    const user = await Models.User.create({ login, email, password: hashPassword, activationLink });
         
     await MailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
         

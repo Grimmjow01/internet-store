@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -10,12 +10,23 @@ import Basket from './pages/Basket/Basket';
 import AdminPanel from './pages/AdminPanel/AdminPanel';
 import Chat from './components/Chat/Chat';
 import ProductItemPage from './pages/ProductItemPage/ProductItemPage';
+import { checkAuthThunk } from './store/auth/action';
+import { useDispatch } from 'react-redux';
 
 
 
 function App() {
 
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      dispatch(checkAuthThunk());
+    };
+  }, [dispatch]);
+
+const [room, setRoom] = useState('');
 
 
   return ( 
