@@ -8,7 +8,9 @@ export const snackBarTypes = {
     SNACKBAR_STATE : 'SNACKBAR_STATE',
     SNACKBAR_MESSAGE :'SNACKBAR_MESSAGE'
 }
-
+export const authTypes = {
+    AUTH_LOGIN : 'AUTH_LOGIN',
+ }
 export const basketTypes = {
   CHANGE_QUANTITY: 'CHANGE_QUANTITY',
   DELETE_ITEM:'DELETE_ITEM'

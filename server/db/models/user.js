@@ -11,13 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasOne(models.Basket, { foreignKey: 'user_id' });
-      this.hasMany(models.Rating, { foreignKey: 'user_id' });    
+      this.hasMany(models.Rating, { foreignKey: 'user_id' });
+      this.hasOne(models.Token, { foreignKey: 'user_id' });    
     }
   }
   User.init({
     login: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    isActivated: DataTypes.BOOLEAN,
+    activationLink: DataTypes.STRING,
     role: DataTypes.STRING
   }, {
     sequelize,
