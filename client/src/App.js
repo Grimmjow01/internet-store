@@ -9,6 +9,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Basket from './pages/Basket/Basket';
 import AdminPanel from './pages/AdminPanel/AdminPanel';
 import Chat from './components/Chat/Chat';
+import ProductItemPage from './pages/ProductItemPage/ProductItemPage';
 
 const socket = io.connect('http://localhost:3001')
 
@@ -31,6 +32,7 @@ socket.emit("join_room", room)
       <Route path="/contacts" element={<ContactInfo />}/>
       <Route path="/admin" element={<AdminPanel />}/>
       <Route path="/chat" element={<Chat />}/>
+      <Route path="/products/:id" element={<ProductItemPage />}/>
     </Route>
   </Routes>
   </div>

@@ -7,9 +7,11 @@ import { snackBarStatus } from '../../store/snackBar/action'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import Snackbar from "../../components/Snackbar/Snackbar";
+import { useNavigate } from 'react-router-dom';
 
 function ProductItem({ product, deleteProductHandle }) {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   let snackbarState = useSelector((store)=> store.snackbarState)
@@ -22,15 +24,19 @@ function ProductItem({ product, deleteProductHandle }) {
     console.log('status', snackbarState)
   }
   
-  const isAdmin = false;
+  const isAdmin = true;
 
   return (
-    <Card sx={{
-      maxWidth: 345, minWidth: 345, marginLeft: 2, marginBottom: 2,
-    }}
+    <Card 
+      className="cardItem" 
+      sx={{
+        maxWidth: 345, minWidth: 345, marginLeft: 2, marginBottom: 2,
+      }} 
     >
 
       <CardMedia
+        className="cardMediaItem"
+        onClick={() => navigate(`/products/${product.id}`)}
         component="img"
         // height="300"
         maxWidth="300"
@@ -38,7 +44,7 @@ function ProductItem({ product, deleteProductHandle }) {
         alt="Kreslo"
       />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography className="cardTypographyItem" gutterBottom variant="h6" component="div" onClick={() => navigate('/basket')}>
           {product.name}
         </Typography>
         <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="flex-end">
