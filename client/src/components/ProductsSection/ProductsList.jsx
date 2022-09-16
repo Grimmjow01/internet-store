@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProductHandler } from '../../store/products/action';
 import ProductItem from './ProductItem';
+import './ProductsList.css';
 
 function ProductsList() {
 
@@ -27,7 +28,7 @@ function ProductsList() {
           {!products.product?.length  
           ? <p>Товары закончились</p>
           : products.product.map((product) => (
-            <ProductItem 
+            <ProductItem
               product={product} 
               sx={{ marginLeft: 2 }} 
               key={product.id}
