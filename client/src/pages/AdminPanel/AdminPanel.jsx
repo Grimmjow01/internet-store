@@ -9,12 +9,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { snackBarStatus } from '../../store/snackBar/action'
 import { addProductDatabase } from '../../store/products/action'
 import { PreviewBox } from './PreviewBox';
+import lodash from 'lodash';
 
 const AdminPanel = () => {
-  const dispatch = useDispatch();
-  let snackbarState = useSelector((store)=> store.snackbarState)
+  // const dispatch = useDispatch();
+  // let snackbarState = useSelector((store)=> store.snackbarState)
 
-  const [fileStore, setFileStore] = useState([]);
+  
+  //  const [img, setImg] = useState(null)
+  // const handlerImg = (e) => {
+    //     setImg((prev) => ({...prev, [e.target.name] : e.target.files[0]?.name}));
+    //     console.log("handlerImg ~ e.target.files[0]?.name)", e.target.files[0])
+    //   }
+    
+const [fileStore, setFileStore] = useState([]);
 
 const [inputs, setInputs] = useState({});
 const inputHandler = (e) => {
@@ -24,8 +32,11 @@ const inputHandler = (e) => {
       [e.target.name]: e.target.value,
       file: e.target.files[0],
     }));
-    setFileStore((prev) => [...prev, e.target.files[0]])
-    console.log(fileStore);
+
+    setFileStore((prev) => [...prev, ...Array.from(e.target.files)])
+
+  console.log('fileStore', fileStore);
+  console.log('targettargettargettargettargettarget', Array.from(e.target.files))
   } else {
     setInputs((prev) => ({
       ...prev,
@@ -36,41 +47,47 @@ const inputHandler = (e) => {
 
 const submitHandler = async (e) => {
   e.preventDefault();
+  
   const formData = new FormData();
   formData.append('name_product', inputs.name_product);
+  formData.append('categoriya', inputs.categoriya);
   formData.append('types', inputs.types);
   formData.append('brand', inputs.brand);
   formData.append('price', inputs.price);
   formData.append('rating', 0);
-  formData.append('file', inputs.file);
   formData.append('description', inputs.description);
+  
   const response = await fetch('http://localhost:3100/admin', {
     method: 'POST',
     body: formData,
   });
+
   const data = await response.json();
+  console.log("submitHandler ~ dataClient", data)
 
-  if (response.status === 400) {
-    return alert('Ошибка добавления продукта');
-  } else if (response.status === 200) {
-
-for (let i = 0; i < fileStore.length; i++) {
-  
-  const dataFile = new FormData();
-  dataFile.append('file', fileStore[i]);
-  dataFile.append('product_id', data.newProduct.id);
+  for (let i = 0; i < fileStore.length; i++) {
+    const dataFile = new FormData();
+    dataFile.append('product_id', data.newProduct.id);
+    dataFile.append('file', fileStore[i])
+    dataFile.append('filePath', fileStore[i].name)
     const res = await fetch('http://localhost:3100/loadImg', {
     method: 'POST',
     body: dataFile,
-  });
+    });
   }
-    dispatch(addProductDatabase(data));
-    dispatch(snackBarStatus(true))
-  }
-};
-const addFoto = () => {
+  // lodash.forEach(inputs.files, oneFile => dataFile.append('file', oneFile))
 
-}
+    // const arrayImageOneProduct = []
+    // for (let i = 0; i < fileStore.length; i++) {
+    //   arrayImageOneProduct.push(fileStore[i])
+    // }
+    // dataFile.append('file', inputs.files);
+
+    // dispatch(addProductDatabase(data));
+    // dispatch(snackBarStatus(true))
+  
+};
+
   return (
     <Grid
     container
@@ -88,7 +105,7 @@ const addFoto = () => {
     <br />
       <TextField onChange={inputHandler} inputProps={{maxLength: 12}} 
         name="name_product"
-        value={inputs.name_product}
+        value={inputs.name_product || ''}
         className="menuItem"
         required
         id="username"/>
@@ -96,15 +113,16 @@ const addFoto = () => {
       </FormControl>
 
       {/* Types ------------------------------------------------------------------------------------------ */}
+      
       <FormControl className="feedbackForm">
-      <label id="demo-simple-select-label" >Выберите тип <span className="red">*</span></label>
-    <br/>
-      <Select className="menuItem"  value={inputs.types} onChange={inputHandler}
+      <label> Выберите тип: <span className="red">*</span></label>
+      <br />
+      <Select className="menuItem" onChange={inputHandler}
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         label="Выберите тип"
         name="types" 
-        >
+        value={inputs.types || ''}>
         
         <MenuItem value={'Мебель для спальни'} >Мебель для спальни</MenuItem>
         <MenuItem value={'Мягкая мебель'}>Мягкая мебель</MenuItem>
@@ -115,7 +133,8 @@ const addFoto = () => {
         <MenuItem value={'Столы и стулья'}>Столы и стулья</MenuItem>
         <MenuItem value={'Спецзаказы'}>Спецзаказы</MenuItem>
       </Select>
-      <br/>
+      <br />
+
       </FormControl>
           {/* Brand ------------------------------------------------------------------------------------------ */}
           <FormControl className="feedbackForm">
@@ -126,7 +145,7 @@ const addFoto = () => {
         id="demo-simple-select"
         label="Выберите брэнд"
         name="brand" 
-        value={inputs.brand}>
+        value={inputs.brand || ''}>
         
         <MenuItem value={'IKEA'} >IKEA</MenuItem>
         <MenuItem value={'Мебель-стиль'}>Мебель-стиль</MenuItem>
@@ -143,7 +162,7 @@ const addFoto = () => {
     <br />
       <TextField onChange={inputHandler} inputProps={{maxLength: 12}} 
         name="price"
-        value={inputs.price}
+        value={inputs.price || ''}
         className="menuItem"
         required
         id="username"/>
@@ -160,9 +179,6 @@ const addFoto = () => {
         required 
         accept='image/*'
         id="file"/> 
-    
-        <Snackbar message={'Фото закреплено'}/>
-      
         <FormControl fullWidth>
       
    {/* Description product------------------------------------------------------------------------------------------ */}
@@ -188,7 +204,7 @@ const addFoto = () => {
       </Button>
     </FormControl>
     </div>
-    <Snackbar message={'Товар добавлен в базу'}/>
+    {/* <Snackbar message={'Товар добавлен в базу'}/> */}
   </Grid>
 );
 };

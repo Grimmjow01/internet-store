@@ -22,7 +22,7 @@ function ProductItem({ product, deleteProductHandle }) {
     console.log('status', snackbarState)
   }
   
-  const isAdmin = false;
+  const isAdmin = true;
 
   return (
     <Card sx={{
