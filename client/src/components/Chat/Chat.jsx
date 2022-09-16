@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import ScrollToBottom from "react-scroll-to-bottom";
 import './Chat.css'
 import io from 'socket.io-client';
@@ -12,6 +13,10 @@ function Chat() {
 
   const [room, setRoom] = useState(1);
 
+  const userDataInfo = useSelector((store) => store.auth.userData)
+
+  console.log("user-data ===========", userDataInfo)
+
   const [userName, setUserName] = useState('Онлайн поддержка');
 
   const handleUserName = () =>{
@@ -19,6 +24,14 @@ function Chat() {
   }
 
   socket.emit("join_room", room)
+
+  const userinfo = () =>{
+    if(userDataInfo.login){
+      return userDataInfo.login;
+    } else{
+       return 'Покупатель';
+    }
+  }
 
     
   const [currentMessage, setCurrentMessage] = useState("");
@@ -30,7 +43,7 @@ function Chat() {
       
       const messageData = {
         room: room,
-        author: userName,
+        author: userinfo(),
         message: currentMessage,
         time:
           new Date(Date.now()).getHours() +
