@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     this.belongsTo(models.Type, { foreignKey: 'type_id' });
     this.hasMany(models.ProductInfo, { foreignKey: 'product_id', onDelete: 'cascade' });
     this.hasMany(models.Rating, { foreignKey: 'product_id', onDelete: 'cascade' });
-    this.hasMany(models.ProductImage, { foreignKey: 'product_id' });
+    this.hasMany(models.ProductImage, { foreignKey: 'product_id',  onDelete: 'cascade' });
   }
   }
   Product.init({

@@ -13,6 +13,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export default function CustomizedSnackbars({message}) {
     console.log("message", message)
     const dispatch = useDispatch()
+    
     let {snackbarState} = useSelector((store)=> store.snackbarState);
 
   /* onst [open, setOpen] = React.useState(false); */
@@ -27,7 +28,7 @@ export default function CustomizedSnackbars({message}) {
 
   return (
     <Stack spacing={2} sx={{ width: '100%' }}>
-      <Snackbar open={snackbarState} autoHideDuration={5000} onClose={handleClose}>
+      <Snackbar open={snackbarState} autoHideDuration={4000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
           {message}
         </Alert>
