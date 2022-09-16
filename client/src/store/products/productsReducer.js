@@ -16,11 +16,11 @@ export const productsReducer = (state = initState, action) => {
        return {product: action.payload.obj }
 
       case productTypes.DELETE_PRODUCT:
-      console.log(state.product);
+      console.log('action.payload.id==', action.payload.id);
 
       return {
         ...state,
-        product: state.product.filter((produc) => produc.id !== +action.payload.id),
+        product: state.product.filter((produc) => produc.id !== action.payload.id),
       };
     default:
       return state;

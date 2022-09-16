@@ -4,8 +4,8 @@ import {
 } from '@mui/material';
 import './Auth.css';
 import LockPersonIcon from '@mui/icons-material/LockPerson';
-import { useDispatch } from 'react-redux';
-import { getLoginThunk } from '../../store/auth/action';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginThunk, registerThunk } from '../../store/auth/action';
 
 const avatarStyle = { backgroundColor: '#5491d3', margin: '15px 0' };
 
@@ -22,6 +22,8 @@ const signStyle = { margin: '20px 55px' };
 const logStyle = { margin: '20px 75px' };
 
 const Auth = () => {
+
+const errorMessage = useSelector((store) => store.auth.errorMessage);
 
 const [signOpen, signSetOpen] = useState(false);
 const dispatch = useDispatch();
@@ -55,6 +57,11 @@ const inputChange = (e) => {
         name="email"
         value={inputLogin.email} 
         fullWidth required />
+        { errorMessage === 'Пользователь с таким email не найден' &&
+        <p>
+          {errorMessage}
+        </p>
+        }
         <TextField 
         label="Password" 
         placeholder="Enter password" 
@@ -64,7 +71,12 @@ const inputChange = (e) => {
         value={inputLogin.password}
         style={textStyle}
         fullWidth required />
-        <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(getLoginThunk(inputLogin))} style={btnStyle} fullWidth>Войти</Button>
+        { errorMessage === 'Неверный пароль' &&
+        <p>
+          {errorMessage}
+        </p>
+        }
+        <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(loginThunk(inputLogin))} style={btnStyle} fullWidth>Войти</Button>
         <Typography style={orStyle}>
           или
         </Typography>
@@ -85,10 +97,40 @@ const inputChange = (e) => {
             <h2>Создать учетную запись</h2>
             <p>Пожалуйста, заполните все поля, чтобы продолжить</p>
           </Grid>
-          <TextField label="Username" placeholder="Enter username" fullWidth required />
-          <TextField label="Email" placeholder="Enter email" type="email" style={textStyle} fullWidth required />
-          <TextField label="Password" placeholder="Enter password" type="password" fullWidth required />
-          <Button type="submit" color="primary" variant="contained" style={btnStyle} fullWidth>Зарегистрироваться</Button>
+          <TextField label="Username"
+           placeholder="Enter username"
+           onChange={inputChange} 
+           type="login" 
+           name="login"
+           value={inputLogin.login} 
+          fullWidth required />
+          <TextField label="Email"
+           placeholder="Enter email"
+           onChange={inputChange} 
+           type="email" 
+           name="email"
+           value={inputLogin.email}
+          style={textStyle} 
+          fullWidth required />
+          { errorMessage === `Пользователь с почтовым адресом${errorMessage.slice(31)}` &&
+        <p>
+          {errorMessage}
+        </p>
+          }
+          <TextField label="Password" 
+          placeholder="Enter password"
+          onChange={inputChange}
+          type="password" 
+          name="password"
+          value={inputLogin.password}
+          fullWidth required />
+          { errorMessage === `Ошибка при валидации` &&
+          <>
+        <p> * Некорректный пароль </p>
+        <p> * Пароль должен содержать не менее трёх символов </p>
+        </>
+          }
+          <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(registerThunk(inputLogin))}  style={btnStyle} fullWidth>Зарегистрироваться</Button>
           <Typography style={orStyle}>
             или
           </Typography>

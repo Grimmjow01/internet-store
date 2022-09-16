@@ -11,8 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../Auth/Auth';
 import { useDispatch, useSelector } from 'react-redux';
-import { isAuth } from '../../store/auth/action';
-import $api from '../../http';
+import { logoutThunk } from '../../store/auth/action';
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -47,13 +46,6 @@ function Navbar() {
     setOpen(false);
   };
 
-  const handClickExit = async() => {
-    await $api.post('/logout');
-    localStorage.removeItem('token');
-    console.log('localStorage==', localStorage);
-    dispatch(isAuth(false));
-  };
-
   const isAdmin = false;
 
   return (
@@ -86,7 +78,7 @@ function Navbar() {
                 Войти
              </Button>
               :
-              <Button color="inherit" onClick={handClickExit}>
+              <Button color="inherit" onClick={() => dispatch(logoutThunk())}>
               <AccountCircleIcon fontSize="large" />
                 Выйти
                 </Button>

@@ -10,8 +10,8 @@ const registration = async (req, res, next) => {
       if (!errors.isEmpty()) {
         return next(ApiError.BadRequest('Ошибка при валидации', errors.array()))
       }
-      const { email, password } = req.body;
-      const userData = await registrationService(email, password);
+      const { login, email, password } = req.body;
+      const userData = await registrationService(login, email, password);
       res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });  
       return res.json(userData);
 

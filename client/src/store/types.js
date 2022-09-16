@@ -9,7 +9,9 @@ export const snackBarTypes = {
     SNACKBAR_MESSAGE :'SNACKBAR_MESSAGE'
 }
 export const authTypes = {
-    AUTH_LOGIN : 'AUTH_LOGIN',
+    AUTH_LOG : 'AUTH_LOG',
+    AUTH_USERDATA : 'AUTH_USERDATA',
+    AUTH_ERRORMESSAGE : 'AUTH_ERRORMESSAGE',
  }
 export const basketTypes = {
   CHANGE_QUANTITY: 'CHANGE_QUANTITY',
