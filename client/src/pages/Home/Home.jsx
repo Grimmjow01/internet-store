@@ -6,6 +6,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
 import { getAllProduct } from '../../store/products/action';
 import { useSelector } from 'react-redux';
+import ChatIcon from '../../components/ChatIcon/ChatIcon';
 
 function Home() { 
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function Home() {
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />
+        <ChatIcon/>
        </Stack>
     </Box>
   );

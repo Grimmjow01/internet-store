@@ -41,11 +41,11 @@ const deleteProducts = async (req, res) => {
   } catch (err) {
     res.status(500).json({ errorMessage: err.message });
   }
-  res.json({ success: true });
+    res.json({ success: true });
 }
 
 const updateProducts = async (req, res) => {
-
+  
 }
 
 module.exports = { productListControllers, addProducts, deleteProducts, updateProducts }

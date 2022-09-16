@@ -8,6 +8,7 @@ import './ProductsList.css';
 function ProductsList() {
 
   const products = useSelector((store) => store.products);
+  console.log("products ====", products.product)
   const dispatch = useDispatch();
 
   const deleteProductHandle = (id) => {

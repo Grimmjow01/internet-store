@@ -1,0 +1,31 @@
+.chat-box{
+    position: fixed;
+    margin-top: 19.3% !important;
+    margin-left: 74% !important;
+    z-index: 10;
+}
+
+.chat-box-hidden{
+    position: fixed;
+    left: 1200px;
+    top: 390px;
+    z-index: 10;
+    content-visibility: hidden;
+}
+
+.chat-icon{
+    width: 60px !important;
+    height: 60px !important;
+    position: fixed;
+    color: rgb(255, 255, 255);
+    margin-top: 41% !important;
+    margin-left: 95% !important;
+    z-index: 10;
+    border-radius: 9px;
+    background-color: #2bbd06;
+    
+}
+
+.chat-icon:hover {
+    background-color: #125a00;
+}
