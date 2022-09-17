@@ -148,7 +148,7 @@ const submitHandler = async (e) => {
         value={inputs.brand || ''}>
         
         <MenuItem value={'IKEA'} >IKEA</MenuItem>
-        <MenuItem value={'Мебель-стиль'}>Мебель-стиль</MenuItem>
+        <MenuItem value={'Мебель-Стиль'}>Мебель-Стиль</MenuItem>
         <MenuItem value={'Williams-Sonoma'}>Williams-Sonoma</MenuItem>
         <MenuItem value={'Король диванов'}>Король диванов</MenuItem>
         <MenuItem value={'Аскона'}>Аскона</MenuItem>

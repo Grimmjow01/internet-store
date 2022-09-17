@@ -8,7 +8,19 @@ import './ProductsList.css';
 function ProductsList() {
 
   const products = useSelector((store) => store.products);
-  console.log("products ====", products.product)
+  const { product } = products
+  console.log("ProductsList ~ product", product.length)
+
+  const sdkfj = () => {
+    const originalId = {}
+
+     product.map((prod) => originalId[prod.id] = prod )
+     return Object.values(originalId)
+  }
+  const data = sdkfj()
+  const filteredOriginalId = () => product.filter((el) => el.id !== product.id)
+
+  
   const dispatch = useDispatch();
 
   const deleteProductHandle = (id) => {
@@ -28,8 +40,8 @@ function ProductsList() {
         >
           {!products.product?.length  
           ? <p>Товары закончились</p>
-          : products.product.map((product) => (
-            <ProductItem
+          : data.map((product) => (
+            <ProductItem 
               product={product} 
               sx={{ marginLeft: 2 }} 
               key={product.id}
@@ -37,7 +49,7 @@ function ProductsList() {
           />
           ))}
         </Stack>
-      </div>
+       </div>
     </Box>
   );
 }
