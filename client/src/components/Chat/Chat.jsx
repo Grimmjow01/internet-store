@@ -75,7 +75,7 @@ function Chat() {
             return (
               <div key={index}
                 className="message"
-                id={userName === messageContent.author ? "you" : "other"}
+                id={userDataInfo.login === messageContent.author ? "you" : "other"}
               >
                 <div>
                   <div className="message-content">
@@ -103,8 +103,7 @@ function Chat() {
             event.key === "Enter" && sendMessage();
           }}
         />
-        <button onClick={sendMessage}>&#9658;</button>
-        <button onClick={handleUserName} className="start-chatting">Начать</button>
+        <button onClick={sendMessage}> Отправить </button>
       </div>
     </div>
   );
