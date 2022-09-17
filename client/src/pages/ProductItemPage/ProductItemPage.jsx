@@ -6,6 +6,7 @@ import BasicRatingReadOnly from '../../components/ProductsSection/BasicRatingRea
 import AddIcon from '@mui/icons-material/Add';
 import { snackBarStatus } from '../../store/snackBar/action';
 import Snackbar from '../../components/Snackbar/Snackbar'
+import BasicTabs from '../../components/Tabs/Tabs';
 
 function ProductItemPage() {
   const dispatch = useDispatch();
@@ -79,14 +80,14 @@ function ProductItemPage() {
             <h2 style={{color: "rgb(155, 47, 174)", margin: "0 0 4px"}}>15 000 ₽</h2>
             <Box>Есть в наличии</Box>
           </Box>
-        <Counter />
+        {/* <Counter /> */}
         <Button variant="contained" color="secondary" startIcon={<AddIcon />} onClick={addToBasket}>В корзину</Button>
         <Snackbar message={'Товар добавлен в корзину!'}/>
         </Container>
       </Container>
       
-      <Container sx={{backgroundColor: "blue"}}>
-        Description and Reviews
+      <Container>
+        <BasicTabs />
       </Container>
       
     </Box>
