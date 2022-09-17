@@ -68,7 +68,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
       />
     
       <CardContent>
-        <Typography className="cardTypographyItem" gutterBottom variant="h6" component="div" onClick={() => navigate('/basket')}>
+        <Typography className="cardTypographyItem" gutterBottom variant="h6" component="div" onClick={() => navigate(`/products/${product.id}`)}>
           {product.name}
         </Typography>
         <Stack direction="row" spacing={2} justifyContent="space-between" alignItems="flex-end">
