@@ -1,13 +1,15 @@
-import React from 'react';
-import {CardMedia, CardContent, CardActions, Typography, Card} from '@mui/material';
+import React, {useState} from 'react';
+import {CardMedia, CardContent, CardActions, Typography, Card, Snackbar} from '@mui/material';
 import { Box, Button, Stack } from '@mui/material';
+import MuiAlert from '@mui/material/Alert';
 import AddIcon from '@mui/icons-material/Add';
 import BasicRating from './BasicRating';import { useDispatch, useSelector } from 'react-redux';
 import { snackBarStatus } from '../../store/snackBar/action'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
-import Snackbar from "../../components/Snackbar/Snackbar";
 import { useNavigate } from 'react-router-dom';
+
+
 
 function ProductItem({ product, deleteProductHandle }) {
 
@@ -24,11 +26,29 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
     /* const response = await axios.post('http://localhost:3100/contacts/sendemail',
        {contactinfo : input}     
     ) */
-    dispatch(snackBarStatus(true))
-    console.log('status', snackbarState)
+     dispatch(snackBarStatus(true))
+     console.log('status', snackbarState)
   }
 
-  const isAdmin = true;
+  const isAdmin = false;
+
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <Card 
       className="cardItem" 
@@ -70,15 +90,18 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
               </Stack>
               }
             {!isAdmin && 
-              <Button variant="outlined" color="secondary" startIcon={<AddIcon />} onClick={addToBasket}>В корзину</Button>
+              <Button variant="outlined" color="secondary" startIcon={<AddIcon />} onClick={handleClick}>В корзину</Button>
               }
           </Box>
         </Stack>
-
-
       </CardContent>
       <CardActions disableSpacing />
-      <Snackbar message={'Товар добавлен в корзину!'}/>
+
+      <Snackbar className='snackBar' open={open} autoHideDuration={4000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+         Товар добавлен в корзину!
+      </Alert>
+      </Snackbar>
     </Card>
     
   );
