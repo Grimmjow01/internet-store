@@ -1,6 +1,6 @@
 import { productTypes, basketTypes } from '../types';
 
-const initState = {basket:[{id:1,quantity:5}, {id:2,quantity:5}], product: {}}
+const initState = {basket:[{id:1,quantity:5}, {id:2,quantity:5}], product: []}
 
 export const productsReducer = (state = initState, action) => {
 

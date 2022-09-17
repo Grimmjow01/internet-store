@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/images', express.static(path.join(__dirname, '../images')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use('/img', express.static('./img'));
 const PORT = process.env.PORT || 4000;
 
 const sessionConfig = {

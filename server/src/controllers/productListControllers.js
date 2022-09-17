@@ -1,7 +1,8 @@
 const { Product, ProductImage } = require('../../db/models');
 
 const productListControllers = async (req, res) => {
-  const allProducts = await Product.findAll()
+  const allProducts = await Product.findAll({include: ProductImage, raw: true })
+  console.log("productListControllers ~ allProducts", allProducts)
 
   // const allProducts = await Product.findAll()
   // console.log("productListControllers ~ allProducts", allProducts)

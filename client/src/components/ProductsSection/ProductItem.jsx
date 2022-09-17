@@ -11,6 +11,10 @@ import { useNavigate } from 'react-router-dom';
 
 function ProductItem({ product, deleteProductHandle }) {
 
+const { id, name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = product
+const pathImages = ProductImages['ProductImages.img']
+const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -23,9 +27,8 @@ function ProductItem({ product, deleteProductHandle }) {
     dispatch(snackBarStatus(true))
     console.log('status', snackbarState)
   }
-  
-  const isAdmin = true;
 
+  const isAdmin = true;
   return (
     <Card 
       className="cardItem" 
@@ -34,15 +37,16 @@ function ProductItem({ product, deleteProductHandle }) {
       }} 
     >
 
-      <CardMedia
+      <CardMedia 
         className="cardMediaItem"
         onClick={() => navigate(`/products/${product.id}`)}
         component="img"
         // height="300"
         maxWidth="300"
-        image="./images/test333.jpeg"
-        alt="Kreslo"
+        image={pathOneImage}
+        alt={description}
       />
+    
       <CardContent>
         <Typography className="cardTypographyItem" gutterBottom variant="h6" component="div" onClick={() => navigate('/basket')}>
           {product.name}
