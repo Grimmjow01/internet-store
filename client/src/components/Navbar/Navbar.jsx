@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useDeferredValue } from 'react';
 import {
   AppBar, Badge, Button, Toolbar, Typography, Dialog, Box, styled, InputBase
 } from '@mui/material';
@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import Auth from '../Auth/Auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from '../../store/auth/action';
+import './Navbar.css';
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -33,20 +34,35 @@ const Search = styled("div")({
 
 function Navbar() {
   const navigate = useNavigate(); // или используй Navlink
-  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
-
+  
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const [isOpenSearch, setIsOpenSearch] = useState(true);
+ 
   const setAuth = useSelector((store) => store.auth.setAuth);
+  const allProducts = useSelector((store) => store.products.product);
+
+  const filteredAllProducts = useDeferredValue(allProducts.filter((prod) => prod.name.toLowerCase().includes(search.toLowerCase())));
 
   const handClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const dialogHandleClosen = () => {
     setOpen(false);
   };
 
-  const isAdmin = false;
+
+  const itemHandler = (e) => {
+    setSearch(e.target.textContent);
+    navigate(`/products/${e.target.dataset.productid}`);
+    setIsOpenSearch(!isOpenSearch);
+  };
+
+  const inputClickHandler = () => {
+    setIsOpenSearch(true);
+  };
 
   return (
     <AppBar position="sticky">
@@ -61,8 +77,21 @@ function Navbar() {
           <Box>
             <Search>
               <SearchIcon color="black" />
-              <InputBase placeholder="Найти в каталоге..." />
+              <InputBase 
+              placeholder="Найти в каталоге..."
+              value={search}
+              onChange={(e) => {
+                e.preventDefault();
+                setSearch(e.target.value);
+              }}
+              onClick={inputClickHandler} />
             </Search>
+            <ul className="autocomplete">
+              {search && isOpenSearch
+                && filteredAllProducts.map((product) => (
+                  <li key={product.id} className="autocomplete-Item" data-productid={product.id} onClick={itemHandler}>{product.name}</li>
+                ))}
+            </ul>
           </Box>
           <Box>
             <Stack direction="row" spacing={2}>
@@ -83,15 +112,15 @@ function Navbar() {
                 Выйти
                 </Button>
               }
-              <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <Auth />
+              <Dialog open={open} onClose={dialogHandleClosen} aria-labelledby="form-dialog-title">
+                <Auth dialogHandleClosen={dialogHandleClosen}/>
               </Dialog>
               {
-                isAdmin &&
+                setAuth &&
                 <Button variant="contained" color="success" startIcon={<AddIcon />}>Добавить</Button>
               }
               {
-                !isAdmin &&
+                !setAuth &&
                   <Button color="inherit" onClick={() => navigate('/basket')}>
                     <Badge badgeContent={5} color="error">
                       <ShoppingCartRoundedIcon fontSize="large" />
