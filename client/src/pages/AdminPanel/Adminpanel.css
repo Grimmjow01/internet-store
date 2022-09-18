@@ -52,4 +52,41 @@ h1{
   color: rgb(55, 0, 255);
 }
 
+.cardPhotos{
+  max-width: 300px;
+  margin: 10px;
+}
 
+/* button delete --------------------------------------------------*/
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container .btn {
+  position: relative;
+  top: 80%;
+  left: 86%;
+  transform: translate(-48%, -100%); 
+  /* -ms-transform: translate(-50%, -50%);  */
+  background-color: rgb(255, 2, 2);
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+
+}
+
+.container .btn:hover {
+  background-color: rgb(5, 70, 247);
+}
+/* button delete --------------------------------------------------*/

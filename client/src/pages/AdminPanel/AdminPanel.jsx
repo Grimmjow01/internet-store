@@ -12,8 +12,8 @@ import { PreviewBox } from './PreviewBox';
 import lodash from 'lodash';
 
 const AdminPanel = () => {
-  // const dispatch = useDispatch();
-  // let snackbarState = useSelector((store)=> store.snackbarState)
+  const dispatch = useDispatch();
+  let snackbarState = useSelector((store)=> store.snackbarState)
 
   
   //  const [img, setImg] = useState(null)
@@ -34,9 +34,6 @@ const inputHandler = (e) => {
     }));
 
     setFileStore((prev) => [...prev, ...Array.from(e.target.files)])
-
-  console.log('fileStore', fileStore);
-  console.log('targettargettargettargettargettarget', Array.from(e.target.files))
   } else {
     setInputs((prev) => ({
       ...prev,
@@ -84,7 +81,7 @@ const submitHandler = async (e) => {
     // dataFile.append('file', inputs.files);
 
     // dispatch(addProductDatabase(data));
-    // dispatch(snackBarStatus(true))
+    dispatch(snackBarStatus(true))
   
 };
 
@@ -103,7 +100,7 @@ const submitHandler = async (e) => {
 
     <label> Название <span className="red">*</span></label>
     <br />
-      <TextField onChange={inputHandler} inputProps={{maxLength: 12}} 
+      <TextField onChange={inputHandler} inputProps={{maxLength: 42}} 
         name="name_product"
         value={inputs.name_product || ''}
         className="menuItem"
@@ -204,7 +201,7 @@ const submitHandler = async (e) => {
       </Button>
     </FormControl>
     </div>
-    {/* <Snackbar message={'Товар добавлен в базу'}/> */}
+    <Snackbar message={'Товар добавлен в базу'}/>
   </Grid>
 );
 };

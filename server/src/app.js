@@ -10,6 +10,7 @@ const productListRoutes = require('./routes/productListRoutes');
 const cookieParser = require('cookie-parser');
 const adminAddProduct = require('./routes/adminAddProductRouter');
 const loadImg = require('./routes/loadImgRouter');
+const loadImgforoneproduct = require('./routes/loadImageForOneProductRouter');
 const app = express();
 const multer = require('multer')
 // socket.io
@@ -59,6 +60,7 @@ app.use('/api', loginRoute);
 app.use(errorMiddlewares);
 app.use('/admin', adminAddProduct)
 app.use('/loadImg', loadImg)
+app.use('/loadimageforoneproduct', loadImgforoneproduct)
 
 const io = new Server(server, {
   cors: {

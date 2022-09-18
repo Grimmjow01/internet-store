@@ -65,7 +65,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
           <Box>
             {isAdmin &&            
               <Stack direction="row" spacing={2}>
-                <Button variant="contained" color="primary"><EditIcon /></Button>
+                <Button variant="contained" color="primary" onClick={() => navigate(`/api/products/${product.id}`)}><EditIcon /></Button>
                 <Button variant="contained" color="error" onClick={() => deleteProductHandle(product.id)}><ClearIcon /></Button>             
               </Stack>
               }

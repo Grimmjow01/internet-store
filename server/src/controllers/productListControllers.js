@@ -2,7 +2,7 @@ const { Product, ProductImage } = require('../../db/models');
 
 const productListControllers = async (req, res) => {
   const allProducts = await Product.findAll({include: ProductImage, raw: true })
-  console.log("productListControllers ~ allProducts", allProducts)
+  // console.log("productListControllers ~ allProducts", allProducts)
 
   // const allProducts = await Product.findAll()
   // console.log("productListControllers ~ allProducts", allProducts)
@@ -24,13 +24,20 @@ const productListControllers = async (req, res) => {
     // console.log("productListControllers ~ arrayImagesForOneProduct", arrayImagesForOneProduct)
   // }
   // res.json(oneProductForSendOnClient)
-
   res.json(allProducts)
-
 }
 
-const addProducts = async (req, res) => {
-
+const getOneProductForUpdate = async (req, res) => {
+  const { id } = req.params;
+  console.log("loadImageForOneProductControllers ~ id", id)
+  const findProduct = await Product.findOne({include: ProductImage, where: {id}, raw: true })
+  const product_id = findProduct['ProductImages.product_id']
+   const findImageForProduct = await ProductImage.findAll({ where: {product_id}, raw: true })
+  if(findProduct){
+    res.json([findProduct, findImageForProduct])
+  } else {
+    res.sendStatus(400)
+  }
 }
 
 const deleteProducts = async (req, res) => {
@@ -46,7 +53,17 @@ const deleteProducts = async (req, res) => {
 }
 
 const updateProducts = async (req, res) => {
-  
+  const { id, name,price,description,type_id,brand_id } = req.body
+  console.log("updateProducts ~ name,price,description,type_id,brand_id", name,price,description,type_id,brand_id)
+  const onePostUpdate = await Product.findOne({where: { id }})
+   if(onePostUpdate){
+   const newProduct = await onePostUpdate.update(
+      { name: name, price: price, description: description, type_id: type_id, brand_id: brand_id, where: { id: id } })
+      console.log("updateProducts ~ newProduct", newProduct)
+    res.json(newProduct)
+  } else {
+    res.sendStatus(400);
+  }
 }
 
-module.exports = { productListControllers, addProducts, deleteProducts, updateProducts }
+module.exports = { productListControllers, getOneProductForUpdate, deleteProducts, updateProducts }
