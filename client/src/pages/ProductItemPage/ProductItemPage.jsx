@@ -1,18 +1,35 @@
-import { Box, Button, Container, Stack } from '@mui/material';
-import React from 'react';
+import { Box, Button, Container, Modal, Stack } from '@mui/material';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Counter from '../../components/Counter/Counter';
 import BasicRatingReadOnly from '../../components/ProductsSection/BasicRatingReadOnly';
 import AddIcon from '@mui/icons-material/Add';
 import { snackBarStatus } from '../../store/snackBar/action';
 import Snackbar from '../../components/Snackbar/Snackbar'
 import BasicTabs from '../../components/Tabs/Tabs';
+import './ProductItemPage.module.css';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  // width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  outline: 0,
+};
 
 function ProductItemPage() {
   const dispatch = useDispatch();
   
   const products = useSelector((store) => store.products); 
-  let snackbarState = useSelector((store)=> store.snackbarState)
+  let snackbarState = useSelector((store) => store.snackbarState);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const addToBasket = async () => {
     /* const response = await axios.post('http://localhost:3100/contacts/sendemail',
@@ -31,8 +48,25 @@ function ProductItemPage() {
                 src={('../images/example.jpg')} 
                 alt='jhjhkjh' 
                 width="500px"
+                onClick={handleOpen}
                 // styles={{ height: "100px"}}
-              />                 
+              />
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={style}>
+                  <img 
+                    src={('../images/example.jpg')} 
+                    alt='jhjhkjh' 
+                    // width="500px"
+                    onClick={handleOpen}
+                    // styles={{ height: "100px"}}
+                  />
+                </Box>
+              </Modal>                 
             </Container>
             <Container>
               <Stack direction="row" spacing={2} justifyContent="space-around">

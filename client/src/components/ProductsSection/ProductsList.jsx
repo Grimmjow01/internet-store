@@ -37,6 +37,7 @@ function ProductsList() {
           direction="row"
           spacing={0}
           sx={{ flexWrap: 'wrap' }}
+          justifyContent="space-around"
         >
           {!products.product?.length  
           ? <p>Товары закончились</p>
