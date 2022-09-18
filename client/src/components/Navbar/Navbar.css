@@ -26,3 +26,7 @@
         cursor: pointer;
         transition: cubic-bezier(1, 0, 0, 1) .3s all;
 }
+
+.logo {
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ import { Stack } from '@mui/system';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
+import ChairIcon from '@mui/icons-material/Chair';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
@@ -68,9 +69,9 @@ function Navbar() {
     <AppBar position="sticky">
       <StyledToolbar>
         {/* <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between"> */}        
-          <Box>
+          <Box className="logo">
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => navigate('/')}>
-              <StoreRoundedIcon />
+              <ChairIcon />
               Мебель и точка
             </Typography>
           </Box>
