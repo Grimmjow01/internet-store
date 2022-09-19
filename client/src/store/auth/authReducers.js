@@ -18,6 +18,3 @@ export const authReducers = (state = initState, action) => {
         return state;
     };
 };
-
-// Ошибка при валидации
-// Пользователь с почтовым адресом shamil.chuchaev@mail.ru уже существует

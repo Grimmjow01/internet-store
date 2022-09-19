@@ -15,7 +15,7 @@ const registrationService = async (login, email, password) => {
         }
     const hashPassword = await bcrypt.hash(password, 3);
     const activationLink = uuid.v4();
-    const user = await Models.User.create({ login, email, password: hashPassword, activationLink });
+    const user = await Models.User.create({ login, email, password: hashPassword, activationLink, role: 'user' });
         
     await MailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
         

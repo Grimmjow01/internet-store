@@ -11,7 +11,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 export default function CustomizedSnackbars({message}) {
+
     // console.log("message", message)
+
     const dispatch = useDispatch()
     
     let {snackbarState} = useSelector((store)=> store.snackbarState);

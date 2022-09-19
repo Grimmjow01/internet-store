@@ -1,12 +1,17 @@
-import { Box, Stack } from '@mui/material';
-import React, { useEffect } from 'react';
+import { Box, Button, Stack } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import HeroSection from '../../components/HeroSection/HeroSection';
 import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
+
 import { addImagesProductAction, getAllProduct } from '../../store/products/action';
+
+import { getAllProduct, allRatingThunk } from '../../store/products/action';
+
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';
+import './Home.css'
 
 function Home() { 
   const dispatch = useDispatch();
@@ -22,20 +27,27 @@ function Home() {
       });
       const products = await res.json();
       dispatch(getAllProduct(products))
-    })()
+    })();
+
+    dispatch(allRatingThunk());
+    
   }, [dispatch]);
+
+  const [show, setShow] = useState(true);
   
 
   const products = useSelector((store) => store.products);
   
   return (
     <Box>
-      {/* <HeroSection />  */}
-      
+         <div className='heroHide'>
+        <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}>Спрятать</Button>
+        </div>
+      {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>} 
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />
-        <ChatIcon/>
+        
        </Stack>
     </Box>
   );

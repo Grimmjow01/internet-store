@@ -7,26 +7,26 @@ export const isAuth = (log) => ({type: authTypes.AUTH_LOG, payload: { log } });
 export const collectorData = (data) => ({type: authTypes.AUTH_USERDATA, payload: { data } });
 export const collectorErrorMessage = (message) => ({type: authTypes.AUTH_ERRORMESSAGE, payload: { message } });
 
-export const loginThunk = (inputLogin) => async (dispatch) => {
+export const loginThunk = (inputLogin, callback) => async (dispatch) => {
     try {
         const response = await $api.post('/login', inputLogin);
         localStorage.setItem('token', response.data.accessToken);
         dispatch(collectorData(response.data.user));
         dispatch(isAuth(true));
+        callback();
     } catch (e) {
-        console.log(e.response?.data?.message);
         dispatch(collectorErrorMessage(e.response?.data?.message));
     }
 };
 
-export const registerThunk = (inputLogin) => async (dispatch) => {
+export const registerThunk = (inputLogin, callback) => async (dispatch) => {
     try {
         const response = await $api.post('/registration', inputLogin);
         localStorage.setItem('token', response.data.accessToken);
         dispatch(collectorData(response.data.user));
         dispatch(isAuth(true));
+        callback();
     } catch (e) {
-        console.log(e.response?.data?.message);
         dispatch(collectorErrorMessage(e.response?.data?.message));
     }
 };
@@ -37,7 +37,6 @@ export const logoutThunk = () => async (dispatch) => {
         localStorage.removeItem('token');
         dispatch(isAuth(false));
     } catch (e) {
-        console.log(e.response?.data?.message);
     }
 };
 
@@ -49,6 +48,5 @@ export const checkAuthThunk = () => async (dispatch) => {
         dispatch(collectorData(response.data.user));
         dispatch(isAuth(true));
     } catch (e) {
-        console.log(e.response?.data?.message);
     }
 };

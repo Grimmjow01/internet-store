@@ -6,7 +6,7 @@ import ProductItem from './ProductItem';
 import './ProductsList.css';
 
 function ProductsList() {
-
+  
   const products = useSelector((store) => store.products);
   const { product } = products
    const functionOriginalId = () => {
@@ -15,8 +15,6 @@ function ProductsList() {
     return Object.values(originalId)
   }
   
-  
-  
   const dispatch = useDispatch();
 
   const deleteProductHandle = (id) => {
@@ -24,7 +22,7 @@ function ProductsList() {
   };
 
   
-    return (
+   return (
     <Box flex={5} p={3}>
       <div>
         <Typography gutterBottom variant="h4" component="div">

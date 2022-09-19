@@ -36,6 +36,7 @@ const inputHandler = (e) => {
     }));
 
     setFileStore((prev) => [...prev, ...Array.from(e.target.files)])
+
   } else {
     setInputs((prev) => ({
       ...prev,
@@ -62,8 +63,6 @@ const submitHandler = async (e) => {
   });
 
   const data = await response.json();
-  console.log("submitHandler ~ dataClient", data)
-
   for (let i = 0; i < fileStore.length; i++) {
     const dataFile = new FormData();
     dataFile.append('product_id', data.newProduct.id);
@@ -90,11 +89,13 @@ const submitHandler = async (e) => {
    {/* форма добавления--------------------------------------------------------------------------------- */}
     <h1>Форма добавления товара</h1>
       <div className="column-center">
-    <FormControl className="feedbackForm">
+    <FormControl  className="feedbackForm">
 
     <label> Название <span className="red">*</span></label>
     <br />
-      <TextField onChange={inputHandler} inputProps={{maxLength: 42}} 
+
+      <TextField onChange={inputHandler} inputProps={{maxLength: 32}} 
+
         name="name_product"
         value={inputs.name_product || ''}
         className="menuItem"

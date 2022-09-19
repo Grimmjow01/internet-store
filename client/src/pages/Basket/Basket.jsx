@@ -4,12 +4,23 @@ import BasketItem from '../../components/BasketItems/BasketItem'
 import {Stack} from '@mui/material'
 import {Button, FormControl, TextField, Box} from "@mui/material";
 import './Basket.css'
+import { useNavigate } from 'react-router-dom';
 
 function Basket() {
     
     const products = useSelector((store)=> store.products)
+    const setAuth = useSelector((store) => store.auth.setAuth);
 
-    console.log('Basket ==>', products.basket.map(el=>{return el.id}), 'all id')
+
+    const handleOrder = () => {
+         if(setAuth){
+            window.location.href = 'https://pay.yandex.ru/business'
+         } else {
+
+         }
+    }
+    
+
     return (
         <>
               <Stack
@@ -20,33 +31,27 @@ function Basket() {
 
             <Box>
             <h1>Ваша корзина:</h1>
-
-            {products.basket.map((el,index) => (
-                 <BasketItem key ={index} el={el}></BasketItem>
+             {console.log("products.basket", products.basket)}
+            {products.basket.map((product) => (
+                 <BasketItem key ={product.id} product={product} />
                 )
             )}
             </Box>
-           
-           
         
         <br />
 
         <Box className='paymentBox'>
-
-        <span>Товары:</span>
+        <span><h2>Счет:</h2></span>
+        <span><h3>Добавленные товары:</h3> {products.basket.map(el=>{return el.name + `, `} )}</span>
         <br />
         <br />
-        <span>Скидка:</span>
+        <span><h3>Скидка: 0 руб.</h3></span>
         <br />
-        <br />
-        <h2>Общая стоимость :</h2>
-        <Button variant="contained" alignItems="center" style={{maxWidth: 180 }}>
-        Оформить заказ:
+        <h3>Общая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0)} руб.</h3>
+       <Button variant="contained" alignItems="center" style={{maxWidth: 180 }} onClick={handleOrder}>
+        Оформить заказ
         </Button>
 
-    
-
-      
          </Box>
 
          </Stack>

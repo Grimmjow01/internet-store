@@ -10,10 +10,11 @@ function Layout() {
     <div>
       <Navbar />
       <div className="Outlet">
+      <ChatIcon/>
         <Outlet />
         {/* <ChatIcon /> */}
+        
       </div>
-
       <Footer/>
 
     </div>

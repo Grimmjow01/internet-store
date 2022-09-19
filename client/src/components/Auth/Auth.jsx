@@ -21,7 +21,7 @@ const signStyle = { margin: '20px 55px' };
 
 const logStyle = { margin: '20px 75px' };
 
-const Auth = () => {
+const Auth = ({dialogHandleClosen}) => {
 
 const errorMessage = useSelector((store) => store.auth.errorMessage);
 
@@ -33,6 +33,7 @@ const handClickOpen = () => {
     };
   
 const handleClose = () => {
+  dialogHandleClosen();
     signSetOpen(false);
 };
 
@@ -76,7 +77,7 @@ const inputChange = (e) => {
           {errorMessage}
         </p>
         }
-        <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(loginThunk(inputLogin))} style={btnStyle} fullWidth>Войти</Button>
+        <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(loginThunk(inputLogin, () => dialogHandleClosen()))} style={btnStyle} fullWidth>Войти</Button>
         <Typography style={orStyle}>
           или
         </Typography>
@@ -130,7 +131,7 @@ const inputChange = (e) => {
         <p> * Пароль должен содержать не менее трёх символов </p>
         </>
           }
-          <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(registerThunk(inputLogin))}  style={btnStyle} fullWidth>Зарегистрироваться</Button>
+          <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(registerThunk(inputLogin, () => dialogHandleClosen()))}  style={btnStyle} fullWidth>Зарегистрироваться</Button>
           <Typography style={orStyle}>
             или
           </Typography>
