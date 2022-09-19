@@ -54,6 +54,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use('/api/products', productListRoutes);
+app.use('/api/products/:id', productListRoutes);
 app.use('/contacts', contactsRouter);
 app.use('/api', loginRoute);
 app.use(errorMiddlewares);

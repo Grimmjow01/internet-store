@@ -1,5 +1,5 @@
 import { Box, Button, Container, Modal, Stack } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BasicRatingReadOnly from '../../components/ProductsSection/BasicRatingReadOnly';
 import AddIcon from '@mui/icons-material/Add';
@@ -7,6 +7,8 @@ import { snackBarStatus } from '../../store/snackBar/action';
 import Snackbar from '../../components/Snackbar/Snackbar'
 import BasicTabs from '../../components/Tabs/Tabs';
 import './ProductItemPage.module.css';
+import { useParams } from 'react-router-dom';
+import { getOneProduct } from '../../store/products/action';
 
 const style = {
   position: 'absolute',
@@ -37,6 +39,23 @@ function ProductItemPage() {
     ) */
     dispatch(snackBarStatus(true))
   }
+
+  const { id } = useParams();
+  
+  useEffect(() => {
+    ( async () => {
+      const res = await fetch(`http://localhost:3100/api/products/${id}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const itemProduct = await res.json();
+      dispatch(getOneProduct(itemProduct))
+      console.log(itemProduct)
+    })()
+  }, []);
   
   return (
     <Box sx={{p: "20px"}}>
