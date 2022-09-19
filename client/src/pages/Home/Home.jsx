@@ -5,8 +5,6 @@ import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
 
-import { addImagesProductAction, getAllProduct } from '../../store/products/action';
-
 import { getAllProduct, allRatingThunk } from '../../store/products/action';
 
 import { useSelector } from 'react-redux';

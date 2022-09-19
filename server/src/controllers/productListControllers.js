@@ -56,5 +56,4 @@ const producItemController = async (req, res) => {
   }
 }
 
-module.exports = { productListControllers, getOneProductForUpdate addProducts, deleteProducts, updateProducts, producItemController }
->
+module.exports = { productListControllers, getOneProductForUpdate, deleteProducts, updateProducts, producItemController }
