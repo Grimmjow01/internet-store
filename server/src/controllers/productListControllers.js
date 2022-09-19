@@ -2,7 +2,7 @@ const { Product, ProductImage } = require('../../db/models');
 
 const productListControllers = async (req, res) => {
   const allProducts = await Product.findAll({include: ProductImage, raw: true })
-  console.log("productListControllers ~ allProducts", allProducts)
+  // console.log("productListControllers ~ allProducts", allProducts)
 
   // const allProducts = await Product.findAll()
   // console.log("productListControllers ~ allProducts", allProducts)
@@ -49,4 +49,18 @@ const updateProducts = async (req, res) => {
   
 }
 
-module.exports = { productListControllers, addProducts, deleteProducts, updateProducts }
+// роутер для отдельной страницы продукта
+const producItemController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const itemProduct = await Product.findOne({ 
+      where: { id }, 
+    });
+    console.log("producItemController ~ itemProduct", itemProduct);
+    res.json(itemProduct);
+  } catch (err) {
+    res.status(500).json({ errorMessage: err.message });
+  }
+}
+
+module.exports = { productListControllers, addProducts, deleteProducts, updateProducts, producItemController }
