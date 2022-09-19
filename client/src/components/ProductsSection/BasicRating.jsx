@@ -1,10 +1,38 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
-export default function BasicRating() {
-  const [value, setValue] = React.useState(0);
+export default function BasicRating({ product }) {
+  const [value, setValue] = React.useState(product.rating);
+  const setAuth = useSelector((store) => store.auth.setAuth);
+  const userData = useSelector((store) => store.auth.userData);
+  const allRating = useSelector((store) => store.products.allRating);
+
+  const ratingHandler = (newValue) => {
+    axios.patch(`http://localhost:3100/api/addrating`, 
+    { valueRating: newValue, user_id: userData.id, product_id: product.id })
+    .then((res) => console.log('res=====>',res.data));
+  };
+
+  const userRatingExamination = () => {
+    const oneProductRating = allRating.filter(prod => prod.product_id === product.id);
+      if (userData.id !== oneProductRating[0]?.user_id) {
+        return true
+      } else {
+        return false;
+      };
+  };
+
+  let userRating = userRatingExamination();
+
+  useEffect(() => {
+    userRatingExamination()
+  }, [value]);
+
+  console.log('value====>', value);
 
   return (
     <Box
@@ -12,20 +40,22 @@ export default function BasicRating() {
         '& > legend': { mt: 2 },
       }}
     >
-      {/* <Typography component="legend">Controlled</Typography> */}
+      {setAuth && userRating ?
+      <>
       <Rating
         name="simple-controlled"
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
+          ratingHandler(newValue);
         }}
       />
-      {/* <Typography component="legend">Read only</Typography>
+      </>
+      :
+      <>
       <Rating name="read-only" value={value} readOnly />
-      <Typography component="legend">Disabled</Typography>
-      <Rating name="disabled" value={value} disabled />
-      <Typography component="legend">No rating given</Typography>
-      <Rating name="no-value" value={null} /> */}
+      </>
+      }
     </Box>
   );
 }
