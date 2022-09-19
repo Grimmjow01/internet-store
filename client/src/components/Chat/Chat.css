@@ -128,10 +128,10 @@ chat-window {
     cursor: pointer;
     flex: 15%;
     height: 100%;
-    background: transparent;
+    background-color: #ffffff;
     outline: none;
     font-size: 23px;
-    color: rgb(65, 65, 65);
+    color: rgb(0, 0, 0);
   }
   
   .chat-window .chat-footer button:hover {

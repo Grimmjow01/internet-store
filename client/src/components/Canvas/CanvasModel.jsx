@@ -44,9 +44,9 @@ const CanvasModel = () => {
        light.position.y = 1000;
 
        //model loader
-       console.log("LOADER", loader)
+
        loader.load('./3dfurniture/scene.gltf', (gltf) => {
-        console.log('GLTF ====', gltf)
+
          gltf.scene.scale.set(30, 30, 30);
          chair.add(gltf.scene);
        })
@@ -63,8 +63,6 @@ const CanvasModel = () => {
        }
        animate();
        camera.position.z = 80;
-
-       console.log(scene)
 
        //will unmount this frame
        return () => {

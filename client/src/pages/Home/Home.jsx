@@ -1,5 +1,5 @@
-import { Box, Stack } from '@mui/material';
-import React, { useEffect } from 'react';
+import { Box, Button, Stack } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import HeroSection from '../../components/HeroSection/HeroSection';
 import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -28,11 +28,14 @@ function Home() {
     dispatch(allRatingThunk());
     
   }, [dispatch]);
+
+  const [show, setShow] = useState(false);
   
   return (
     <Box>
-      {/* <HeroSection />  */}
-      
+         
+        <Button variant="outlined" size="small" onClick={() => setShow(prev => !prev)}>Show section</Button>
+      {/* {show && <Box><HeroSection /> </Box>} */}
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />

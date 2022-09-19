@@ -9,6 +9,7 @@ import { snackBarStatus } from '../../store/snackBar/action'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
+import { addToBasketAction, addToBasketHandler } from '../../store/products/action';
 
 
 
@@ -29,7 +30,6 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
        {contactinfo : input}     
     ) */
      dispatch(snackBarStatus(true))
-     console.log('status', snackbarState)
   }
 
   const Alert = React.forwardRef(function Alert(props, ref) {
@@ -40,7 +40,10 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
 
   const handleClick = () => {
     setOpen(true);
+    dispatch(addToBasketHandler(product))
+
   };
+
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -61,7 +64,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
         className="cardMediaItem"
         onClick={() => navigate(`/products/${product.id}`)}
         component="img"
-        // height="300"
+        height="250"
         maxWidth="300"
         image={pathOneImage}
         alt={description}

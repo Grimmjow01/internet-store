@@ -48,7 +48,6 @@ function Chat() {
           ":" +
           new Date(Date.now()).getMinutes(),
       };
-      console.log(messageData)
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");

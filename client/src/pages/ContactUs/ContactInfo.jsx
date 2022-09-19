@@ -31,7 +31,6 @@ const ContactInfo = () => {
     body_question: ""
   });
 
-  console.log("Inputs" , input)
 
   const handleInput = (event) => {
     setInput((prev) => ({...prev, [event.target.name] : event.target.value}));
@@ -42,7 +41,6 @@ const ContactInfo = () => {
        {contactinfo : input}     
     )
     dispatch(snackBarStatus(true))
-    console.log('status', snackbarState)
   }
 
   return (

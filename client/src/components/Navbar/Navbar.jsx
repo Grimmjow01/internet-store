@@ -52,6 +52,12 @@ function Navbar() {
   const setAuth = useSelector((store) => store.auth.setAuth);
   const allProducts = useSelector((store) => store.products.product);
 
+  const products = useSelector((store)=> store.products)
+
+
+
+  const numberInBasket = JSON.parse(localStorage.getItem('basketItems'))?.length;
+
   const filteredAllProducts = useDeferredValue(allProducts.filter((prod) => prod.name.toLowerCase().includes(search.toLowerCase())));
 
   const handClickOpen = () => {
@@ -131,7 +137,7 @@ function Navbar() {
               {
                 !setAuth &&
                   <Button color="inherit" onClick={() => navigate('/basket')}>
-                    <Badge badgeContent={5} color="error">
+                    <Badge badgeContent={numberInBasket} color="error">
                       <ShoppingCartRoundedIcon fontSize="large" />
                     </Badge>
                   </Button>

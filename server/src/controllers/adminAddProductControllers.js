@@ -8,7 +8,6 @@ const getProductsAdminProfile = async (req, res) => {
 const addProductsAdmin = async (req, res) => {
   try {
     const { name_product, rating, price, brand, types, description } = req.body;
-    // console.log("addProductsAdmin ~ name_product, rating, price, brand, types, description", name_product, rating, price, brand, types, description)
     const currentIdBrand = await Brand.findOne({where: {name: brand} })
     const currentIdTypes = await Type.findOne({where: {name: types} })
     

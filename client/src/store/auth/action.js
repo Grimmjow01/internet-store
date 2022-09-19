@@ -15,7 +15,6 @@ export const loginThunk = (inputLogin, callback) => async (dispatch) => {
         dispatch(isAuth(true));
         callback();
     } catch (e) {
-        console.log(e.response?.data?.message);
         dispatch(collectorErrorMessage(e.response?.data?.message));
     }
 };
@@ -28,7 +27,6 @@ export const registerThunk = (inputLogin, callback) => async (dispatch) => {
         dispatch(isAuth(true));
         callback();
     } catch (e) {
-        console.log(e.response?.data?.message);
         dispatch(collectorErrorMessage(e.response?.data?.message));
     }
 };
@@ -39,7 +37,6 @@ export const logoutThunk = () => async (dispatch) => {
         localStorage.removeItem('token');
         dispatch(isAuth(false));
     } catch (e) {
-        console.log(e.response?.data?.message);
     }
 };
 
@@ -51,6 +48,5 @@ export const checkAuthThunk = () => async (dispatch) => {
         dispatch(collectorData(response.data.user));
         dispatch(isAuth(true));
     } catch (e) {
-        console.log(e.response?.data?.message);
     }
 };
