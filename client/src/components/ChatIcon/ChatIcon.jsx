@@ -23,8 +23,6 @@ const ChatIcon = () => {
       const handleClose = () => {
         setOpen(false);
       };
-
-      console.log(isActive)
       
   return (
     <>

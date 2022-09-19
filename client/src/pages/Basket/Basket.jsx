@@ -9,7 +9,8 @@ function Basket() {
     
     const products = useSelector((store)=> store.products)
 
-    console.log('Basket ==>', products.basket.map(el=>{return el.id}), 'all id')
+ 
+
     return (
         <>
               <Stack
@@ -21,8 +22,8 @@ function Basket() {
             <Box>
             <h1>Ваша корзина:</h1>
 
-            {products.basket.map((el,index) => (
-                 <BasketItem key ={index} el={el}></BasketItem>
+            {products.basket.map((product) => (
+                 <BasketItem key ={product.id} product={product} />
                 )
             )}
             </Box>
@@ -32,19 +33,18 @@ function Basket() {
         <br />
 
         <Box className='paymentBox'>
-
-        <span>Товары:</span>
+        <span><h2>Счет:</h2></span>
+        <span><h3>Добавленные товары:</h3> {products.basket.map(el=>{return el.name + `, `} )}</span>
         <br />
         <br />
-        <span>Скидка:</span>
+        <span><h3>Скидка: 0 руб.</h3></span>
         <br />
-        <br />
-        <h2>Общая стоимость :</h2>
-        <Button variant="contained" alignItems="center" style={{maxWidth: 180 }}>
-        Оформить заказ:
-        </Button>
-
-    
+        <h3>Общая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0)} руб.</h3>
+        {products.basket.length ? <div></div>
+       
+         : <Button variant="contained" alignItems="center" style={{maxWidth: 180 }} >
+        Оформить заказ
+        </Button>}
 
       
          </Box>

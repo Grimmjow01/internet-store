@@ -12,11 +12,11 @@ import Chat from './components/Chat/Chat';
 import ProductItemPage from './pages/ProductItemPage/ProductItemPage';
 import { checkAuthThunk } from './store/auth/action';
 import { useDispatch } from 'react-redux';
+import { addToBasketHandler } from './store/products/action';
 
 
 
 function App() {
-
 
   const dispatch = useDispatch();
 
@@ -24,6 +24,10 @@ function App() {
     if (localStorage.getItem('token')) {
       dispatch(checkAuthThunk());
     };
+    if(localStorage.getItem('basketItems')){
+
+      dispatch(addToBasketHandler(JSON.parse(localStorage.getItem('basketItems'))))
+    }
   }, [dispatch]);
 
 const [room, setRoom] = useState('');

@@ -18,6 +18,7 @@ export const authTypes = {
     AUTH_ERRORMESSAGE : 'AUTH_ERRORMESSAGE',
  }
 export const basketTypes = {
+  ADD_TO_BASKET: 'ADD_TO_BASKET',
   CHANGE_QUANTITY: 'CHANGE_QUANTITY',
   DELETE_ITEM:'DELETE_ITEM'
 }
