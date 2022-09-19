@@ -2,6 +2,7 @@ const { Product, Brand, Type, ProductImage } = require('../../db/models');
 
 const getProductsAdminProfile = async (req, res) => {
   const allProducts = await Product.findAll()
+  
   res.json(allProducts)
 }
 

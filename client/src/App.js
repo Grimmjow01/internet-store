@@ -12,7 +12,11 @@ import Chat from './components/Chat/Chat';
 import ProductItemPage from './pages/ProductItemPage/ProductItemPage';
 import { checkAuthThunk } from './store/auth/action';
 import { useDispatch } from 'react-redux';
+
+import { EditAdminProduct } from './pages/AdminPanel/EditAdminProduct';
+
 import { addBasketFromLocal } from './store/products/action';
+
 
 
 
@@ -44,6 +48,7 @@ function App() {
       <Route path="/admin" element={<AdminPanel />}/>
       <Route path="/chat" element={<Chat />}/>
       <Route path="/products/:id" element={<ProductItemPage />}/>
+      <Route path="/api/products/:id" element={<EditAdminProduct />} />
 
     </Route>
   </Routes>

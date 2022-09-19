@@ -29,7 +29,9 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
     /* const response = await axios.post('http://localhost:3100/contacts/sendemail',
        {contactinfo : input}     
     ) */
+
      dispatch(snackBarStatus(true))
+
   }
 
   const Alert = React.forwardRef(function Alert(props, ref) {
@@ -88,7 +90,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
           <Box>
             {setAuth &&            
               <Stack direction="row" spacing={2}>
-                <Button variant="contained" color="primary"><EditIcon /></Button>
+                <Button variant="contained" color="primary" onClick={() => navigate(`/api/products/${product.id}`)}><EditIcon /></Button>
                 <Button variant="contained" color="error" onClick={() => deleteProductHandle(product.id)}><ClearIcon /></Button>             
               </Stack>
               }
