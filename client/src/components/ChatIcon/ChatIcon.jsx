@@ -24,7 +24,7 @@ const ChatIcon = () => {
         setOpen(false);
       };
 
-      console.log(isActive)
+      // console.log(isActive)
       
   return (
     <>

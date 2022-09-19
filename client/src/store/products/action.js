@@ -5,8 +5,8 @@ export const getAllProduct = (product) => ({type: productTypes.GET_ALL_PRODUCT, 
 export const addProductAction = (obj) => ({type: productTypes.ADD_PRODUCT, payload: {obj}});
 export const delProductAction = (id) => ({type: productTypes.DELETE_PRODUCT, payload: { id } });
 export const editProductAction = (obj) => ({type: productTypes.EDIT_PRODUCT, payload: { obj } });
-export const deleteImageOneProductAction = (image_id, arrayImages) => ({type: productTypes.DELETE_IMAGES_PRODUCT, payload: { image_id, arrayImages } });
-
+export const deleteImageOneProductAction = (id ) => ({type: productTypes.DELETE__ONE_IMAGE_PRODUCT, payload: {id } });
+export const addImagesProductAction = (obj) => ({type: productTypes.ADD_IMAGES_PRODUCT, payload: {obj} });
 
 export const deleteProductHandler = (id) => async (dispatch) => {
   await fetch(`http://localhost:3100/api/products/${id}`, {
@@ -18,7 +18,7 @@ export const deleteProductHandler = (id) => async (dispatch) => {
   });
   dispatch(delProductAction(id));
 };
-export const deleteImagesOneProductHandler = (image_id, arrayImages) => async (dispatch) => {
+export const deleteImagesOneProductHandler = (id) => async (dispatch) => {
    await fetch(`http://localhost:3100/loadimageforoneproduct`, {
     method: 'DELETE',
     headers: {
@@ -26,13 +26,12 @@ export const deleteImagesOneProductHandler = (image_id, arrayImages) => async (d
       'Access-Control-Allow-Origin': 'http://127.0.0.1:3000'
     },
     credentials: 'include',
-    body: JSON.stringify({image_id})
+    body: JSON.stringify({id})
   });
-  dispatch(deleteImageOneProductAction(image_id, arrayImages));
+  dispatch(deleteImageOneProductAction(id));
 };
 
 export const editProductHandle = (obj) => async (dispatch) => {
-console.log("editProductHandle ~ obj", obj)
 const res = await fetch(`http://localhost:3100/api/products/${obj.id}`, {
     method: 'PUT',
     headers: {
@@ -42,6 +41,5 @@ const res = await fetch(`http://localhost:3100/api/products/${obj.id}`, {
     body: JSON.stringify(obj),
   });
   const newProduct = await res.json()
-  console.log("editProductHandle ~ newProduct", newProduct)
    dispatch(editProductAction(newProduct));
 };

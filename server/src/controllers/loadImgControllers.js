@@ -13,6 +13,10 @@ const loadImgControllers = async (req, res) => {
     }
   }
 
+  const loadAllImgControllers = async (req, res) => {
+    const allImages = await ProductImage.findAll()
+    res.json(allImages)
+  }
 
 
-module.exports = { loadImgControllers }
+module.exports = { loadImgControllers, loadAllImgControllers }

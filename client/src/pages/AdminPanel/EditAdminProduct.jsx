@@ -1,18 +1,21 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { deleteImagesOneProductHandler, editProductHandle } from '../../store/products/action';
-import { Button, Card, CardMedia, MenuItem, Select, TextareaAutosize, TextField } from '@mui/material';
+import { addImagesProductAction, deleteImagesOneProductHandler, editProductHandle } from '../../store/products/action';
+import { Button, MenuItem, Select, TextareaAutosize, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import "./Adminpanel.css";
 import { PreviewBox } from './PreviewBox';
+import Snackbar from "../../components/Snackbar/Snackbar";
+import { snackBarStatus } from '../../store/snackBar/action';
 
 export const EditAdminProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+  const { id } = useParams();
+  let snackbarState = useSelector((store)=> store.snackbarState)
   const [fileStore, setFileStore] = useState([]);
-  console.log("EditAdminProduct ~ fileStore", fileStore)
+
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
@@ -20,10 +23,9 @@ export const EditAdminProduct = () => {
   const [brand_id, setBrand] = useState('');
   const [image_id, setImage_id] = useState('');
   const [arrayImages, setArrayImages] = useState('');
-    console.log("EditAdminProduct ~ arrayImages", arrayImages)
-    
-  const { id } = useParams();
-
+         
+  const productsImages = useSelector((store) => store.products.productImages);
+ 
   useEffect(() => {
     (async () => {
       const res = await fetch(`http://localhost:3100/api/products/${id}`, {
@@ -31,12 +33,9 @@ export const EditAdminProduct = () => {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
-          // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
       const data = await res.json();
-      console.log("data", data)
-      
       setName(data[0].name);
       setPrice(data[0].price);
       setDescription(data[0].description);
@@ -44,31 +43,42 @@ export const EditAdminProduct = () => {
       setBrand(data[0].brand_id);
       setFileStore(data[1].map((el) => (el.img))); 
       const [, arrayImages] = data
-      const [image_id] = arrayImages
-      setImage_id(image_id.id)
-      setArrayImages(data[1]);
-     })();
-  }, []);
+      setImage_id(arrayImages)
+      const result = await fetch(`http://localhost:3100/loadimageforoneproduct/${id}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const allImagesOneProduct = await result.json();
+      setArrayImages(allImagesOneProduct)
+      dispatch(addImagesProductAction(allImagesOneProduct))
+     })()
+    }, []);
 
+  const imageListFunc = () => {
   const pathOneImage = []
-for (let i = 0; i < fileStore.length; i++) {
-  pathOneImage.push('http://localhost:3100/' + fileStore[i])
+  if(productsImages) {
+    productsImages.forEach((el) =>  pathOneImage.push('http://localhost:3100/' + el.img))
+  }
+return pathOneImage
 }
+const arrayImage = imageListFunc()
 
 const [inputs, setInputs] = useState({});
+
 const inputHandler = (e) => {
   setInputs((prev) => ({...prev, [e.target.name]: e.target.value}))};
 
   return (
     <div>
-  
-      {/* {flag ? (   */}
         <div>
       <Box sx={{maxWidth: 500, minWidth: 500, marginLeft: 70, marginTop: 1, marginBottom: 1, p: 25, border: "1px solid grey", 
         boxShadow: 20, borderRadius: 2}} 
         justifyContent="center" alignItems="center" 
         className="contactUsBox" >
-                        <h1> Редактирование товара</h1>
+          <h1> Редактирование товара</h1>
           <label> Название <span className="red">*</span></label> 
         <TextField name="name" className="cardMediaItem" fullWidth value={name} onChange={e => setName(e.target.value)}/> <br />
         <label> Изменилась цена <span className="red">*</span></label>
@@ -100,31 +110,31 @@ const inputHandler = (e) => {
           <TextareaAutosize margin="dense" style={{ height: 238, width: 494 }} className="cardMediaItem" fullWidth  value={description || ''} onChange={e => setDescription(e.target.value)}/>
         </Box>
           { <div className='container'>
-          {pathOneImage.map((el, i) => <> {/* key={image_id} */} <img src={pathOneImage[i]} alt="..."/>  <button className="btn" onClick={(e) => dispatch(deleteImagesOneProductHandler(image_id, arrayImages))}>Удалить</button></>) }
+          {productsImages?.map((el) => <> {/* key={image_id} */} <img src={(`http://localhost:3100` + el.img)} alt="..."/> 
+           <button className="btn" onClick={(e) =>  dispatch(deleteImagesOneProductHandler(el.id))}>Удалить</button></>) }
         </div> }
         <br />
-        {/* onClick={() => deleteProductHandle(product.id)} */}
-          {/* <Button onClick={saveData}> Сохранить изменения локально</Button> */}
-
 
 {/* добавление фото ----------------------------- ------------------------------------------------------------- */}
 <Box>
 <PreviewBox fileStore={fileStore}/>
       <label>Добавить фото <span className="red">*</span></label>
       <br />
-      <TextField inputProps={{multiple: true}} encType="multipart/form-data" action="/profile-upload-multiple" method="POST" onChange={inputHandler} type="file" name="file"
+      <TextField inputProps={{multiple: true}} encType="multipart/form-data" action="/profile-upload-multiple" method="POST"
+       onChange={inputHandler} type="file" name="file"
         className="menuItem"
         required 
         accept='image/*'
         id="file"/> 
 </Box>
-          <Button type="button" onClick={() => {dispatch(editProductHandle ({ 
-            id, name,price,description,type_id,brand_id
-           }))}}> Сохранить изменения</Button>
+          <Button type="button" onClick={() => {dispatch(editProductHandle ({ id, name,price,description,type_id,brand_id })) ; 
+        dispatch(snackBarStatus(true))
+        }}> Сохранить изменения</Button>
+           
       </Box>
-
+      <Snackbar message={'Изменения сохранены'}/>
         </div>
-      {/* ) : null} */}
+
     </div>
   );
 }

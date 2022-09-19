@@ -7,9 +7,10 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import Snackbar from "../../components/Snackbar/Snackbar";
 import { useDispatch, useSelector } from 'react-redux';
 import { snackBarStatus } from '../../store/snackBar/action'
-import { addProductDatabase } from '../../store/products/action'
+
 import { PreviewBox } from './PreviewBox';
-import lodash from 'lodash';
+import { addImageOneProductAction, addImagesProductAction } from "../../store/products/action";
+
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const AdminPanel = () => {
     //   }
     
 const [fileStore, setFileStore] = useState([]);
+const [imageStore, setImageStore] = useState([]);
 
 const [inputs, setInputs] = useState({});
 const inputHandler = (e) => {
@@ -71,18 +73,10 @@ const submitHandler = async (e) => {
     method: 'POST',
     body: dataFile,
     });
+    setImageStore(imageStore.push(dataFile))
+    dispatch(addImagesProductAction(dataFile))
   }
-  // lodash.forEach(inputs.files, oneFile => dataFile.append('file', oneFile))
-
-    // const arrayImageOneProduct = []
-    // for (let i = 0; i < fileStore.length; i++) {
-    //   arrayImageOneProduct.push(fileStore[i])
-    // }
-    // dataFile.append('file', inputs.files);
-
-    // dispatch(addProductDatabase(data));
     dispatch(snackBarStatus(true))
-  
 };
 
   return (

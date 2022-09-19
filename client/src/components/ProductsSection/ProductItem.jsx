@@ -25,7 +25,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
        {contactinfo : input}     
     ) */
     dispatch(snackBarStatus(true))
-    console.log('status', snackbarState)
+
   }
 
   const isAdmin = true;

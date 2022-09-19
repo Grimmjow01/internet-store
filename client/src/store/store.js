@@ -11,7 +11,6 @@ const rootReducer = combineReducers({
   products: productsReducer,
   snackbarState: snackBarReducer,
   basket : productsReducer,
-  productImages: productsReducer,
 });
 
 const composeEnhancer = process.env.NODE_ENV === 'production'

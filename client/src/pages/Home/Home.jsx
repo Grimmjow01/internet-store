@@ -4,13 +4,12 @@ import HeroSection from '../../components/HeroSection/HeroSection';
 import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
-import { getAllProduct } from '../../store/products/action';
+import { addImagesProductAction, getAllProduct } from '../../store/products/action';
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';
 
 function Home() { 
   const dispatch = useDispatch();
-  const products = useSelector((store) => store.products);
   
   useEffect(() => {
     ( async () => {
@@ -25,6 +24,9 @@ function Home() {
       dispatch(getAllProduct(products))
     })()
   }, [dispatch]);
+  
+
+  const products = useSelector((store) => store.products);
   
   return (
     <Box>

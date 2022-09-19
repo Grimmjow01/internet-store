@@ -2,13 +2,13 @@ const { Product, Brand, Type, ProductImage } = require('../../db/models');
 
 const getProductsAdminProfile = async (req, res) => {
   const allProducts = await Product.findAll()
+  
   res.json(allProducts)
 }
 
 const addProductsAdmin = async (req, res) => {
   try {
     const { name_product, rating, price, brand, types, description } = req.body;
-    // console.log("addProductsAdmin ~ name_product, rating, price, brand, types, description", name_product, rating, price, brand, types, description)
     const currentIdBrand = await Brand.findOne({where: {name: brand} })
     const currentIdTypes = await Type.findOne({where: {name: types} })
     
