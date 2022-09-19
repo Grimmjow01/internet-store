@@ -2,10 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-
-const { productListControllers,getOneProductForUpdate, deleteProducts, updateProducts} = require('../controllers/productListControllers');
-
-const { productListControllers, deleteProducts,getOneProductForUpdate, updateProducts, producItemController} = require('../controllers/productListControllers');
+const { productListControllers, deleteProducts, getOneProductForUpdate, updateProducts, producItemController} = require('../controllers/productListControllers');
 
 router
 .route('/')
@@ -18,6 +15,7 @@ router
 .delete( deleteProducts)
 .put( updateProducts)
 
+router
   .get('/:id', producItemController)
 
 router
