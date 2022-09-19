@@ -1,6 +1,6 @@
 import { productTypes, basketTypes } from '../types';
 
-const initState = {basket:[], product: [], searchProduct: '', allRating: [] }
+const initState = {basket: [], product: [], searchProduct: '', allRating: [] }
 
 export const productsReducer = (state = initState, action) => {
 
@@ -16,10 +16,7 @@ export const productsReducer = (state = initState, action) => {
 
       case productTypes.DELETE_PRODUCT:
 
-      return {
-        ...state,
-        product: state.product.filter((produc) => produc.id !== action.payload.id),
-      };
+      return {...state, product: state.product.filter((produc) => produc.id !== action.payload.id)};
 
       case productTypes.GET_ALL_SEARCHPRODUCT:
         return {...state, searchProduct: action.payload.prod};
@@ -30,6 +27,8 @@ export const productsReducer = (state = initState, action) => {
       // case productTypes.CHANGE_RATING:
       //     return {...state, allRating: action.payload.rating};
 
+      case basketTypes.BASKET_FROM_LOCAL:
+        return {...state, basket:  action.payload}
       
       case basketTypes.ADD_TO_BASKET:
         return {...state, basket: [...state.basket, action.payload.newitem]}

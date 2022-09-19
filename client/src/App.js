@@ -12,7 +12,7 @@ import Chat from './components/Chat/Chat';
 import ProductItemPage from './pages/ProductItemPage/ProductItemPage';
 import { checkAuthThunk } from './store/auth/action';
 import { useDispatch } from 'react-redux';
-import { addToBasketHandler } from './store/products/action';
+import { addBasketFromLocal } from './store/products/action';
 
 
 
@@ -24,14 +24,13 @@ function App() {
     if (localStorage.getItem('token')) {
       dispatch(checkAuthThunk());
     };
+    console.log("fre tyhtr hytrh ytre ytr", JSON.parse(localStorage.getItem('basketItems')))
     if(localStorage.getItem('basketItems')){
-
-      dispatch(addToBasketHandler(JSON.parse(localStorage.getItem('basketItems'))))
+      dispatch(addBasketFromLocal(JSON.parse(localStorage.getItem('basketItems'))))
+    } else {
+       
     }
   }, [dispatch]);
-
-const [room, setRoom] = useState('');
-
 
   return ( 
     

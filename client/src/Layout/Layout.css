@@ -7,4 +7,6 @@
     margin:auto
  } */
 
- 
+ .Outlet{
+    min-height: 90vh;
+ }
