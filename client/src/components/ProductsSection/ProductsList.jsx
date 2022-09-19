@@ -6,10 +6,11 @@ import ProductItem from './ProductItem';
 import './ProductsList.css';
 
 function ProductsList() {
-
+  
+  const productsSearch = useSelector((store) => store.products.searchProduct);
   const products = useSelector((store) => store.products);
   const { product } = products
-  console.log("ProductsList ~ product", product.length)
+  console.log("ProductsList ~ product", product.length);
 
   const sdkfj = () => {
     const originalId = {}
@@ -17,7 +18,8 @@ function ProductsList() {
      product.map((prod) => originalId[prod.id] = prod )
      return Object.values(originalId)
   }
-  const data = sdkfj()
+  const data = sdkfj();
+
   const filteredOriginalId = () => product.filter((el) => el.id !== product.id)
 
   
@@ -41,7 +43,8 @@ function ProductsList() {
         >
           {!products.product?.length  
           ? <p>Товары закончились</p>
-          : data.map((product) => (
+          : data.filter((prod) => prod.name.toLowerCase().includes(productsSearch.toLowerCase()))
+          .map((product) => (
             <ProductItem 
               product={product} 
               sx={{ marginLeft: 2 }} 

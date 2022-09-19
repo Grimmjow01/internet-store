@@ -4,7 +4,7 @@ import HeroSection from '../../components/HeroSection/HeroSection';
 import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
-import { getAllProduct } from '../../store/products/action';
+import { getAllProduct, allRatingThunk } from '../../store/products/action';
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';
 
@@ -23,7 +23,10 @@ function Home() {
       });
       const products = await res.json();
       dispatch(getAllProduct(products))
-    })()
+    })();
+
+    dispatch(allRatingThunk());
+    
   }, [dispatch]);
   
   return (

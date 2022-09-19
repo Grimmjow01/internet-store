@@ -3,7 +3,8 @@ import {CardMedia, CardContent, CardActions, Typography, Card, Snackbar} from '@
 import { Box, Button, Stack } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import AddIcon from '@mui/icons-material/Add';
-import BasicRating from './BasicRating';import { useDispatch, useSelector } from 'react-redux';
+import BasicRating from './BasicRating';
+import { useDispatch, useSelector } from 'react-redux';
 import { snackBarStatus } from '../../store/snackBar/action'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
@@ -20,7 +21,8 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  let snackbarState = useSelector((store)=> store.snackbarState)
+  let snackbarState = useSelector((store)=> store.snackbarState);
+  const setAuth = useSelector((store) => store.auth.setAuth);
 
   const addToBasket = async () => {
     /* const response = await axios.post('http://localhost:3100/contacts/sendemail',
@@ -29,8 +31,6 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
      dispatch(snackBarStatus(true))
      console.log('status', snackbarState)
   }
-
-  const isAdmin = false;
 
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -77,19 +77,19 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
             {/* <Typography gutterBottom variant="h4" component="div">
               Lizard
             </Typography> */}
-            <BasicRating />
+            <BasicRating product={product} />
             <Typography gutterBottom variant="h6" component="div" color="secondary" fontWeight="bold">
               {product.price} руб.
             </Typography>
           </Box>
           <Box>
-            {isAdmin &&            
+            {setAuth &&            
               <Stack direction="row" spacing={2}>
                 <Button variant="contained" color="primary"><EditIcon /></Button>
                 <Button variant="contained" color="error" onClick={() => deleteProductHandle(product.id)}><ClearIcon /></Button>             
               </Stack>
               }
-            {!isAdmin && 
+            {!setAuth && 
               <Button variant="outlined" color="secondary" startIcon={<AddIcon />} onClick={handleClick}>В корзину</Button>
               }
           </Box>

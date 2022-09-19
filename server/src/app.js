@@ -21,6 +21,7 @@ const { Server } = require("socket.io");
 
 const contactsRouter = require("./routes/contactsRoute");
 const loginRoute = require('./routes/loginRoute');
+const ratingRoute = require('./routes/ratingRoute');
 
 const errorMiddlewares = require('./middlewares/errorMiddlewares');
 
@@ -59,7 +60,8 @@ app.use('/contacts', contactsRouter);
 app.use('/api', loginRoute);
 app.use(errorMiddlewares);
 app.use('/admin', adminAddProduct)
-app.use('/loadImg', loadImg)
+app.use('/loadImg', loadImg);
+app.use('/api', ratingRoute);
 
 const io = new Server(server, {
   cors: {

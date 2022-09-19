@@ -1,4 +1,4 @@
-import React, { useState, useDeferredValue } from 'react';
+import React, { useState, useDeferredValue, useEffect } from 'react';
 import {
   AppBar, Badge, Button, Toolbar, Typography, Dialog, Box, styled, InputBase
 } from '@mui/material';
@@ -14,6 +14,7 @@ import Auth from '../Auth/Auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from '../../store/auth/action';
 import './Navbar.css';
+import { getAllSearchProduct } from '../../store/products/action';
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -36,9 +37,16 @@ const Search = styled("div")({
 function Navbar() {
   const navigate = useNavigate(); // или используй Navlink
   const dispatch = useDispatch();
+  const [search, setSearch] = useState('');
+  
+  useEffect(() => {
+    if (!search) {
+    dispatch(getAllSearchProduct(search))
+    };
+  }, [search]);
   
   const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState('');
+  
   const [isOpenSearch, setIsOpenSearch] = useState(true);
  
   const setAuth = useSelector((store) => store.auth.setAuth);
@@ -57,7 +65,7 @@ function Navbar() {
 
   const itemHandler = (e) => {
     setSearch(e.target.textContent);
-    navigate(`/products/${e.target.dataset.productid}`);
+    dispatch(getAllSearchProduct(search))
     setIsOpenSearch(!isOpenSearch);
   };
 

@@ -5,7 +5,9 @@ export const getAllProduct = (product) => ({type: productTypes.GET_ALL_PRODUCT, 
 export const getOneProduct = (id) => ({type: productTypes.GET_ONE_PRODUCT, payload: { id } });
 export const addProductAction = (obj) => ({type: productTypes.ADD_PRODUCT, payload: {obj}});
 export const delProductAction = (id) => ({type: productTypes.DELETE_PRODUCT, payload: { id } });
-
+export const getAllSearchProduct = (prod) => ({type: productTypes.GET_ALL_SEARCHPRODUCT, payload: {prod} });
+export const getUsersRAting = (rating) => ({type: productTypes.GET_ALL_RATING, payload: {rating} });
+// export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payload: {rating} });
 
 export const deleteProductHandler = (id) => async (dispatch) => {
   await fetch(`http://localhost:3100/api/products/${id}`, {
@@ -17,3 +19,20 @@ export const deleteProductHandler = (id) => async (dispatch) => {
   });
   dispatch(delProductAction(id));
 };
+
+export const allRatingThunk = () => async (dispatch) => {
+  try {
+    const res = await fetch('http://localhost:3100/api/getrating', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const rating = await res.json();
+    dispatch(getUsersRAting(rating));
+
+  } catch (error) {
+      console.log('ratingThunkError', error);
+  };
+}
