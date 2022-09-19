@@ -4,18 +4,13 @@ import './HeroSection.css'
 import Model from '../../models/Scene'
 import {Canvas, useFrame} from '@react-three/fiber'
 import {OrbitControls, SpotLight} from '@react-three/drei'
-import { useRef } from 'react';
-import CanvasModel from '../Canvas/CanvasModel';
-
 
 function HeroSection() {
-  
-
 
   return (
-   
+    
     <Container className='heroSection'>
-        <Canvas camera={{ position: [1, 2, 2], zoom: 2.4}}>
+        <Canvas camera={{ position: [1, 2, 2], zoom: 2.4}} className='heroCanvas'>
           <OrbitControls target={[-.7, 1, 0]}/>
           <hemisphereLight intensity={0.40} />
           <SpotLight 
@@ -27,7 +22,7 @@ function HeroSection() {
           <Suspense fallback={null}>
          <Model />
          </Suspense>
-         </Canvas>
+         </Canvas >
     </Container>
     // <Box bgcolor="darkgrey" p={3}>HeroSection</Box>
   );

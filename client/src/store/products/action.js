@@ -6,6 +6,7 @@ export const getOneProduct = (id) => ({type: productTypes.GET_ONE_PRODUCT, paylo
 export const addProductAction = (obj) => ({type: productTypes.ADD_PRODUCT, payload: {obj}});
 export const delProductAction = (id) => ({type: productTypes.DELETE_PRODUCT, payload: { id } });
 export const addToBasketAction = (newitem) => ({type: basketTypes.ADD_TO_BASKET, payload: {newitem}})
+export const addToBasketLocalStorage = (basketitems) => ({type: basketTypes.BASKET_FROM_LOCAL, payload: basketitems})
 export const getAllSearchProduct = (prod) => ({type: productTypes.GET_ALL_SEARCHPRODUCT, payload: {prod} });
 export const getUsersRAting = (rating) => ({type: productTypes.GET_ALL_RATING, payload: {rating} });
 // export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payload: {rating} });
@@ -27,8 +28,13 @@ export const addToBasketHandler = (newitem) => (dispatch) =>{
     const basketItems = JSON.parse(localStorage.getItem('basketItems')) || []
     basketItems.push(newitem)
     localStorage.setItem('basketItems', JSON.stringify(basketItems))
-
 }
+
+export const addBasketFromLocal = (basketitems) => (dispatch) => {
+   dispatch(addToBasketLocalStorage(basketitems))
+   
+} 
+
 export const allRatingThunk = () => async (dispatch) => {
   try {
     const res = await fetch('http://localhost:3100/api/getrating', {

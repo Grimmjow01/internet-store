@@ -1,0 +1,9 @@
+.heroHide{
+    display: flex;
+    padding: 9px;
+    justify-content: center;
+}
+
+#logo-tochka{
+   width:  630px;
+}

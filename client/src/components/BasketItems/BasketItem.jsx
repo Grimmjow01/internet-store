@@ -12,6 +12,7 @@ function BasketItem({product}) {
 
     const dispatch = useDispatch()
     const products = useSelector((store)=> store.products)
+    
 
     const deleteHandler = () => {
         

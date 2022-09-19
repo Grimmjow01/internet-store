@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { getAllProduct, allRatingThunk } from '../../store/products/action';
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';
+import './Home.css'
 
 function Home() { 
   const dispatch = useDispatch();
@@ -29,17 +30,18 @@ function Home() {
     
   }, [dispatch]);
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   
   return (
     <Box>
-         
-        <Button variant="outlined" size="small" onClick={() => setShow(prev => !prev)}>Show section</Button>
-      {/* {show && <Box><HeroSection /> </Box>} */}
+         <div className='heroHide'>
+        <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}>Спрятать</Button>
+        </div>
+      {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>} 
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />
-        <ChatIcon/>
+        
        </Stack>
     </Box>
   );

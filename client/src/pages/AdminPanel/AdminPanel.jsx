@@ -95,7 +95,7 @@ const submitHandler = async (e) => {
    {/* форма добавления--------------------------------------------------------------------------------- */}
     <h1>Форма добавления товара</h1>
       <div className="column-center">
-    <FormControl className="feedbackForm">
+    <FormControl  className="feedbackForm">
 
     <label> Название <span className="red">*</span></label>
     <br />

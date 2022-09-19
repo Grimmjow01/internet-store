@@ -4,12 +4,22 @@ import BasketItem from '../../components/BasketItems/BasketItem'
 import {Stack} from '@mui/material'
 import {Button, FormControl, TextField, Box} from "@mui/material";
 import './Basket.css'
+import { useNavigate } from 'react-router-dom';
 
 function Basket() {
     
     const products = useSelector((store)=> store.products)
+    const setAuth = useSelector((store) => store.auth.setAuth);
 
- 
+
+    const handleOrder = () => {
+         if(setAuth){
+            window.location.href = 'https://pay.yandex.ru/business'
+         } else {
+
+         }
+    }
+    
 
     return (
         <>
@@ -21,14 +31,12 @@ function Basket() {
 
             <Box>
             <h1>Ваша корзина:</h1>
-
+             {console.log("products.basket", products.basket)}
             {products.basket.map((product) => (
                  <BasketItem key ={product.id} product={product} />
                 )
             )}
             </Box>
-           
-           
         
         <br />
 
@@ -40,13 +48,10 @@ function Basket() {
         <span><h3>Скидка: 0 руб.</h3></span>
         <br />
         <h3>Общая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0)} руб.</h3>
-        {products.basket.length ? <div></div>
-       
-         : <Button variant="contained" alignItems="center" style={{maxWidth: 180 }} >
+       <Button variant="contained" alignItems="center" style={{maxWidth: 180 }} onClick={handleOrder}>
         Оформить заказ
-        </Button>}
+        </Button>
 
-      
          </Box>
 
          </Stack>
