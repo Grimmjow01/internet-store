@@ -1,7 +1,7 @@
 const { Product, ProductImage, Brand, Rating } = require('../../db/models');
 
 const productListControllers = async (req, res) => {
-  const allProducts = await Product.findAll({include: ProductImage, raw: true })
+  const allProducts = await Product.findAll({include: ProductImage, raw: true });
   res.json(allProducts)
 }
 

@@ -17,6 +17,7 @@ function Home() {
   const dispatch = useDispatch();
   
   useEffect(() => {
+    
     ( async () => {
       const res = await fetch('http://localhost:3100/api/products', {
         method: 'GET',
@@ -26,17 +27,17 @@ function Home() {
         },
       });
       const products = await res.json();
-      dispatch(getAllProduct(products))
+      console.log('products=====', products);
+      dispatch(getAllProduct(products));
     })();
 
     dispatch(allRatingThunk());
-    
-  }, [dispatch]);
+      }, [dispatch]);
 
   const [show, setShow] = useState(true);
-  
 
   const products = useSelector((store) => store.products);
+  
   
   return (
     <Box>

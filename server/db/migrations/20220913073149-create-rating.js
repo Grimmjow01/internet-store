@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       rating: {
-        type: Sequelize.INTEGER
+        type: Sequelize.NUMERIC(10,2),
       },
       createdAt: {
         allowNull: false,
