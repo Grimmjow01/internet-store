@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const multer = require('multer');
-const { loadImgControllers, loadAllImgControllers } = require('../controllers/loadImgControllers');
+const { getImageForUpdate } = require('../controllers/updateImagesControllers');
 const storage = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, './public/img');
@@ -15,7 +15,6 @@ const upload = multer({ storage });
 
 router
 .route('/')
-.get(loadAllImgControllers)
-.post(upload.array('file', 10), loadImgControllers)
+.post(upload.array('file', 10),getImageForUpdate)
 
 module.exports = router;

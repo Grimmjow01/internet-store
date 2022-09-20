@@ -32,7 +32,7 @@ export default function BasicRating({ product }) {
     userRatingExamination()
   }, [value]);
 
-  console.log('value====>', value);
+  // console.log('value====>', value);
 
   return (
     <Box

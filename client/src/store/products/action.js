@@ -13,7 +13,7 @@ export const addImagesProductAction = (obj) => ({type: productTypes.ADD_IMAGES_P
 export const addToBasketAction = (newitem) => ({type: basketTypes.ADD_TO_BASKET, payload: {newitem}})
 export const addToBasketLocalStorage = (basketitems) => ({type: basketTypes.BASKET_FROM_LOCAL, payload: basketitems})
 export const getAllSearchProduct = (prod) => ({type: productTypes.GET_ALL_SEARCHPRODUCT, payload: {prod} });
-export const getUsersRAting = (rating) => ({type: productTypes.GET_ALL_RATING, payload: {rating} });
+export const getUsersRating = (rating) => ({type: productTypes.GET_ALL_RATING, payload: {rating} });
 // export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payload: {rating} });
 
 
@@ -78,7 +78,7 @@ export const allRatingThunk = () => async (dispatch) => {
       },
     });
     const rating = await res.json();
-    dispatch(getUsersRAting(rating));
+    dispatch(getUsersRating(rating));
 
   } catch (error) {
       console.log('ratingThunkError', error);

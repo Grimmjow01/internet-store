@@ -15,7 +15,9 @@ export const EditAdminProduct = () => {
   const { id } = useParams();
   let snackbarState = useSelector((store)=> store.snackbarState)
   const [fileStore, setFileStore] = useState([]);
-
+  const [imageStore, setImageStore] = useState([]);
+ 
+  const [prod_id, setIdForFile] = useState('');
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
@@ -36,6 +38,7 @@ export const EditAdminProduct = () => {
         },
       });
       const data = await res.json();
+      setIdForFile(data[0].id);
       setName(data[0].name);
       setPrice(data[0].price);
       setDescription(data[0].description);
@@ -52,30 +55,49 @@ export const EditAdminProduct = () => {
         },
       });
       const allImagesOneProduct = await result.json();
-      setArrayImages(allImagesOneProduct)
+        setArrayImages(allImagesOneProduct)
       dispatch(addImagesProductAction(allImagesOneProduct))
      })()
     }, []);
 
-  const imageListFunc = () => {
-  const pathOneImage = []
-  if(productsImages) {
-    productsImages.forEach((el) =>  pathOneImage.push('http://localhost:3100/' + el.img))
-  }
-return pathOneImage
-}
-const arrayImage = imageListFunc()
-
 const [inputs, setInputs] = useState({});
-
 const inputHandler = (e) => {
-  setInputs((prev) => ({...prev, [e.target.name]: e.target.value}))};
-
+  if (e.target.files) {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value, file: e.target.files[0]}));
+    setImageStore((prev) => [...prev, ...Array.from(e.target.files)])
+    } 
+   
+  };
+const submitHandler = async (e) => {
+  if(imageStore.length) {
+    for (let i = 0; i < imageStore.length; i++) {
+      const dataFile = new FormData();
+      dataFile.append('product_id', prod_id);
+      dataFile.append('file', imageStore[i])
+      dataFile.append('filePath', imageStore[i].name)
+      const res = await fetch(`http://localhost:3100/loadImg`, {
+      method: 'POST',
+      body: dataFile,
+      });
+      const newImage = await res.json();
+      dispatch(addImagesProductAction([newImage]))
+    }
+      dispatch(snackBarStatus(true))
+  };
+}
+      const imageListFunc = () => {
+        const pathOneImage = []
+        if(productsImages) {
+          productsImages.forEach((el) =>  pathOneImage.push('http://localhost:3100/' + el.img))
+        }
+      return pathOneImage
+      }
+      const arrayImage = imageListFunc()
   return (
     <div>
         <div>
       <Box sx={{maxWidth: 500, minWidth: 500, marginLeft: 70, marginTop: 1, marginBottom: 1, p: 25, border: "1px solid grey", 
-        boxShadow: 20, borderRadius: 2}} 
+        boxShadow: 20, borderRadius: 10}} 
         justifyContent="center" alignItems="center" 
         className="contactUsBox" >
           <h1> Редактирование товара</h1>
@@ -116,21 +138,21 @@ const inputHandler = (e) => {
         <br />
 
 {/* добавление фото ----------------------------- ------------------------------------------------------------- */}
-<Box>
+<Box sx={{maxWidth: 500, minWidth: 460, marginBottom: 1, p: 2, border: "1px solid grey", 
+        borderRadius: 5}}>
 <PreviewBox fileStore={fileStore}/>
-      <label>Добавить фото <span className="red">*</span></label>
+           <label className='photoBlock'>  <span className="red"></span></label>
       <br />
-      <TextField inputProps={{multiple: true}} encType="multipart/form-data" action="/profile-upload-multiple" method="POST"
-       onChange={inputHandler} type="file" name="file"
-        className="menuItem"
-        required 
-        accept='image/*'
-        id="file"/> 
+      <TextField inputProps={{multiple: true}} encType="multipart/form-data" 
+      action="/profile-upload-multiple" method="POST" onChange={inputHandler} 
+      type="file" name="file" className="menuItem" required accept='image/*' id="file"/> 
 </Box>
-          <Button type="button" onClick={() => {dispatch(editProductHandle ({ id, name,price,description,type_id,brand_id })) ; 
-        dispatch(snackBarStatus(true))
+          <Button type="button" onClick={() => {dispatch(editProductHandle ({
+             id, name,price,description,type_id,brand_id })) ;
+        dispatch(snackBarStatus(true));   submitHandler(); 
         }}> Сохранить изменения</Button>
-           
+           <br />
+      <Button type="button"  onClick={() => navigate(`/`)}> Вернуться к товарам </Button>
       </Box>
       <Snackbar message={'Изменения сохранены'}/>
         </div>

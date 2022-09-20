@@ -5,7 +5,9 @@ import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
 
-import { getAllProduct, allRatingThunk } from '../../store/products/action';
+import { addImagesProductAction, getAllProduct } from '../../store/products/action';
+
+import {  allRatingThunk } from '../../store/products/action';
 
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';

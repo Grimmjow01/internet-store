@@ -7,6 +7,7 @@ const productListControllers = async (req, res) => {
 
 const getOneProductForUpdate = async (req, res) => {
   const { id } = req.params;
+  console.log('getOneProductForUpdate66666', 4);
   const findProduct = await Product.findOne({include: ProductImage, where: {id}, raw: true })
   console.log("getOneProductForUpdate ~ findProduct", findProduct)
   const product_id = findProduct['ProductImages.product_id']
@@ -31,11 +32,12 @@ const deleteProducts = async (req, res) => {
 }
 
 const updateProducts = async (req, res) => {
-  const { id, name,price,description,type_id,brand_id } = req.body
+  const { id, name, price,description,type_id,brand_id } = req.body
+  const numberPrice = +price
   const onePostUpdate = await Product.findOne({where: { id }})
    if(onePostUpdate){
    const newProduct = await onePostUpdate.update(
-      { name: name, price: price, description: description, type_id: type_id, brand_id: brand_id, where: { id: id } })
+      { name: name, price: numberPrice, description: description, type_id: type_id, brand_id: brand_id, where: { id: id } })
     res.json(newProduct)
   } else {
     res.sendStatus(400);
@@ -68,3 +70,4 @@ const producItemController = async (req, res) => {
 }
 
 module.exports = { productListControllers, getOneProductForUpdate, deleteProducts, updateProducts, producItemController }
+

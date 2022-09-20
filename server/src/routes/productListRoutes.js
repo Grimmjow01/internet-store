@@ -18,9 +18,9 @@ router
 router
   .get('/:id', producItemController)
 
-router
-  .delete('/:id', deleteProducts)
-  .put(updateProducts)
+// router
+//   .delete('/:id', deleteProducts)
+//   .put(updateProducts)
 
 
 module.exports = router;
