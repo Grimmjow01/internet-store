@@ -1,7 +1,7 @@
 .Card {
     display:flex;
     flex-direction: row;
-    ustify-content: space-evenly;
+    justify-content: space-evenly;
 
 }
 .Card * {

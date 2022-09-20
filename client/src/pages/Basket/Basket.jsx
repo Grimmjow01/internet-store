@@ -22,12 +22,14 @@ function Basket() {
     
 
     return (
-        <>
+        <Box sx={{p: "20px"}}>
               <Stack
                 direction="row"
                 justifyContent="center"
                 alignItems="center"
-                spacing={30}>
+                spacing={5}
+                sx={{display: {xs: "block", sm: "block", md: "flex"}}}
+                >
 
             <Box>
             <h1>Ваша корзина:</h1>
@@ -48,7 +50,7 @@ function Basket() {
         <span><h3>Скидка: 0 руб.</h3></span>
         <br />
         <h3>Общая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0)} руб.</h3>
-       <Button variant="contained" alignItems="center" style={{maxWidth: 180 }} onClick={handleOrder}>
+       <Button variant="contained" color="secondary" alignItems="center" style={{maxWidth: 180 }} onClick={handleOrder}>
         Оформить заказ
         </Button>
 
@@ -56,7 +58,7 @@ function Basket() {
 
          </Stack>
 
-        </>
+        </Box>
     )
 }
 

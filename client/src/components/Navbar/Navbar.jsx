@@ -84,12 +84,22 @@ function Navbar() {
       <StyledToolbar>
         {/* <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between"> */}        
           <Box className="logo">
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => navigate('/')}>
-              <ChairIcon />
-              Мебель и точка
+            <Typography variant="h6" component="div" onClick={() => navigate('/')}
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "none", md: "block" }}}
+            >
+              <Stack direction="row" spacing={1} alignItems="center">
+                <Box>
+                  <ChairIcon />
+                </Box>
+                <Box>
+                  Мебель и точка
+                </Box>
+              </Stack>
+              
             </Typography>
+          <ChairIcon fontSize="large" sx={{ display: { xs: "block", sm: "block", md: "none" }}} onClick={() => navigate('/')} />
           </Box>
-          <Box>
+          <Box sx={{ display: { xs: "none", sm: "block" }}}>
             <Search>
               <SearchIcon color="black" />
               <InputBase 
@@ -110,12 +120,11 @@ function Navbar() {
           </Box>
           <Box>
             <Stack direction="row" spacing={2}>
-              <Button color="inherit" onClick={() => navigate('/admin')}>
-                Admin
-              </Button>
-              <Button color="inherit" onClick={() => navigate('/contacts')}>
-                Связатся с нами
-              </Button>
+              { setAuth &&
+                <Button color="inherit" onClick={() => navigate('/admin')}>
+                  Admin
+                </Button>
+              }
               {!setAuth ? 
             <Button color="inherit" onClick={handClickOpen}>
               <AccountCircleIcon fontSize="large" />

@@ -1,4 +1,4 @@
-const { Product, ProductImage } = require('../../db/models');
+const { Product, ProductImage, Brand, Rating } = require('../../db/models');
 
 const productListControllers = async (req, res) => {
   const allProducts = await Product.findAll({include: ProductImage, raw: true })
@@ -48,9 +48,20 @@ const producItemController = async (req, res) => {
     const { id } = req.params;
     const itemProduct = await Product.findOne({ 
       where: { id }, 
+      include: [{
+        model: Brand,
+      },
+      /*{
+        model: Rating,
+      }*/],
+      raw: true,
     });
+    const { product_id } = itemProduct;
+    const arrayImagesForOneProduct = await ProductImage.findAll({where: { product_id: id }});
     console.log("producItemController ~ itemProduct", itemProduct);
-    res.json(itemProduct);
+    // console.log("producItemController ~ arrayImagesForOneProduct", arrayImagesForOneProduct);
+
+    res.json([itemProduct, arrayImagesForOneProduct]);
   } catch (err) {
     res.status(500).json({ errorMessage: err.message });
   }

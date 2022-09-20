@@ -61,7 +61,7 @@ function BasketItem({product}) {
                         <b>{product.description}</b>
                     </div>
                     <div variant="h6" component="div">
-                        <b>{product.price} руб.</b>
+                        <b style={{color: "rgb(155, 47, 174)"}}>{product.price} ₽</b>
                     </div>
                 </CardContent>
                 <CardActions>
