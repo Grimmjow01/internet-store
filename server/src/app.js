@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const adminAddProduct = require('./routes/adminAddProductRouter');
 const loadImg = require('./routes/loadImgRouter');
 const loadImgforoneproduct = require('./routes/loadImageForOneProductRouter');
+const updateImages = require('./routes/imageForUpdateRouter');
 const app = express();
 const multer = require('multer')
 // socket.io
@@ -43,7 +44,6 @@ const sessionConfig = {
   saveUninitialized: false,
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 10,
-    httpOnly: true,
   },
 };
 app.use(cookieParser());
@@ -61,6 +61,7 @@ app.use('/contacts', contactsRouter);
 app.use('/api', loginRoute);
 app.use(errorMiddlewares);
 app.use('/admin', adminAddProduct)
+app.use('/updateimages', updateImages)
 
 app.use('/loadImg', loadImg)
 app.use('/loadimageforoneproduct', loadImgforoneproduct)

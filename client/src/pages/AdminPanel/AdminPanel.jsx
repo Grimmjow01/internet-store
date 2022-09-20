@@ -166,7 +166,9 @@ const submitHandler = async (e) => {
       <PreviewBox fileStore={fileStore}/>
       <label>Добавить фото <span className="red">*</span></label>
       <br />
-      <TextField inputProps={{multiple: true}} encType="multipart/form-data" action="/profile-upload-multiple" method="POST" onChange={inputHandler} type="file" name="file"
+      <TextField inputProps={{multiple: true}} encType="multipart/form-data" 
+      action="/profile-upload-multiple" 
+      method="POST" onChange={inputHandler} type="file" name="file"
         className="menuItem"
         required 
         accept='image/*'
