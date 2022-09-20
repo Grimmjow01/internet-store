@@ -2,9 +2,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 
-export default function BasicRatingReadOnly() {
-  const [value, setValue] = React.useState(0);
+export default function BasicRatingReadOnly({item}) {
+  // const [value, setValue] = useState(item.rating);
 
   return (
     <Box
@@ -21,7 +22,7 @@ export default function BasicRatingReadOnly() {
         }}
       /> */}
       {/* <Typography component="legend">Read only</Typography> */}
-      <Rating name="read-only" value={value} readOnly />
+      <Rating name="read-only" value={item.rating} readOnly />
       {/* <Typography component="legend">Disabled</Typography>
       <Rating name="disabled" value={value} disabled />
       <Typography component="legend">No rating given</Typography>

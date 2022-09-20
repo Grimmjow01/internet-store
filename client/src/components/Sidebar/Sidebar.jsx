@@ -23,7 +23,7 @@ function Sidebar() {
   };
   
   return (
-    <Box flex={1} p={3} bgcolor="lightgrey">
+    <Box flex={1} p={3} bgcolor="lightgrey" sx={{ display: { xs: "none", sm: "block" }}}>
       <Card>
         <List
           component="nav"
@@ -39,6 +39,12 @@ function Sidebar() {
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="На главную" />
+          </ListItemButton>
+          <ListItemButton onClick={() => navigate('/contacts')}>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Связатся с нами" />
           </ListItemButton>
           <ListItemButton onClick={() => navigate('/basket')}>
             <ListItemIcon>
@@ -104,7 +110,7 @@ function Sidebar() {
                 <ListItemText primary="Спецзаказ" />
               </ListItemButton>
             </List>
-          </Collapse>
+          </Collapse>       
         </List>
         
         
