@@ -34,7 +34,7 @@ function ProductsList() {
           sx={{ flexWrap: 'wrap' }}
         >
           {!products.product?.length  
-          ? <p>Товары закончились</p>
+          ? <p>Загрузка товаров ...</p>
           : functionOriginalId().map((product) => (
             <ProductItem 
               product={product} 

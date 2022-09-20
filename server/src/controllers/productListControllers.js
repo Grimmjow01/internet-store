@@ -8,7 +8,7 @@ const productListControllers = async (req, res) => {
 const getOneProductForUpdate = async (req, res) => {
   const { id } = req.params;
   const findProduct = await Product.findOne({include: ProductImage, where: {id}, raw: true })
-  console.log("getOneProductForUpdate ~ findProduct", findProduct)
+  // console.log("getOneProductForUpdate ~ findProduct", findProduct)
   const product_id = findProduct['ProductImages.product_id']
    const findImageForProduct = await ProductImage.findAll({ where: {product_id: id}, raw: true })
   if(findProduct){
@@ -44,23 +44,19 @@ const updateProducts = async (req, res) => {
 
 // роутер для отдельной страницы продукта
 const producItemController = async (req, res) => {
+  // console.log('==================', 1)
   try {
     const { id } = req.params;
     const itemProduct = await Product.findOne({ 
       where: { id }, 
-      include: [{
+      include: {
         model: Brand,
+        raw: true,
       },
-      /*{
-        model: Rating,
-      }*/],
-      raw: true,
     });
+    console.log("producItemController ~========= itemProduct", itemProduct);
     const { product_id } = itemProduct;
     const arrayImagesForOneProduct = await ProductImage.findAll({where: { product_id: id }});
-    console.log("producItemController ~ itemProduct", itemProduct);
-    // console.log("producItemController ~ arrayImagesForOneProduct", arrayImagesForOneProduct);
-
     res.json([itemProduct, arrayImagesForOneProduct]);
   } catch (err) {
     res.status(500).json({ errorMessage: err.message });
