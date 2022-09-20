@@ -14,7 +14,7 @@ export const addToBasketAction = (newitem) => ({type: basketTypes.ADD_TO_BASKET,
 export const addToBasketLocalStorage = (basketitems) => ({type: basketTypes.BASKET_FROM_LOCAL, payload: basketitems})
 export const getAllSearchProduct = (prod) => ({type: productTypes.GET_ALL_SEARCHPRODUCT, payload: {prod} });
 export const getUsersRating = (rating) => ({type: productTypes.GET_ALL_RATING, payload: {rating} });
-// export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payload: {rating} });
+export const changeRating = (product_id, newValue) => ({type: productTypes.CHANGE_RATING, payload: {product_id, newValue} });
 
 
 export const deleteProductHandler = (id) => async (dispatch) => {
