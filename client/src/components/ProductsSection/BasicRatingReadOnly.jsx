@@ -4,7 +4,7 @@ import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 
-export default function BasicRatingReadOnly({item}) {
+export default function BasicRatingReadOnly() {
   // const [value, setValue] = useState(item.rating);
 
   return (
@@ -22,7 +22,7 @@ export default function BasicRatingReadOnly({item}) {
         }}
       /> */}
       {/* <Typography component="legend">Read only</Typography> */}
-      <Rating name="read-only" value={item.rating} readOnly />
+      <Rating name="read-only" value={0} readOnly />
       {/* <Typography component="legend">Disabled</Typography>
       <Rating name="disabled" value={value} disabled />
       <Typography component="legend">No rating given</Typography>

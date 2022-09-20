@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from '../../store/auth/action';
 import './Navbar.css';
 import { getAllSearchProduct } from '../../store/products/action';
+import AccountMenu from '../AccountMenu/AccountMenu';
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -51,6 +52,8 @@ function Navbar() {
  
   const setAuth = useSelector((store) => store.auth.setAuth);
   const allProducts = useSelector((store) => store.products.product);
+
+  console.log('setAuth', setAuth)
 
   const products = useSelector((store)=> store.products)
 
@@ -126,15 +129,16 @@ function Navbar() {
                 </Button>
               }
               {!setAuth ? 
-            <Button color="inherit" onClick={handClickOpen}>
-              <AccountCircleIcon fontSize="large" />
-                Войти
-             </Button>
-              :
-              <Button color="inherit" onClick={() => dispatch(logoutThunk())}>
-              <AccountCircleIcon fontSize="large" />
-                Выйти
+                <Button color="inherit" onClick={handClickOpen}>
+                  <AccountCircleIcon fontSize="large" />
+                    Войти
                 </Button>
+              :
+                <AccountMenu />
+                // <Button color="inherit" onClick={() => dispatch(logoutThunk())}>
+                //   <AccountCircleIcon fontSize="large" />
+                //     Выйти
+                // </Button>
               }
               <Dialog open={open} onClose={dialogHandleClosen} aria-labelledby="form-dialog-title">
                 <Auth dialogHandleClosen={dialogHandleClosen}/>
