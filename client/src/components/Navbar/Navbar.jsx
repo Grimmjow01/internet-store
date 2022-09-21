@@ -104,6 +104,7 @@ function Navbar() {
               <InputBase 
               placeholder="Найти в каталоге..."
               value={search}
+              fullWidth={true}
               onChange={(e) => {
                 e.preventDefault();
                 setSearch(e.target.value);

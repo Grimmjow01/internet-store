@@ -78,9 +78,10 @@ function ProductsList({setAuth}) {
           direction="row"
           spacing={0}
           sx={{ flexWrap: 'wrap' }}
+          justifyContent="space-around"
         >
           {!products.product?.length  
-          ? <p>Загрузка товаров</p>
+          ? <p>Загрузка товаров...</p>
           : prodScroll.filter((prod) => prod.name.toLowerCase().includes(productsSearch.toLowerCase()))
           ?.map((product) => (
             <ProductItem setAuth={setAuth}
@@ -90,7 +91,7 @@ function ProductsList({setAuth}) {
               deleteProductHandle={deleteProductHandle}
               
           />
-          ))};
+          ))}
         </Stack>
        </div>
     </Box>

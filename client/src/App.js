@@ -18,6 +18,10 @@ import { EditAdminProduct } from './pages/AdminPanel/EditAdminProduct';
 import { addBasketFromLocal } from './store/products/action';
 import OnlineCalculator from './components/OnlineCalculator/OnlineCalculator';
 
+import 'slick-carousel/slick/slick.css'; 
+import 'slick-carousel/slick/slick-theme.css';
+
+
 
 
 
