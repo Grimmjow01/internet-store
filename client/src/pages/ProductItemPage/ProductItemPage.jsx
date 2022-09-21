@@ -112,7 +112,7 @@ function ProductItemPage() {
                 >
                   <Box sx={style}>
                     <img 
-                      src={('../images/example.jpg')} 
+                      src={pathOneImage} 
                       alt='jhjhkjh' 
                       // width="500px"
                       onClick={handleOpen}

@@ -15,7 +15,7 @@ import { addToBasketHandler } from '../../store/products/action';
 
 function ProductItem({ product, deleteProductHandle, setAuth }) {
 
-  console.log("retrewtretre prod" ,product)
+  // console.log("retrewtretre prod" ,product)
 
 const { id, name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = product
 const pathImages = ProductImages['ProductImages.img']
@@ -86,7 +86,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
             </Typography> */}
             <BasicRating product={product} />
             <Typography gutterBottom variant="h6" component="div" color="secondary" fontWeight="bold">
-              {product.price} руб.
+              {product.price} ₽
             </Typography>
           </Box>
           <Box>

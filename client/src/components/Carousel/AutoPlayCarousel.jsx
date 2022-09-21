@@ -25,10 +25,20 @@ function SamplePrevArrow(props) {
   );
 }
 
+const functionOriginalId = (prod) => {
+  const originalId = {}
+  prod.map((prod) => originalId[prod.id] = prod )
+  return Object.values(originalId)
+};
 
 function AutoPlayCarousel({products}) {
   
-  const filteredProducts = products.filter(product => product.type_id === 1);
+  // const { product } = products
+  // console.log('Carousel products', products)
+  const funcProdac = functionOriginalId(products);
+  // console.log('Carousel funcProdac', funcProdac)
+  const filteredProducts = funcProdac.filter(product => product.type_id === 1);
+
 
   const settings = {
     dots: false,
