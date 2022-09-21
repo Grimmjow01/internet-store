@@ -38,7 +38,17 @@ const Search = styled("div")({
 function Navbar() {
   const navigate = useNavigate(); // или используй Navlink
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
+  const [isOpenSearch, setIsOpenSearch] = useState(true);
+
+  const setAuth = useSelector((store) => store.auth.setAuth);
+  const dataAdmin = useSelector((store) => store.auth.isAdmin);
+  const allProducts = useSelector((store) => store.products.product);
+
+  console.log('setAuth', setAuth);
+  console.log('dataAdmin', dataAdmin);
   
   useEffect(() => {
     if (!search) {
@@ -46,21 +56,9 @@ function Navbar() {
     };
   }, [search]);
   
-  const [open, setOpen] = useState(false);
-  
-  const [isOpenSearch, setIsOpenSearch] = useState(true);
  
-  const setAuth = useSelector((store) => store.auth.setAuth);
-  const allProducts = useSelector((store) => store.products.product);
-
-  console.log('setAuth', setAuth)
-
-  const products = useSelector((store)=> store.products)
-
-
-
   const numberInBasket = JSON.parse(localStorage.getItem('basketItems'))?.length;
-
+  
   const filteredAllProducts = useDeferredValue(allProducts.filter((prod) => prod.name.toLowerCase().includes(search.toLowerCase())));
 
   const handClickOpen = () => {
@@ -123,7 +121,7 @@ function Navbar() {
           </Box>
           <Box>
             <Stack direction="row" spacing={2}>
-              { setAuth &&
+              { dataAdmin &&
                 <Button color="inherit" onClick={() => navigate('/admin')}>
                   Admin
                 </Button>
