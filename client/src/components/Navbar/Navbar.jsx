@@ -45,8 +45,6 @@ function Navbar() {
   const allProducts = useSelector((store) => store.products.product);
 
   const products = useSelector((store)=> store.products)
-
-
   
   useEffect(() => {
     if (!search) {
@@ -56,8 +54,10 @@ function Navbar() {
   
  
   const numberInBasket = JSON.parse(localStorage.getItem('basketItems'))?.length;
+
+  console.log("All Products", allProducts)
   
-  const filteredAllProducts = useDeferredValue(allProducts.filter((prod) => prod.name.toLowerCase().includes(search.toLowerCase())));
+  const filteredAllProducts = useDeferredValue(allProducts?.filter((prod) => prod.name.toLowerCase().includes(search.toLowerCase())));
 
   const handClickOpen = () => {
     setOpen(true);
@@ -113,7 +113,7 @@ function Navbar() {
             </Search>
             <ul className="autocomplete">
               {search && isOpenSearch
-                && filteredAllProducts.map((product) => (
+                && filteredAllProducts?.map((product) => (
                   <li key={product.id} className="autocomplete-Item" data-productid={product.id} onClick={itemHandler}>{product.name}</li>
                 ))}
             </ul>
@@ -122,7 +122,7 @@ function Navbar() {
             <Stack direction="row" spacing={2}>
               { dataAdmin &&
                 <Button color="inherit" onClick={() => navigate('/admin')}>
-                  Admin
+                  Админ
                 </Button>
               }
               {!setAuth ? 

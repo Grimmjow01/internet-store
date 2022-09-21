@@ -33,7 +33,7 @@ function ProductItemPage() {
   
   const dispatch = useDispatch();
   
-  const { id } = useParams();
+
 
   const products = useSelector((store) => store.products.product); 
   let snackbarState = useSelector((store) => store.snackbarState);
@@ -49,7 +49,6 @@ function ProductItemPage() {
   const { name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = item
   const pathImages = ProductImages['ProductImages.img']
   const pathOneImage = `http://localhost:3100/${productImage[0]?.img}`;
-  console.log('pathOneImage===', pathOneImage);
   
   useEffect(() => {
     ( async () => {
@@ -112,7 +111,7 @@ function ProductItemPage() {
                 >
                   <Box sx={style}>
                     <img 
-                      src={('../images/example.jpg')} 
+                      src={pathOneImage} 
                       alt='jhjhkjh' 
                       // width="500px"
                       onClick={handleOpen}

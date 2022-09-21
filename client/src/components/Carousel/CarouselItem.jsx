@@ -10,6 +10,7 @@ function CarouselItem({ product }) {
   const { id, name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = product
   const pathImages = ProductImages['ProductImages.img']
   const pathOneImage = `http://127.0.0.1:3100${pathImages}`
+  
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ function CarouselItem({ product }) {
         <Stack direction="row" spacing={2} alignItems="center">
           <Box>
             <Typography gutterBottom variant="h6" component="div" color="secondary" fontWeight="bold">
-              {product.price} ₽
+              {product.price - (product.price * 0.100)} ₽
             </Typography>
           </Box>
           <Box>

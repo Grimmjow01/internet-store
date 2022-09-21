@@ -21,10 +21,11 @@ export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payl
 
 
 export const changeRating = (product_id, newValue) => ({type: productTypes.CHANGE_RATING, payload: {product_id, newValue} });
-export const getAllTypes = (type) => ({type: basketTypes.GET_ALL_TYPES, payload: {type}});
+export const getAllTypes = (type) => ({type: productTypes.GET_ALL_TYPES, payload: {type}});
 
 
 export const deleteProductHandler = (id) => async (dispatch) => {
+  console.log("ID=>>>>>>>>>>>>>>>>>>>>>>>>>>.", id)
   await fetch(`http://localhost:3100/api/products/${id}`, {
     method: 'DELETE',
     headers: {
