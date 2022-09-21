@@ -8,7 +8,7 @@ import './ProductsList.css';
 function ProductsList() {
   
   const products = useSelector((store) => store.products);
-  console.log("ProductsList ~ products", products)
+  // console.log("ProductsList ~ products", products)
   const { product } = products
    const functionOriginalId = () => {
     const originalId = {}

@@ -28,7 +28,7 @@ function App() {
     if (localStorage.getItem('token')) {
       dispatch(checkAuthThunk());
     };
-    console.log("fre tyhtr hytrh ytre ytr", JSON.parse(localStorage.getItem('basketItems')))
+    // console.log("fre tyhtr hytrh ytre ytr", JSON.parse(localStorage.getItem('basketItems')))
     if(localStorage.getItem('basketItems')){
       dispatch(addBasketFromLocal(JSON.parse(localStorage.getItem('basketItems'))))
     } else {

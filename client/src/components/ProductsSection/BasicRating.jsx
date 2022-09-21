@@ -44,7 +44,7 @@ export default function BasicRating({ product }) {
       <>
       <Rating
         name="simple-controlled"
-        value={value}
+        value={value || ''}
         onChange={(event, newValue) => {
           setValue(newValue);
           ratingHandler(newValue);

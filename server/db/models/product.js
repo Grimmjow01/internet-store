@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     this.hasMany(models.ProductInfo, { foreignKey: 'product_id', onDelete: 'cascade' });
     this.hasMany(models.Rating, { foreignKey: 'product_id', onDelete: 'cascade' });
     this.hasMany(models.ProductImage, { foreignKey: 'product_id',  onDelete: 'cascade' });
+    this.hasMany(models.Comment, { foreignKey: 'product_id',  onDelete: 'cascade' });
   }
   }
   Product.init({

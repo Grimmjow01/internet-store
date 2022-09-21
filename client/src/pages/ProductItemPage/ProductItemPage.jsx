@@ -43,7 +43,7 @@ function ProductItemPage() {
   };
 
   const { id } = useParams();
-  console.log('------------',item)
+  // console.log('------------',item)
   
   const { name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = item
   // const pathImages = ProductImages['ProductImages.img']
