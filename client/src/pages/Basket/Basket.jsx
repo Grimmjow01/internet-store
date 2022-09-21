@@ -33,7 +33,7 @@ function Basket() {
 
             <Box>
             <h1>Ваша корзина:</h1>
-             {console.log("products.basket", products.basket)}
+
             {products.basket.map((product) => (
                  <BasketItem key ={product.id} product={product} />
                 )

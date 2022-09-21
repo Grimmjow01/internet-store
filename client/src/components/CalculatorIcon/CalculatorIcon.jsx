@@ -5,7 +5,7 @@ const CalculatorIcon = () => {
   return (
     <>
     <a href="/calculate" className="zuchel-online">
-	<img src="/images/zuchel-online.png" tppabs="/images/zuchel-online.png" alt="Онлайн расчет"/>
+	<img src="/images/zuchel-online5.png" tppabs="/images/zuchel-online.png" alt="Онлайн расчет"/>
    </a>
    </>
   )

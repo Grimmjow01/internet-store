@@ -15,7 +15,7 @@ export const productsReducer = (state = initState, action) => {
        return {...state, productImages: [...state.productImages, ...action.payload.obj]  }
 
        case productTypes.ADD_IMAGES_PRODUCT:
-         console.log("productsReducer ~ action.payload.obj============", action.payload.obj)
+
        return {...state, productImages: [...state.productImages, ...action.payload.obj] }
        
        case productTypes.DELETE__ONE_IMAGE_PRODUCT:
@@ -55,6 +55,7 @@ export const productsReducer = (state = initState, action) => {
         }});
 
           return { ...state, product:  AddProductRating }
+          
       case basketTypes.BASKET_FROM_LOCAL:
         return {...state, basket:  action.payload}
     

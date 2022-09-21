@@ -26,8 +26,6 @@ function BasketItem({product}) {
 
             let item = items[i];
 
-            console.log("items", item)
-            console.log("itemid", item)
             if (item.id == id) {
                 
                 items.splice(i, 1);
