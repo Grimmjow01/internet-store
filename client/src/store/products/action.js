@@ -15,7 +15,7 @@ export const addToBasketLocalStorage = (basketitems) => ({type: basketTypes.BASK
 export const getAllSearchProduct = (prod) => ({type: productTypes.GET_ALL_SEARCHPRODUCT, payload: {prod} });
 export const getUsersRating = (rating) => ({type: productTypes.GET_ALL_RATING, payload: {rating} });
 export const changeRating = (product_id, newValue) => ({type: productTypes.CHANGE_RATING, payload: {product_id, newValue} });
-
+export const getAllTypes = (type) => ({type: basketTypes.GET_ALL_TYPES, payload: {type}});
 
 export const deleteProductHandler = (id) => async (dispatch) => {
   await fetch(`http://localhost:3100/api/products/${id}`, {

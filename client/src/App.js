@@ -17,7 +17,7 @@ import { EditAdminProduct } from './pages/AdminPanel/EditAdminProduct';
 
 import { addBasketFromLocal } from './store/products/action';
 import OnlineCalculator from './components/OnlineCalculator/OnlineCalculator';
-
+import SidebarItem from './components/Sidebar/SidebarItem';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -55,6 +55,7 @@ function App() {
       <Route path="/chat" element={<Chat />}/>
       <Route path="/products/:id" element={<ProductItemPage />}/>
       <Route path="/api/products/:id" element={<EditAdminProduct />} />
+      <Route path="/category/:id" element={<SidebarItem />} />
 
     </Route>
   </Routes>

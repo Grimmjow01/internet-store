@@ -29,6 +29,9 @@ export const registerThunk = (inputLogin, callback) => async (dispatch) => {
         localStorage.setItem('token', response.data.accessToken);
         dispatch(collectorData(response.data.user));
         dispatch(isAuth(true));
+        if (response.data.user.role === 'admin') {
+            dispatch(dataAdmin(true));
+        };
         callback();
     } catch (e) {
         dispatch(collectorErrorMessage(e.response?.data?.message));
@@ -40,6 +43,7 @@ export const logoutThunk = () => async (dispatch) => {
         const response = await $api.post('/logout');
         localStorage.removeItem('token');
         dispatch(isAuth(false));
+        dispatch(dataAdmin(false));
     } catch (e) {
     }
 };
@@ -51,6 +55,9 @@ export const checkAuthThunk = () => async (dispatch) => {
         localStorage.setItem('token', response.data.accessToken);
         dispatch(collectorData(response.data.user));
         dispatch(isAuth(true));
+        if (response.data.user.role === 'admin') {
+            dispatch(dataAdmin(true));
+        };
     } catch (e) {
     }
 };

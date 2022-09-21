@@ -142,7 +142,6 @@ function Navbar() {
                 <Auth dialogHandleClosen={dialogHandleClosen}/>
               </Dialog>
               {
-             
                   <Button color="inherit" onClick={() => navigate('/basket')}>
                     <Badge badgeContent={products.basket.length} color="error">
                       <ShoppingCartRoundedIcon fontSize="large" />

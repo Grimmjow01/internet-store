@@ -1,6 +1,6 @@
 import { productTypes, basketTypes } from '../types';
 
-const initState = {basket: [], product: [], searchProduct: '', allRating: [], productImages: [] }
+const initState = {basket: [], product: [], searchProduct: '', allRating: [], productImages: [], types: [] }
 
 export const productsReducer = (state = initState, action) => {
 
@@ -53,14 +53,16 @@ export const productsReducer = (state = initState, action) => {
           } else {
           return prod;
         }});
+        return { ...state, product:  AddProductRating }
 
-          return { ...state, product:  AddProductRating }
-          
       case basketTypes.BASKET_FROM_LOCAL:
-        return {...state, basket:  action.payload}
+        return {...state, basket:  action.payload};
     
       case basketTypes.ADD_TO_BASKET:
-        return {...state, basket: [...state.basket, action.payload.newitem]}
+        return {...state, basket: [...state.basket, action.payload.newitem]};
+
+      case basketTypes.GET_ALL_TYPES:
+        return {...state, types: action.payload.type};
  
     default:
       return state;

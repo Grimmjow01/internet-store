@@ -26,9 +26,6 @@ function ProductsList({setAuth}) {
   
 
  const funcProdac = functionOriginalId(product);
- 
- console.log('funcProdac===', funcProdac);
- console.log('product===', product);
   
   useEffect(() => {
     if (fetching) {
