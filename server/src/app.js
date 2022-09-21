@@ -25,6 +25,7 @@ const { Server } = require("socket.io");
 const contactsRouter = require("./routes/contactsRoute");
 const loginRoute = require('./routes/loginRoute');
 const ratingRoute = require('./routes/ratingRoute');
+const typeRoute = require('./routes/typeRoute');
 
 const errorMiddlewares = require('./middlewares/errorMiddlewares');
 
@@ -70,6 +71,7 @@ app.use('/loadimageforoneproduct', loadImgforoneproduct)
 
 app.use('/loadImg', loadImg);
 app.use('/api', ratingRoute);
+app.use('/api', typeRoute);
 
 
 const io = new Server(server, {

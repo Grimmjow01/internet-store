@@ -68,7 +68,7 @@ export const productsReducer = (state = initState, action) => {
         case commentTypes.SET_ALL_COMMENT_ONE_PRODUCT:
         return {...state, comment: action.payload.obj}
 
-      case basketTypes.GET_ALL_TYPES:
+      case productTypes.GET_ALL_TYPES:
         return {...state, types: action.payload.type};
  
     default:
