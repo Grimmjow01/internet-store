@@ -45,8 +45,10 @@ function Home() {
         <div className='heroHide'>
           <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}>Спрятать</Button>
         </div>
-        <CalculatorIcon />
-      {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}  */}
+
+{/*         <CalculatorIcon/> */}
+       {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   */}
+
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar flex={2} />
         <Box flex={6}>

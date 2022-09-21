@@ -27,7 +27,8 @@ const ChatIcon = () => {
       
   return (
     <>
-    <ChatOutlinedIcon className="chat-icon" onClick={toggleClass}/>
+    <div className="chat-icon" onClick={toggleClass}><ChatOutlinedIcon id='padding-icon' /></div>
+    
       
      <Box aria-labelledby="form-dialog-title" className={isActive ? 'chat-box': 'chat-box-hidden'} >
            <Chat />

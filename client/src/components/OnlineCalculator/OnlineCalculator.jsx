@@ -11,12 +11,9 @@ async function createMarkup () {
 function OnlineCalculator() {
     
   return (
-
       <>
      <div dangerouslySetInnerHTML={createMarkup()} />;
       </>
-
-
   );
 }
 
