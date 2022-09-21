@@ -13,11 +13,13 @@ import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Sidebar() {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(true);
-
+  const types = useSelector((store) => store.products.types);
+  console.log('products====', types);
   const handleClick = () => {
     setOpen(!open);
   };
@@ -61,7 +63,7 @@ function Sidebar() {
           </ListItemButton>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>                      
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton onClick={() => navigate(`/category/${types[0].id}`)} sx={{ pl: 4 }}>
                 <ListItemIcon>
                   <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon >
