@@ -12,6 +12,7 @@ import {  allRatingThunk } from '../../store/products/action';
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';
 import './Home.css'
+import Carousel from '../../components/Carousel/Carousel';
 
 function Home() { 
   const dispatch = useDispatch();
@@ -40,14 +41,17 @@ function Home() {
   
   
   return (
-    <Box>
-         <div className='heroHide'>
-        <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}>Спрятать</Button>
+    <Box sx={{ backgroundColor: "#EAF0F6" }}>
+        <div className='heroHide'>
+          <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}>Спрятать</Button>
         </div>
       {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}  */}
-      <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Sidebar />
-        <ProductsList products={products} />
+      <Stack direction="row" spacing={2}>
+        <Sidebar flex={2} />
+        <Box flex={6}>
+          <Carousel products={products} />
+          <ProductsList products={products} />
+        </Box>
         
        </Stack>
     </Box>

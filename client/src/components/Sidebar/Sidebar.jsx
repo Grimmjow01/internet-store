@@ -23,7 +23,7 @@ function Sidebar() {
   };
   
   return (
-    <Box flex={1} p={3} bgcolor="lightgrey" sx={{ display: { xs: "none", sm: "block" }}}>
+    <Box p={3} sx={{ display: { xs: "none", sm: "block" }}}>
       <Card>
         <List
           component="nav"
