@@ -15,18 +15,16 @@ const addcommentControlles = async (req, res) => {
   }
 }
 const getcommentControlles = async (req, res) => {
-  console.log('==================', 2);
   const { id } = req.params
-  try {
-    const allcommentsOneProduct = await Comment.findAll({where: { product_id: id}});
+    const allcommentsOneProduct = await Comment.findAll();
     console.log("getcommentControlles ~ allcommentsOneProduct", allcommentsOneProduct)
     if(allcommentsOneProduct) {
-      const findUsersComments = await User.findAll({where: { id: allcommentsOneProduct.user_id }})
-      console.log("getcommentControlles ~ findUsersComments", findUsersComments)
-      res.json(findUsersComments);
+      res.json(allcommentsOneProduct);
+      } else {
+         res.sendStatus(401)
+        
+      }
     }
-  } catch (e) {
-    res.status(400).json({ message: 'error' });
-  }
-}
+
+   
 module.exports = { addcommentControlles, getcommentControlles}

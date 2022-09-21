@@ -2,7 +2,6 @@ const { Product, ProductImage } = require('../../db/models');
 
 const loadImageForOneProductControllers = async (req, res) => {
   const { id } = req.params;
-  console.log('======================loadImageForOneProductControllers', 1);
    const findImageForProduct = await ProductImage.findAll({ where: { product_id: id }, raw: true})
    if(findImageForProduct){
     res.json(findImageForProduct)
@@ -21,7 +20,6 @@ const deleteImageForOneProductControllers = async (req, res) => {
     res.sendStatus(400)
   }
 }
-
 
 module.exports = { loadImageForOneProductControllers, deleteImageForOneProductControllers }
 

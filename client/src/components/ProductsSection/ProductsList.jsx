@@ -30,7 +30,7 @@ function ProductsList({setAuth}) {
   
   useEffect(() => {
     if (fetching) {
-      console.log('fetching', fetching);
+      // console.log('fetching', fetching);
       let prod = funcProdac.slice(0 + currentPage, currentPage +10);
       setFetching (false);
     setProdScroll([...prodScroll, ...prod]);

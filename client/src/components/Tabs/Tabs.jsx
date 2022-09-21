@@ -1,20 +1,16 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Comments from "./Comments";
-import { getAllCommentsFromDatabase } from "../../store/products/action";
 import { useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 
 function TabPanel(props) {
-  const { id } = useParams();
   const { children, value, index, ...other } = props;
   const dispatch = useDispatch();
-
-    dispatch(getAllCommentsFromDatabase(id)) 
      
   return (
     <div
