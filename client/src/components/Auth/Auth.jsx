@@ -83,7 +83,7 @@ const inputChange = (e) => {
         <Typography style={orStyle}>
           или
         </Typography >
-        <div style={signStyle, textCenter}>
+        <div >
           <Typography>
             {' '}
             Нет аккаунта?
@@ -137,7 +137,7 @@ const inputChange = (e) => {
           <Typography style={orStyle}>
             или
           </Typography>
-          <div style={logStyle, textCenter}>
+          <div >
             <Typography>
               {' '}
               Есть аккаунт?

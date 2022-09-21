@@ -25,6 +25,7 @@ export const getAllTypes = (type) => ({type: basketTypes.GET_ALL_TYPES, payload:
 
 
 export const deleteProductHandler = (id) => async (dispatch) => {
+  console.log("ID=>>>>>>>>>>>>>>>>>>>>>>>>>>.", id)
   await fetch(`http://localhost:3100/api/products/${id}`, {
     method: 'DELETE',
     headers: {

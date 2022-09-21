@@ -148,7 +148,7 @@ const submitHandler = async (e) => {
       type="file" name="file" className="menuItem" required accept='image/*' id="file"/> 
 </Box>
           <Button type="button" onClick={() => {dispatch(editProductHandle ({
-             id, name,price,description,type_id,brand_id })) ;
+             id, name,price,description, type_id,brand_id })) ;
         dispatch(snackBarStatus(true));   submitHandler(); 
         }}> Сохранить изменения</Button>
            <br />
