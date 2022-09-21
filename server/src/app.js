@@ -12,6 +12,7 @@ const adminAddProduct = require('./routes/adminAddProductRouter');
 const loadImg = require('./routes/loadImgRouter');
 const loadImgforoneproduct = require('./routes/loadImageForOneProductRouter');
 const updateImages = require('./routes/imageForUpdateRouter');
+const addcomment = require('./routes/addcommentRouter');
 const app = express();
 const multer = require('multer')
 // socket.io
@@ -62,6 +63,7 @@ app.use('/api', loginRoute);
 app.use(errorMiddlewares);
 app.use('/admin', adminAddProduct)
 app.use('/updateimages', updateImages)
+app.use('/api/addcomment', addcomment)
 
 app.use('/loadImg', loadImg)
 app.use('/loadimageforoneproduct', loadImgforoneproduct)

@@ -1,12 +1,8 @@
 const { ProductImage } = require('../../db/models');
 
     const getImageForUpdate = async (req, res) => {
-      console.log('==========================', 1);
       const file  = req.files;
       console.log("loadImgControllers ~ file", file)
-      // const { id } = req.params
-      // console.log("getImageForUpdate ~ id", id)
-      
        const { product_id, filePath } = req.body
      
        if(filePath !== '/img/undefined'){

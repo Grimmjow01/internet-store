@@ -48,9 +48,11 @@ useEffect(() => {
       {setAuth && userRating ?
       <>
       <Rating
+
         name="half-rating"
         value={value}
         precision={0.5}
+
         onChange={(event, newValue) => {
           setValue(newValue);
           ratingHandler(newValue);

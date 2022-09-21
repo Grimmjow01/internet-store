@@ -12,7 +12,6 @@ export const productTypes = {
   CHANGE_RATING: 'CHANGE_RATING',
   GET_ONE_PRODUCT : 'GET_ONE_PRODUCT',
   GET_ALL_TYPES : 'GET_ALL_TYPES',
-
  }
  
 export const snackBarTypes = {
@@ -20,17 +19,27 @@ export const snackBarTypes = {
     SNACKBAR_MESSAGE :'SNACKBAR_MESSAGE'
 }
 export const authTypes = {
+
+  AUTH_LOG : 'AUTH_LOG',
+  AUTH_USERDATA : 'AUTH_USERDATA',
+  AUTH_ERRORMESSAGE : 'AUTH_ERRORMESSAGE',
+}
+
     AUTH_LOG : 'AUTH_LOG',
     AUTH_USERDATA : 'AUTH_USERDATA',
     AUTH_ERRORMESSAGE : 'AUTH_ERRORMESSAGE',
     AUTH_ADMIN : 'AUTH_ADMIN',
-    
  }
+
 export const basketTypes = {
   ADD_TO_BASKET: 'ADD_TO_BASKET',
   CHANGE_QUANTITY: 'CHANGE_QUANTITY',
-
+  
   DELETE_ITEM:'DELETE_ITEM',
   BASKET_FROM_LOCAL: 'BASKET_FROM_LOCAL',
 }
 
+export const commentTypes = {
+  ADD_ONE_COMMENT: 'ADD_ONE_COMMENT',
+  SET_ALL_COMMENT_ONE_PRODUCT: 'SET_ALL_COMMENT_ONE_PRODUCT',
+}
