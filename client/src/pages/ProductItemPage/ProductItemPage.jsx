@@ -46,9 +46,6 @@ function ProductItemPage() {
     dispatch(snackBarStatus(true));
   };
 
-
-  const { id } = useParams();
-
   const { name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = item
   const pathImages = ProductImages['ProductImages.img']
   const pathOneImage = `http://localhost:3100/${productImage[0]?.img}`;

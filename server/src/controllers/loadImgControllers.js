@@ -1,7 +1,6 @@
 const { ProductImage } = require('../../db/models');
 
 const loadImgControllers = async (req, res) => {
-  console.log('======================loadImgControllers', 123);
  const file  = req.files;
  console.log("loadImgControllers ~ file", file)
 
@@ -18,7 +17,6 @@ const loadImgControllers = async (req, res) => {
   }
 
   const loadAllImgControllers = async (req, res) => {
-    console.log('======================loadAllImgControllers', 3);
     const allImages = await ProductImage.findAll()
     res.json(allImages)
   }

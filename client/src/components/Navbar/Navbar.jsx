@@ -46,7 +46,7 @@ function Navbar() {
 
   const products = useSelector((store)=> store.products)
 
-  console.log('dataAdmin', dataAdmin);
+
   
   useEffect(() => {
     if (!search) {

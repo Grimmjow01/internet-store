@@ -101,6 +101,7 @@ export const addCommentDatabaseAndStore = (newComment, id) => async (dispatch) =
       body: JSON.stringify(newComment),
     });
     const newCommentDatabase = await res.json()
+    console.log("addCommentDatabaseAndStore ~ newCommentDatabase======================", newCommentDatabase)
     dispatch(addCommentAction(newCommentDatabase))
   } catch (error) {
     console.log('  Ошибка добавления комментария в store', error);
@@ -116,6 +117,7 @@ export const getAllCommentsFromDatabase = (id) => async (dispatch) => {
       credentials: 'include',
     });
     const allCommentOneProductDatabase = await res.json()
+    console.log("action 111111111111", allCommentOneProductDatabase)
     dispatch(getCommentOneProductAction(allCommentOneProductDatabase))
   } catch (error) {
     console.log('  Ошибка добавления комментария в store', error);
