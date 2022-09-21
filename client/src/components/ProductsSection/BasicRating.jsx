@@ -1,24 +1,21 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { changeRating } from '../../store/products/action';
 
 export default function BasicRating({ product }) {
-  const [value, setValue] = React.useState(product.rating);
+  const products = useSelector((store) => store.products.product);
+  const productRating = products.filter(prod => prod.id === product.id);
   const setAuth = useSelector((store) => store.auth.setAuth);
   const userData = useSelector((store) => store.auth.userData);
   const allRating = useSelector((store) => store.products.allRating);
-
-  const ratingHandler = (newValue) => {
-    axios.patch(`http://localhost:3100/api/addrating`, 
-    { valueRating: newValue, user_id: userData.id, product_id: product.id })
-    .then((res) => console.log('res=====>',res.data));
-  };
-
+  const dispatch = useDispatch();
+  
   const userRatingExamination = () => {
-    const oneProductRating = allRating.filter(prod => prod.product_id === product.id);
+    const oneProductRating = allRating.filter(prod => prod.product_id === productRating[0].id);
       if (userData.id !== oneProductRating[0]?.user_id) {
         return true
       } else {
@@ -26,13 +23,21 @@ export default function BasicRating({ product }) {
       };
   };
 
-  let userRating = userRatingExamination();
+  const [userRating, setUserRating] = useState(userRatingExamination());
+  
+  const [value, setValue] = React.useState(productRating[0].rating);
+  const ratingHandler = (newValue) => {
+    axios.patch(`http://localhost:3100/api/addrating`, 
+    { valueRating: newValue, user_id: userData.id, product_id: product.id });
+    dispatch(changeRating(product.id, newValue));
+    setUserRating(false)
+  };
 
-  useEffect(() => {
-    userRatingExamination()
-  }, [value]);
+   
+useEffect(() => {
+  }, [userRating]);
 
-  // console.log('value====>', value);
+  
 
   return (
     <Box
@@ -43,8 +48,11 @@ export default function BasicRating({ product }) {
       {setAuth && userRating ?
       <>
       <Rating
-        name="simple-controlled"
-        value={value || ''}
+
+        name="half-rating"
+        value={value}
+        precision={0.5}
+
         onChange={(event, newValue) => {
           setValue(newValue);
           ratingHandler(newValue);
@@ -53,9 +61,11 @@ export default function BasicRating({ product }) {
       </>
       :
       <>
-      <Rating name="read-only" value={value} readOnly />
+      <Rating name="read-only" value={value} precision={0.5} readOnly  />
+      {/* <p> HELLO</p> */}
       </>
       }
     </Box>
   );
-}
+};
+

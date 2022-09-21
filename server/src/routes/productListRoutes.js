@@ -9,14 +9,15 @@ router
 .get(productListControllers)
 
 router
+  .get('/:id', producItemController)
+
+router
 
 .route('/:id')
 .get(getOneProductForUpdate)
 .delete( deleteProducts)
 .put( updateProducts)
 
-router
-  .get('/:id', producItemController)
 
 // router
 //   .delete('/:id', deleteProducts)

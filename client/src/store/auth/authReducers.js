@@ -4,6 +4,7 @@ const initState = {
     setAuth : false,
     userData: {},
     errorMessage: '',
+    isAdmin: false,
 };
 
 export const authReducers = (state = initState, action) => {
@@ -14,6 +15,8 @@ export const authReducers = (state = initState, action) => {
         return {...state, userData : action.payload.data};
         case authTypes.AUTH_ERRORMESSAGE:
         return {...state, errorMessage : action.payload.message};
+        case authTypes.AUTH_ADMIN:
+        return {...state, isAdmin : action.payload.data};
         default:
         return state;
     };

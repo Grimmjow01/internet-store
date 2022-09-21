@@ -1,0 +1,17 @@
+.main-step{
+    clear: both;
+    float: left;
+    width: 100%;
+    background: #a2a4ff;
+    font-size: 15px;
+}
+
+.calcBox{
+    width: 1000px;
+}
+
+#broskoweb_container{
+    height: 1000px; 
+    width: 1000px;
+
+}

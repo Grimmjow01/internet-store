@@ -12,7 +12,7 @@ export const PreviewBox = ({ fileStore }) => {
     >
       {fileStore.map((file) => 
       (
-        <Grid  direction="column">
+        <Grid key={fileStore[0].id} direction="column">
        
         </Grid>
       ))}

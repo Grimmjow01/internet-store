@@ -11,6 +11,7 @@ export const productTypes = {
   GET_ALL_RATING: 'GET_ALL_RATING',
   CHANGE_RATING: 'CHANGE_RATING',
   GET_ONE_PRODUCT : 'GET_ONE_PRODUCT',
+  GET_ALL_TYPES : 'GET_ALL_TYPES',
  }
  
 export const snackBarTypes = {
@@ -18,10 +19,18 @@ export const snackBarTypes = {
     SNACKBAR_MESSAGE :'SNACKBAR_MESSAGE'
 }
 export const authTypes = {
+
   AUTH_LOG : 'AUTH_LOG',
   AUTH_USERDATA : 'AUTH_USERDATA',
   AUTH_ERRORMESSAGE : 'AUTH_ERRORMESSAGE',
 }
+
+    AUTH_LOG : 'AUTH_LOG',
+    AUTH_USERDATA : 'AUTH_USERDATA',
+    AUTH_ERRORMESSAGE : 'AUTH_ERRORMESSAGE',
+    AUTH_ADMIN : 'AUTH_ADMIN',
+ }
+
 export const basketTypes = {
   ADD_TO_BASKET: 'ADD_TO_BASKET',
   CHANGE_QUANTITY: 'CHANGE_QUANTITY',

@@ -8,7 +8,7 @@ import Snackbar from '../../components/Snackbar/Snackbar'
 import BasicTabs from '../../components/Tabs/Tabs';
 import './ProductItemPage.module.css';
 import { useParams } from 'react-router-dom';
-import { addToBasketHandler, getOneProduct } from '../../store/products/action';
+import { addImagesProductAction, addToBasketHandler, allRatingThunk, getAllProduct, getOneProduct } from '../../store/products/action';
 
 const style = {
   position: 'absolute',
@@ -25,7 +25,7 @@ const style = {
 
 function ProductItemPage() {
   const [item, setItem] = useState([])
-  const [arrayImage, setArrayImage] = useState([])
+  const [arrayImage, setArrayImage] = useState('')
   const [open, setOpen] = useState(false);
   
   const handleOpen = () => setOpen(true);
@@ -33,21 +33,43 @@ function ProductItemPage() {
   
   const dispatch = useDispatch();
   
-  const product = useSelector((store) => store.products.product); 
+  const { id } = useParams();
+
+  const products = useSelector((store) => store.products.product); 
   let snackbarState = useSelector((store) => store.snackbarState);
+  const productImage = useSelector((store) => store.products.productImages)
+
   
   const handleClick = () => {
     // setOpen(true);
-    dispatch(addToBasketHandler(product));
+    dispatch(addToBasketHandler(products));
     dispatch(snackBarStatus(true));
   };
 
+
   const { id } = useParams();
-  // console.log('------------',item)
-  
+
   const { name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = item
-  // const pathImages = ProductImages['ProductImages.img']
-  // const pathOneImage = `http://127.0.0.1:3100/${arrayImage[0].img}`;
+  const pathImages = ProductImages['ProductImages.img']
+  const pathOneImage = `http://localhost:3100/${productImage[0]?.img}`;
+  console.log('pathOneImage===', pathOneImage);
+  
+  useEffect(() => {
+    ( async () => {
+      const res = await fetch('http://localhost:3100/api/products', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const products = await res.json();
+      dispatch(getAllProduct(products))
+    })();
+
+    dispatch(allRatingThunk());
+    
+  }, [dispatch]);
   
   useEffect(() => {
     ( async () => {
@@ -63,13 +85,13 @@ function ProductItemPage() {
       const [, arrayImagesForOneProduct] = itemProduct;
       setItem(item);
       setArrayImage(arrayImagesForOneProduct);
+      
+      dispatch(addImagesProductAction(arrayImagesForOneProduct));
       // dispatch(getOneProduct(itemProduct))
       // console.log('arrayImagesForOneProduct ======>', arrayImagesForOneProduct)
+      
     })()
   }, []);
-  
-  // console.log('item', item)
-  // console.log('=======', pathOneImage)
   
   return (
     <Box sx={{p: "20px"}}>
@@ -78,12 +100,13 @@ function ProductItemPage() {
             <Stack direction="column" spacing={2}>
               <Container>
                 <img 
-                  src={('../images/example.jpg')} 
+                  src={pathOneImage} 
                   alt='jhjhkjh' 
                   width="500px"
                   onClick={handleOpen}
                   // styles={{ height: "100px"}}
                 />
+                
                 <Modal
                   open={open}
                   onClose={handleClose}
@@ -103,27 +126,16 @@ function ProductItemPage() {
               </Container>
               <Container>
                 <Stack sx={{display: {xs: "none", sm: "flex", md: "flex"}}} direction="row" spacing={2} justifyContent="space-around">
-                  <Box>
-                    <img 
-                      src={('../images/example.jpg')} 
-                      alt='jhjhkjh' 
-                      width="150px"
-                    /> 
-                  </Box>
-                  <Box>
-                    <img 
-                        src={('../images/example.jpg')} 
-                        alt='jhjhkjh' 
-                        width="150px"
-                    /> 
-                  </Box>
-                  <Box>
-                    <img 
-                        src={('../images/example.jpg')} 
-                        alt='jhjhkjh' 
-                        width="150px"
-                    /> 
-                  </Box>
+                  {productImage?.map((el) => 
+                    <> {/* key={image_id} */} 
+                      <Box>
+                        <img 
+                          src={(`http://localhost:3100` + el.img)} 
+                          alt='jhjhkjh' 
+                          width="150px"
+                        /> 
+                      </Box>                 
+                    </>) }
                 </Stack>
               </Container>
             </Stack>
@@ -140,7 +152,7 @@ function ProductItemPage() {
               <Box>
                 Рейтинг:
               </Box>
-              <BasicRatingReadOnly item={item} />
+              <BasicRatingReadOnly />
               <h5>(50)</h5>
             </Stack>
             <Box margin="0 0 24px">

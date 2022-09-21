@@ -14,9 +14,14 @@ export const addToBasketAction = (newitem) => ({type: basketTypes.ADD_TO_BASKET,
 export const addToBasketLocalStorage = (basketitems) => ({type: basketTypes.BASKET_FROM_LOCAL, payload: basketitems})
 export const getAllSearchProduct = (prod) => ({type: productTypes.GET_ALL_SEARCHPRODUCT, payload: {prod} });
 export const getUsersRating = (rating) => ({type: productTypes.GET_ALL_RATING, payload: {rating} });
+
 export const addCommentAction = (obj) => ({type: commentTypes.ADD_ONE_COMMENT, payload: {obj} });
 export const getCommentOneProductAction = (obj) => ({type: commentTypes.SET_ALL_COMMENT_ONE_PRODUCT, payload: {obj} });
-// export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payload: {rating} });
+export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payload: {rating} });
+
+
+export const changeRating = (product_id, newValue) => ({type: productTypes.CHANGE_RATING, payload: {product_id, newValue} });
+export const getAllTypes = (type) => ({type: basketTypes.GET_ALL_TYPES, payload: {type}});
 
 
 export const deleteProductHandler = (id) => async (dispatch) => {

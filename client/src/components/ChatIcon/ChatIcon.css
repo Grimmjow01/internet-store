@@ -1,15 +1,13 @@
 .chat-box{
     position: fixed;
-    margin-top: 19.3% !important;
-    margin-left: 74% !important;
-    z-index: 10;
+    bottom: 20px;
+    right: 100px;
 }
 
 .chat-box-hidden{
     position: fixed;
-    left: 1200px;
-    top: 390px;
-    z-index: 10;
+    bottom: 20px;
+    right: 100px;
     content-visibility: hidden;
 }
 
@@ -18,9 +16,8 @@
     height: 60px !important;
     position: fixed;
     color: rgb(255, 255, 255);
-    margin-top: 42.5% !important;
-    margin-left: 95% !important;
-    z-index: 10;
+    bottom: 20px;
+    right: 20px;
     border-radius: 9px;
     background-color: #20a000;
     

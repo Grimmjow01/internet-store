@@ -9,11 +9,13 @@ import { snackBarStatus } from '../../store/snackBar/action'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
-import { addToBasketAction, addToBasketHandler } from '../../store/products/action';
+import { addToBasketHandler } from '../../store/products/action';
 
 
 
-function ProductItem({ product, deleteProductHandle }) {
+function ProductItem({ product, deleteProductHandle, setAuth }) {
+
+  console.log("retrewtretre prod" ,product)
 
 const { id, name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = product
 const pathImages = ProductImages['ProductImages.img']
@@ -23,7 +25,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
   const dispatch = useDispatch();
 
   let snackbarState = useSelector((store)=> store.snackbarState);
-  const setAuth = useSelector((store) => store.auth.setAuth);
+  /* const setAuth = useSelector((store) => store.auth.setAuth); */
 
   const addToBasket = async () => {
     /* const response = await axios.post('http://localhost:3100/contacts/sendemail',
@@ -51,9 +53,9 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
+
   return (
     <Card 
       className="cardItem" 
