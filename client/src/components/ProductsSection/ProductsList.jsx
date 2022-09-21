@@ -5,11 +5,17 @@ import { deleteProductHandler } from '../../store/products/action';
 import ProductItem from './ProductItem';
 import './ProductsList.css';
 
+const functionOriginalId = (prod) => {
+  const originalId = {}
+  prod.map((prod) => originalId[prod.id] = prod )
+  return Object.values(originalId)
+};
+
 function ProductsList({setAuth}) {
   
   const productsSearch = useSelector((store) => store.products.searchProduct);
   const products = useSelector((store) => store.products);
-  const setAuth = useSelector((store) => store.auth.setAuth);
+  // const setAuth = useSelector((store) => store.auth.setAuth);
 
   const [prodScroll, setProdScroll] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,20 +23,17 @@ function ProductsList({setAuth}) {
   const [totalCount, setTotalCount] = useState(0);
   
   const { product } = products
-//   const functionOriginalId = () => {
-//    const originalId = {}
-//    product.map((prod) => originalId[prod.id] = prod )
-//    return Object.values(originalId)
-//  };
+  
 
-//  const funcProdac = functionOriginalId();
-//  console.log('funcProdac===', funcProdac);
-//  console.log('product===', product);
+ const funcProdac = functionOriginalId(product);
+ 
+ console.log('funcProdac===', funcProdac);
+ console.log('product===', product);
   
   useEffect(() => {
     if (fetching) {
       console.log('fetching', fetching);
-      let prod = product.slice(0 + currentPage, currentPage +10);
+      let prod = funcProdac.slice(0 + currentPage, currentPage +10);
       setFetching (false);
     setProdScroll([...prodScroll, ...prod]);
     setCurrentPage(prevState => prevState + 10);
@@ -47,7 +50,7 @@ function ProductsList({setAuth}) {
   }, []); 
 
   useEffect(() => {
-    let product = products.product.slice(0, 10);
+    let product =funcProdac.slice(0, 10);
     setProdScroll(product);
   }, [products]);
   
