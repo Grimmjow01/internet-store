@@ -15,7 +15,7 @@ export default function BasicRating({ product }) {
   const dispatch = useDispatch();
   
   const userRatingExamination = () => {
-    const oneProductRating = allRating.filter(prod => prod.product_id === productRating[0].id);
+    const oneProductRating = allRating.filter(prod => prod.product_id === productRating[0]?.id);
       if (userData.id !== oneProductRating[0]?.user_id) {
         return true
       } else {
@@ -24,8 +24,9 @@ export default function BasicRating({ product }) {
   };
 
   const [userRating, setUserRating] = useState(userRatingExamination());
-  
-  const [value, setValue] = React.useState(productRating[0].rating);
+
+  const [value, setValue] = React.useState(productRating[0]?.rating);
+
   const ratingHandler = (newValue) => {
     axios.patch(`http://localhost:3100/api/addrating`, 
     { valueRating: newValue, user_id: userData.id, product_id: product.id });
@@ -50,7 +51,7 @@ useEffect(() => {
       <Rating
 
         name="half-rating"
-        value={value}
+        value={value || 0}
         precision={0.5}
 
         onChange={(event, newValue) => {

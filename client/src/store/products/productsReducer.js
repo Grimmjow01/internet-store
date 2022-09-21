@@ -23,7 +23,7 @@ export const productsReducer = (state = initState, action) => {
        return {...state, productImages: filteredImages}
 
        case productTypes.EDIT_PRODUCT:
-       return {...state, product: action.payload.obj}
+       return {...state, product:  action.payload.obj}
 
       case productTypes.DELETE_PRODUCT:
         return {

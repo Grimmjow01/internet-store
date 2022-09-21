@@ -92,6 +92,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
           <Box>
             {setAuth &&            
               <Stack direction="row" spacing={2}>
+                {console.log("product id==========>",product.id)}
                 <Button variant="contained" color="primary" onClick={() => navigate(`/api/products/${product.id}`)}><EditIcon /></Button>
                 <Button variant="contained" color="error" onClick={() => deleteProductHandle(product.id)}><ClearIcon /></Button>             
               </Stack>
