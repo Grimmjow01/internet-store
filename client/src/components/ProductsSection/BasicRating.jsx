@@ -35,7 +35,6 @@ export default function BasicRating({ product }) {
 
    
 useEffect(() => {
-console.log('userRating======>', userRating);
   }, [userRating]);
 
   

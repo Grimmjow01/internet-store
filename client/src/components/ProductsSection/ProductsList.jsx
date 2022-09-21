@@ -15,7 +15,7 @@ function ProductsList({setAuth}) {
   
   const productsSearch = useSelector((store) => store.products.searchProduct);
   const products = useSelector((store) => store.products);
-  // const setAuth = useSelector((store) => store.auth.setAuth);
+/*   const setAuth = useSelector((store) => store.auth.setAuth); */
 
   const [prodScroll, setProdScroll] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -66,8 +66,6 @@ function ProductsList({setAuth}) {
   const deleteProductHandle = (id) => {
     dispatch(deleteProductHandler(id))
   };
-
-  // console.log("ProductsList ~ products", products)
 
   
    return (
