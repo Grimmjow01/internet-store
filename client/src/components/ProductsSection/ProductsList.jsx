@@ -5,7 +5,7 @@ import { deleteProductHandler } from '../../store/products/action';
 import ProductItem from './ProductItem';
 import './ProductsList.css';
 
-function ProductsList() {
+function ProductsList({setAuth}) {
   
   const productsSearch = useSelector((store) => store.products.searchProduct);
   const products = useSelector((store) => store.products);
@@ -81,7 +81,7 @@ function ProductsList() {
           ? <p>Загрузка товаров</p>
           : prodScroll.filter((prod) => prod.name.toLowerCase().includes(productsSearch.toLowerCase()))
           ?.map((product) => (
-            <ProductItem 
+            <ProductItem setAuth={setAuth}
               product={product} 
               sx={{ marginLeft: 2 }} 
               key={product.id}

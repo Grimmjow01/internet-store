@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ScrollToBottom from "react-scroll-to-bottom";
 import './Chat.css'
+import Box from '@mui/material/Box';
 import io from 'socket.io-client';
 import {
   Dialog
@@ -64,7 +65,8 @@ function Chat() {
     });
   }, [socket]);
 
-  return (
+  return (  
+     <div className="chat-box1">
       <div className="chat-window">
       <div className="chat-header">
         <p>Онлайн поддержка</p>
@@ -106,6 +108,7 @@ function Chat() {
         />
         <button onClick={sendMessage}> Отправить </button>
       </div>
+    </div>
     </div>
   );
 }

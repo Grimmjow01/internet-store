@@ -107,7 +107,7 @@ function Sidebar() {
                 <ListItemIcon>
                   <FiberManualRecordIcon fontSize='small' />
                 </ListItemIcon>
-                <ListItemText primary="Спецзаказ" />
+                <ListItemText primary="Спецзаказ" onClick={() => navigate('/calculate')}/>
               </ListItemButton>
             </List>
           </Collapse>       

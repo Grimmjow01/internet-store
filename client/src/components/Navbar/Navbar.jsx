@@ -144,10 +144,6 @@ function Navbar() {
                 <Auth dialogHandleClosen={dialogHandleClosen}/>
               </Dialog>
               {
-                setAuth &&
-                <Button variant="contained" color="success" startIcon={<AddIcon />}>Добавить</Button>
-              }
-              {
                 !setAuth &&
                   <Button color="inherit" onClick={() => navigate('/basket')}>
                     <Badge badgeContent={numberInBasket} color="error">

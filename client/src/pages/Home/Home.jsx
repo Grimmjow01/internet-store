@@ -12,6 +12,7 @@ import {  allRatingThunk } from '../../store/products/action';
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';
 import './Home.css'
+import CalculatorIcon from '../../components/CalculatorIcon/CalculatorIcon';
 
 function Home() { 
   const dispatch = useDispatch();
@@ -41,10 +42,12 @@ function Home() {
   
   return (
     <Box>
+      
          <div className='heroHide'>
         <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}>Спрятать</Button>
         </div>
-      {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}  */}
+        <CalculatorIcon/>
+       {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}  
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />
