@@ -15,6 +15,7 @@ function ProductsList({setAuth}) {
   
   const productsSearch = useSelector((store) => store.products.searchProduct);
   const products = useSelector((store) => store.products);
+
 /*   const setAuth = useSelector((store) => store.auth.setAuth); */
 
   const [prodScroll, setProdScroll] = useState([]);
@@ -26,9 +27,6 @@ function ProductsList({setAuth}) {
   
 
  const funcProdac = functionOriginalId(product);
- 
-//  console.log('funcProdac===', funcProdac);
-//  console.log('product===', product);
   
   useEffect(() => {
     if (fetching) {

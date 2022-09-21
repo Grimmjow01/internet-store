@@ -1,4 +1,4 @@
-import { productTypes, basketTypes } from '../types';
+import { productTypes, basketTypes, commentTypes } from '../types';
 
 export const changeQuantity = (basket) => ({ type: basketTypes.CHANGE_QUANTITY, payload: { basket } });
 export const getAllProduct = (product) => ({type: productTypes.GET_ALL_PRODUCT, payload: product });
@@ -14,7 +14,14 @@ export const addToBasketAction = (newitem) => ({type: basketTypes.ADD_TO_BASKET,
 export const addToBasketLocalStorage = (basketitems) => ({type: basketTypes.BASKET_FROM_LOCAL, payload: basketitems})
 export const getAllSearchProduct = (prod) => ({type: productTypes.GET_ALL_SEARCHPRODUCT, payload: {prod} });
 export const getUsersRating = (rating) => ({type: productTypes.GET_ALL_RATING, payload: {rating} });
+
+export const addCommentAction = (obj) => ({type: commentTypes.ADD_ONE_COMMENT, payload: {obj} });
+export const getCommentOneProductAction = (obj) => ({type: commentTypes.SET_ALL_COMMENT_ONE_PRODUCT, payload: {obj} });
+export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payload: {rating} });
+
+
 export const changeRating = (product_id, newValue) => ({type: productTypes.CHANGE_RATING, payload: {product_id, newValue} });
+export const getAllTypes = (type) => ({type: basketTypes.GET_ALL_TYPES, payload: {type}});
 
 
 export const deleteProductHandler = (id) => async (dispatch) => {
@@ -54,8 +61,6 @@ const res = await fetch(`http://localhost:3100/api/products/${obj.id}`, {
    dispatch(editProductAction(newProduct));
 };
 
-
-
 export const addToBasketHandler = (newitem) => (dispatch) =>{
     dispatch(addToBasketAction(newitem));
     const basketItems = JSON.parse(localStorage.getItem('basketItems')) || []
@@ -85,3 +90,34 @@ export const allRatingThunk = () => async (dispatch) => {
   };
 }
 
+export const addCommentDatabaseAndStore = (newComment, id) => async (dispatch) => {
+  try {
+    const res = await fetch(`http://localhost:3100/api/addcomment/${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(newComment),
+    });
+    const newCommentDatabase = await res.json()
+    dispatch(addCommentAction(newCommentDatabase))
+  } catch (error) {
+    console.log('  Ошибка добавления комментария в store', error);
+  }
+}
+export const getAllCommentsFromDatabase = (id) => async (dispatch) => {
+  try {
+    const res = await fetch(`http://localhost:3100/api/addcomment/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    });
+    const allCommentOneProductDatabase = await res.json()
+    dispatch(getCommentOneProductAction(allCommentOneProductDatabase))
+  } catch (error) {
+    console.log('  Ошибка добавления комментария в store', error);
+  }
+}

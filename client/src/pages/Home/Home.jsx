@@ -29,7 +29,6 @@ function Home() {
         },
       });
       const products = await res.json();
-      // console.log('products=====', products);
       dispatch(getAllProduct(products));
     })();
 
