@@ -1,6 +1,6 @@
 import { Box, Button, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import HeroSection from '../../components/HeroSection/HeroSection';
+// import HeroSection from '../../components/HeroSection/HeroSection';
 import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
@@ -47,7 +47,7 @@ function Home() {
         <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}>Спрятать</Button>
         </div>
         <CalculatorIcon/>
-       {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}  
+       {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   */}
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar />
         <ProductsList products={products} />
