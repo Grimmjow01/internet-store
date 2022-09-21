@@ -79,26 +79,20 @@ const submitHandler = async (e) => {
 };
 
   return (
-    <Grid
-    container
-    direction="column"
-    justifyContent="space-evenly"
-    alignItems="center"
-   component="span" sx={{ p: 25, border: "1px solid grey",  boxShadow: 20, borderRadius: 2}} className="contactUsBox">
-   
-   {/* форма добавления--------------------------------------------------------------------------------- */}
-    <h1>Форма добавления товара</h1>
+   <>
+
+    <h1 id="add-item-head">Форма добавления товара</h1>
       <div className="column-center">
     <FormControl  className="feedbackForm">
 
     <label> Название <span className="red">*</span></label>
     <br />
 
-      <TextField onChange={inputHandler} inputProps={{maxLength: 32}} 
+      <TextField onChange={inputHandler} inputProps={{maxLength: 32}} sx={{maxWidth: 500, minWidth: 500}}
 
         name="name_product"
         value={inputs.name_product || ''}
-        className="menuItem"
+
         required
         id="username"/>
       <br />
@@ -109,7 +103,7 @@ const submitHandler = async (e) => {
       <FormControl className="feedbackForm">
       <label> Выберите тип: <span className="red">*</span></label>
       <br />
-      <Select className="menuItem" onChange={inputHandler}
+      <Select onChange={inputHandler} sx={{maxWidth: 500, minWidth: 500}}
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         label="Выберите тип"
@@ -132,7 +126,7 @@ const submitHandler = async (e) => {
           <FormControl className="feedbackForm">
       <label> Выберите брэнд: <span className="red">*</span></label>
       <br />
-      <Select className="menuItem" onChange={inputHandler}
+      <Select onChange={inputHandler} 
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         label="Выберите брэнд"
@@ -155,11 +149,21 @@ const submitHandler = async (e) => {
       <TextField onChange={inputHandler} inputProps={{maxLength: 12}} 
         name="price"
         value={inputs.price || ''}
-        className="menuItem"
+        
         required
         id="username"/>
       <br />
+      <br />
+      <br />
+      <br />
+       <Button variant="contained" style={{ width: 170 }} endIcon={<SendIcon />}
+      //  onClick={() => {dispatch(addProductDatabase({input}))}}
+      onClick={submitHandler}
+      >
+        Добавить
+      </Button>
       </FormControl>
+      
       <FormControl>
       <br />
 {/* добавление фото ----------------------------- ------------------------------------------------------------- */}
@@ -169,7 +173,6 @@ const submitHandler = async (e) => {
       <TextField inputProps={{multiple: true}} encType="multipart/form-data" 
       action="/profile-upload-multiple" 
       method="POST" onChange={inputHandler} type="file" name="file"
-        className="menuItem"
         required 
         accept='image/*'
         id="file"/> 
@@ -178,28 +181,25 @@ const submitHandler = async (e) => {
    {/* Description product------------------------------------------------------------------------------------------ */}
       </FormControl>
         <br />
+        <label>Описание товара <span className="red">*</span></label>
       <br />
       <TextareaAutosize className="textArea" onChange={inputHandler}
       name="description"
       value={inputs.description}
       aria-label="minimum height"
-      minRows={7}
+      minRows={6}
       placeholder="Описание товара"
       style={{ width: 495 }}
       />
       <br/>
 
       {/* Button add product------------------------------------------------------------------------------------------ */}
-      <Button variant="contained" style={{ width: 170 }} endIcon={<SendIcon />}
-      //  onClick={() => {dispatch(addProductDatabase({input}))}}
-      onClick={submitHandler}
-      >
-        Добавить
-      </Button>
+     
     </FormControl>
     </div>
     <Snackbar message={'Товар добавлен в базу'}/>
-  </Grid>
+
+    </>
 );
 };
 

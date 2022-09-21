@@ -38,7 +38,7 @@ function ProductItemPage() {
   const products = useSelector((store) => store.products.product); 
   let snackbarState = useSelector((store) => store.snackbarState);
   const productImage = useSelector((store) => store.products.productImages)
-  console.log('productImage', productImage)
+
   
   const handleClick = () => {
     // setOpen(true);
@@ -46,11 +46,10 @@ function ProductItemPage() {
     dispatch(snackBarStatus(true));
   };
  
-  
-  console.log('item', item)
   const { name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = item
   const pathImages = ProductImages['ProductImages.img']
-  const pathOneImage = `http://localhost:3100/${productImage[0].img}`;
+  const pathOneImage = `http://localhost:3100/${productImage[0]?.img}`;
+  console.log('pathOneImage===', pathOneImage);
   
   useEffect(() => {
     ( async () => {

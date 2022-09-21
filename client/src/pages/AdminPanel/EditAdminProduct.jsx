@@ -106,7 +106,7 @@ const submitHandler = async (e) => {
         <label> Изменилась цена <span className="red">*</span></label>
         <TextField className="cardMediaItem" fullWidth value={price} onChange={e => setPrice(e.target.value)}/><br />
 
-        <label> Type <span className="red">*</span></label>
+        <label> Тип мебели <span className="red">*</span></label>
         <Select onChange={e => setType(e.target.value)} value={type_id} sx={{maxWidth: 500, minWidth: 500}}>
         <MenuItem value={1} >Мебель для спальни</MenuItem>
         <MenuItem value={2}>Мягкая мебель</MenuItem>
@@ -118,7 +118,7 @@ const submitHandler = async (e) => {
         <MenuItem value={8}>Спецзаказы</MenuItem>
         </Select><br />
         
-        <label> Brand <span className="red">*</span></label>
+        <label> Брэнд <span className="red">*</span></label>
         <Select onChange={e => setBrand(e.target.value)} value={brand_id} sx={{maxWidth: 500, minWidth: 500}}>
         <MenuItem value={1}>Мебель-Стиль</MenuItem>
         <MenuItem value={2}>Williams-Sonoma</MenuItem>

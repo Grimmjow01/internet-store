@@ -5,10 +5,17 @@ import { deleteProductHandler } from '../../store/products/action';
 import ProductItem from './ProductItem';
 import './ProductsList.css';
 
-function ProductsList() {
+const functionOriginalId = (prod) => {
+  const originalId = {}
+  prod.map((prod) => originalId[prod.id] = prod )
+  return Object.values(originalId)
+};
+
+function ProductsList({setAuth}) {
   
   const productsSearch = useSelector((store) => store.products.searchProduct);
   const products = useSelector((store) => store.products);
+/*   const setAuth = useSelector((store) => store.auth.setAuth); */
 
   const [prodScroll, setProdScroll] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,20 +23,17 @@ function ProductsList() {
   const [totalCount, setTotalCount] = useState(0);
   
   const { product } = products
-//   const functionOriginalId = () => {
-//    const originalId = {}
-//    product.map((prod) => originalId[prod.id] = prod )
-//    return Object.values(originalId)
-//  };
+  
 
-//  const funcProdac = functionOriginalId();
-//  console.log('funcProdac===', funcProdac);
-//  console.log('product===', product);
+ const funcProdac = functionOriginalId(product);
+ 
+ console.log('funcProdac===', funcProdac);
+ console.log('product===', product);
   
   useEffect(() => {
     if (fetching) {
       console.log('fetching', fetching);
-      let prod = product.slice(0 + currentPage, currentPage +10);
+      let prod = funcProdac.slice(0 + currentPage, currentPage +10);
       setFetching (false);
     setProdScroll([...prodScroll, ...prod]);
     setCurrentPage(prevState => prevState + 10);
@@ -46,7 +50,7 @@ function ProductsList() {
   }, []); 
 
   useEffect(() => {
-    let product = products.product.slice(0, 10);
+    let product =funcProdac.slice(0, 10);
     setProdScroll(product);
   }, [products]);
   
@@ -62,8 +66,6 @@ function ProductsList() {
   const deleteProductHandle = (id) => {
     dispatch(deleteProductHandler(id))
   };
-
-  // console.log("ProductsList ~ products", products)
 
   
    return (
@@ -82,7 +84,7 @@ function ProductsList() {
           ? <p>Загрузка товаров...</p>
           : prodScroll.filter((prod) => prod.name.toLowerCase().includes(productsSearch.toLowerCase()))
           ?.map((product) => (
-            <ProductItem 
+            <ProductItem setAuth={setAuth}
               product={product} 
               sx={{ marginLeft: 2 }} 
               key={product.id}

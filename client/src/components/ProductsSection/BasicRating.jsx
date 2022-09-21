@@ -35,8 +35,6 @@ export default function BasicRating({ product }) {
 
    
 useEffect(() => {
-      console.log('userRating===', userRating);
-      console.log('setAuth===', setAuth);
   }, [userRating]);
 
   

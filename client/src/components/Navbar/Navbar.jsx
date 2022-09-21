@@ -5,14 +5,11 @@ import {
 import { Stack } from '@mui/system';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
 import ChairIcon from '@mui/icons-material/Chair';
-import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../Auth/Auth';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutThunk } from '../../store/auth/action';
 import './Navbar.css';
 import { getAllSearchProduct } from '../../store/products/action';
 import AccountMenu from '../AccountMenu/AccountMenu';
@@ -38,7 +35,18 @@ const Search = styled("div")({
 function Navbar() {
   const navigate = useNavigate(); // или используй Navlink
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
+  const [isOpenSearch, setIsOpenSearch] = useState(true);
+
+  const setAuth = useSelector((store) => store.auth.setAuth);
+  const dataAdmin = useSelector((store) => store.auth.isAdmin);
+  const allProducts = useSelector((store) => store.products.product);
+
+  const products = useSelector((store)=> store.products)
+
+  console.log('dataAdmin', dataAdmin);
   
   useEffect(() => {
     if (!search) {
@@ -46,21 +54,9 @@ function Navbar() {
     };
   }, [search]);
   
-  const [open, setOpen] = useState(false);
-  
-  const [isOpenSearch, setIsOpenSearch] = useState(true);
  
-  const setAuth = useSelector((store) => store.auth.setAuth);
-  const allProducts = useSelector((store) => store.products.product);
-
-  console.log('setAuth', setAuth)
-
-  const products = useSelector((store)=> store.products)
-
-
-
   const numberInBasket = JSON.parse(localStorage.getItem('basketItems'))?.length;
-
+  
   const filteredAllProducts = useDeferredValue(allProducts.filter((prod) => prod.name.toLowerCase().includes(search.toLowerCase())));
 
   const handClickOpen = () => {
@@ -124,12 +120,13 @@ function Navbar() {
           </Box>
           <Box>
             <Stack direction="row" spacing={2}>
-              { setAuth &&
+              { dataAdmin &&
                 <Button color="inherit" onClick={() => navigate('/admin')}>
                   Admin
                 </Button>
               }
               {!setAuth ? 
+              
                 <Button color="inherit" onClick={handClickOpen}>
                   <AccountCircleIcon fontSize="large" />
                     Войти
@@ -145,13 +142,9 @@ function Navbar() {
                 <Auth dialogHandleClosen={dialogHandleClosen}/>
               </Dialog>
               {
-                setAuth &&
-                <Button variant="contained" color="success" startIcon={<AddIcon />}>Добавить</Button>
-              }
-              {
-                !setAuth &&
+             
                   <Button color="inherit" onClick={() => navigate('/basket')}>
-                    <Badge badgeContent={numberInBasket} color="error">
+                    <Badge badgeContent={products.basket.length} color="error">
                       <ShoppingCartRoundedIcon fontSize="large" />
                     </Badge>
                   </Button>
