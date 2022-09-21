@@ -21,6 +21,8 @@ const signStyle = { margin: '20px 55px' };
 
 const logStyle = { margin: '20px 75px' };
 
+const textCenter = { textAlign : 'center' }
+
 const Auth = ({dialogHandleClosen}) => {
 
 const errorMessage = useSelector((store) => store.auth.errorMessage);
@@ -51,8 +53,8 @@ const inputChange = (e) => {
           <h2 style={textStyle2}>Авторизация</h2>
         </Grid>
         <TextField 
-        label="Username" 
-        placeholder="Enter username" 
+        label="Email" 
+        placeholder="Введите Email" 
         onChange={inputChange} 
         type="email" 
         name="email"
@@ -64,8 +66,8 @@ const inputChange = (e) => {
         </p>
         }
         <TextField 
-        label="Password" 
-        placeholder="Enter password" 
+        label="Пароль" 
+        placeholder="Введите пароль" 
         onChange={inputChange}
         type="password" 
         name="password"
@@ -80,8 +82,8 @@ const inputChange = (e) => {
         <Button type="submit" color="primary" variant="contained" onClick={() => dispatch(loginThunk(inputLogin, () => dialogHandleClosen()))} style={btnStyle} fullWidth>Войти</Button>
         <Typography style={orStyle}>
           или
-        </Typography>
-        <div style={signStyle}>
+        </Typography >
+        <div style={signStyle, textCenter}>
           <Typography>
             {' '}
             Нет аккаунта?
@@ -98,15 +100,15 @@ const inputChange = (e) => {
             <h2>Создать учетную запись</h2>
             <p>Пожалуйста, заполните все поля, чтобы продолжить</p>
           </Grid>
-          <TextField label="Username"
-           placeholder="Enter username"
+          <TextField label="Логин"
+           placeholder="Введите логин"
            onChange={inputChange} 
            type="login" 
            name="login"
            value={inputLogin.login} 
           fullWidth required />
           <TextField label="Email"
-           placeholder="Enter email"
+           placeholder="Введите email"
            onChange={inputChange} 
            type="email" 
            name="email"
@@ -118,8 +120,8 @@ const inputChange = (e) => {
           {errorMessage}
         </p>
           }
-          <TextField label="Password" 
-          placeholder="Enter password"
+          <TextField label="Пароль" 
+          placeholder="Введите пароль"
           onChange={inputChange}
           type="password" 
           name="password"
@@ -135,11 +137,11 @@ const inputChange = (e) => {
           <Typography style={orStyle}>
             или
           </Typography>
-          <div style={logStyle}>
+          <div style={logStyle, textCenter}>
             <Typography>
               {' '}
               Есть аккаунт?
-              <Button onClick={handleClose}>
+              <Button onClick={handleClose} id='text-login'>
               Авторизоваться
               </Button>
             </Typography>

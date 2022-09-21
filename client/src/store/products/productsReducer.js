@@ -33,7 +33,7 @@ export const productsReducer = (state = initState, action) => {
 
       case productTypes.GET_ALL_SEARCHPRODUCT:
         return {...state, searchProduct: action.payload.prod};
-
+ 
       case productTypes.GET_ALL_RATING:
         return {...state, allRating: action.payload.rating};
           

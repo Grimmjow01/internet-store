@@ -41,7 +41,7 @@ function Basket() {
             </Box>
         
         <br />
-
+        {products.basket !==0 ?        
         <Box className='paymentBox'>
         <span><h2>Счет:</h2></span>
         <span><h3>Добавленные товары:</h3> {products.basket.map(el=>{return el.name + `, `} )}</span>
@@ -55,7 +55,7 @@ function Basket() {
         </Button>
 
          </Box>
-
+          : <h1>Пуста</h1>}
          </Stack>
 
         </Box>
