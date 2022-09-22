@@ -1,0 +1,37 @@
+.chat-box{
+    position: fixed;
+    bottom: 20px;
+    right: 110px;
+    z-index: 111;
+}
+
+.chat-box-hidden{
+    position: fixed;
+    bottom: 20px;
+    right: 110px;
+    content-visibility: hidden;
+}
+
+.chat-icon{
+    width: 70px !important;
+    height: 70px !important;
+    position: fixed;
+    color: rgb(255, 255, 255);
+    bottom: 20px;
+    right: 20px;
+    padding: 4px !important;
+    border-radius: 50%;
+    background-color: #0271e0;;
+    z-index: 111;
+}
+
+.chat-icon:hover {
+    background-color: #003380;
+}
+
+#padding-icon{
+    padding-left: 23%;
+    width: 40px !important;
+    height: 40px;
+    padding-top: 23%;
+}

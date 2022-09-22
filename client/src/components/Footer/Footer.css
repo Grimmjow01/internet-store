@@ -1,0 +1,14 @@
+.footer{
+    background-color: #1976d2 !important;
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+#footer-text{
+    align-self: center;
+    padding-right: 20px;
+}

@@ -1,0 +1,25 @@
+.Card {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: space-evenly;
+    align-items: center;
+    margin:14px;
+    width: 700px;
+}
+
+
+.Card .inputQuantity {
+    width: 100px;
+    font-size: 40px;
+}
+
+.basket-card-info{
+    text-align: center;
+    
+}
+
+#productName{
+    
+}
