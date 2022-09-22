@@ -2,13 +2,10 @@ const { ProductImage } = require('../../db/models');
 
     const getImageForUpdate = async (req, res) => {
       const file  = req.files;
-      console.log("loadImgControllers ~ file", file)
-       const { product_id, filePath } = req.body
+      const { product_id, filePath } = req.body
      
        if(filePath !== '/img/undefined'){
         const findImagesUpdateProduct = await ProductImage.findAll( {where: { product_id }, raw:true })
-        console.log("getImageForUpdate ~ findImagesUpdateProduct", findImagesUpdateProduct)
-
 
         //  const newArrayImage = await ProductImage.create({product_id, img: `/img/${filePath}`})
         //  await newArrayImage.save();

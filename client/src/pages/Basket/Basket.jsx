@@ -1,24 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import BasketItem from '../../components/BasketItems/BasketItem'
 import {Stack} from '@mui/material'
-import {Button, FormControl, TextField, Box} from "@mui/material";
+import {Button, FormControl, TextField, Box, Dialog} from "@mui/material";
 import './Basket.css'
 import { useNavigate } from 'react-router-dom';
+import Auth from '../../components/Auth/Auth';
+
 
 function Basket() {
     
     const products = useSelector((store)=> store.products)
     const setAuth = useSelector((store) => store.auth.setAuth);
+    const [open, setOpen] = useState(false);
 
 
     const handleOrder = () => {
          if(setAuth){
             window.location.href = 'https://pay.yandex.ru/business'
          } else {
-
+            setOpen(true);
          }
-    }
+    };
+
+    // const handClickOpen = () => {
+    //     setOpen(true);
+    //   };
+    
+      const dialogHandleClosen = () => {
+        setOpen(false);
+      };
     
 
     return (
@@ -53,6 +64,9 @@ function Basket() {
        <Button variant="contained" color="secondary" alignItems="center" style={{maxWidth: 180 }} onClick={handleOrder}>
         Оформить заказ
         </Button>
+        <Dialog open={open} onClose={dialogHandleClosen} aria-labelledby="form-dialog-title">
+                <Auth dialogHandleClosen={dialogHandleClosen}/>
+              </Dialog>
 
          </Box>
           : <h1>Пуста</h1>}

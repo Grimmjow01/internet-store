@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(models.Basket, { foreignKey: 'user_id' });
       this.hasMany(models.Rating, { foreignKey: 'user_id' });
       this.hasOne(models.Token, { foreignKey: 'user_id' });    
+      this.hasMany(models.Comment, { foreignKey: 'user_id' });    
     }
   }
   User.init({

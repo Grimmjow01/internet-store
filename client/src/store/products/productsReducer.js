@@ -23,7 +23,8 @@ export const productsReducer = (state = initState, action) => {
        return {...state, productImages: filteredImages}
 
        case productTypes.EDIT_PRODUCT:
-       return {...state, product: [...state.product, ...action.payload.obj]}
+       return {...state, product: [...state.product, ...action.payload.obj] }
+
 
       case productTypes.DELETE_PRODUCT:
         return {
@@ -62,13 +63,13 @@ export const productsReducer = (state = initState, action) => {
         return {...state, basket: [...state.basket, action.payload.newitem]}
 
         case commentTypes.ADD_ONE_COMMENT:
-        console.log("productsReducer ~ action.payload.obj", action.payload.obj)
-        return {...state, comment: [...state.comment, action.payload.obj]}
+         return {...state, comment: [...state.comment, action.payload.obj]}
+        // return {...state, comment: action.payload.obj}
 
         case commentTypes.SET_ALL_COMMENT_ONE_PRODUCT:
-        return {...state, comment: action.payload.obj}
+        return {...state, comment: [...action.payload.obj]}
 
-      case basketTypes.GET_ALL_TYPES:
+      case productTypes.GET_ALL_TYPES:
         return {...state, types: action.payload.type};
  
     default:

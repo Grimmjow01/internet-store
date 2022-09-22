@@ -21,7 +21,7 @@ export const changeRAting = (rating) => ({type: productTypes.CHANGE_RATING, payl
 
 
 export const changeRating = (product_id, newValue) => ({type: productTypes.CHANGE_RATING, payload: {product_id, newValue} });
-export const getAllTypes = (type) => ({type: basketTypes.GET_ALL_TYPES, payload: {type}});
+export const getAllTypes = (type) => ({type: productTypes.GET_ALL_TYPES, payload: {type}});
 
 
 export const deleteProductHandler = (id) => async (dispatch) => {
@@ -102,6 +102,7 @@ export const addCommentDatabaseAndStore = (newComment, id) => async (dispatch) =
       body: JSON.stringify(newComment),
     });
     const newCommentDatabase = await res.json()
+    console.log("addCommentDatabaseAndStore ~ newCommentDatabase======================", newCommentDatabase)
     dispatch(addCommentAction(newCommentDatabase))
   } catch (error) {
     console.log('  Ошибка добавления комментария в store', error);

@@ -2,6 +2,7 @@ import { Box, Button, Container, Modal, Stack } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BasicRatingReadOnly from '../../components/ProductsSection/BasicRatingReadOnly';
+import BasicRating from '../../components/ProductsSection/BasicRating';
 import AddIcon from '@mui/icons-material/Add';
 import { snackBarStatus } from '../../store/snackBar/action';
 import Snackbar from '../../components/Snackbar/Snackbar'
@@ -39,20 +40,16 @@ function ProductItemPage() {
   let snackbarState = useSelector((store) => store.snackbarState);
   const productImage = useSelector((store) => store.products.productImages)
 
-  
+  console.log('products==========>', products);
   const handleClick = () => {
     // setOpen(true);
     dispatch(addToBasketHandler(item));
     dispatch(snackBarStatus(true));
   };
 
-
-  const { id } = useParams();
-
   const { name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = item
   const pathImages = ProductImages['ProductImages.img']
   const pathOneImage = `http://localhost:3100/${productImage[0]?.img}`;
-  console.log('pathOneImage===', pathOneImage);
   
   // useEffect(() => {
   //   ( async () => {
@@ -87,8 +84,6 @@ function ProductItemPage() {
       setArrayImage(arrayImagesForOneProduct);
       
       dispatch(addImagesProductAction(arrayImagesForOneProduct));
-      // dispatch(getOneProduct(itemProduct))
-      // console.log('arrayImagesForOneProduct ======>', arrayImagesForOneProduct)
       
     })()
   }, [id]);
@@ -153,8 +148,8 @@ function ProductItemPage() {
               <Box>
                 Рейтинг:
               </Box>
-              <BasicRatingReadOnly />
-              <h5>(50)</h5>
+              <BasicRatingReadOnly product={products} />
+              <h5>{products[id].rating}</h5>
             </Stack>
             <Box margin="0 0 24px">
               <h2 style={{color: "rgb(155, 47, 174)", margin: "0 0 4px"}}>{item.price} ₽</h2>

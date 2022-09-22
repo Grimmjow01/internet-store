@@ -13,6 +13,7 @@ const loadImg = require('./routes/loadImgRouter');
 const loadImgforoneproduct = require('./routes/loadImageForOneProductRouter');
 const updateImages = require('./routes/imageForUpdateRouter');
 const addcomment = require('./routes/addcommentRouter');
+const findcomment = require('./routes/findcommentRouter');
 const app = express();
 const multer = require('multer')
 // socket.io
@@ -25,6 +26,7 @@ const { Server } = require("socket.io");
 const contactsRouter = require("./routes/contactsRoute");
 const loginRoute = require('./routes/loginRoute');
 const ratingRoute = require('./routes/ratingRoute');
+const typeRoute = require('./routes/typeRoute');
 
 const errorMiddlewares = require('./middlewares/errorMiddlewares');
 
@@ -64,12 +66,14 @@ app.use(errorMiddlewares);
 app.use('/admin', adminAddProduct)
 app.use('/updateimages', updateImages)
 app.use('/api/addcomment', addcomment)
+app.use('/api/findcomment', findcomment)
 
 app.use('/loadImg', loadImg)
 app.use('/loadimageforoneproduct', loadImgforoneproduct)
 
 app.use('/loadImg', loadImg);
 app.use('/api', ratingRoute);
+app.use('/api', typeRoute);
 
 
 const io = new Server(server, {

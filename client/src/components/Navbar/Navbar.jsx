@@ -45,8 +45,6 @@ function Navbar() {
   const allProducts = useSelector((store) => store.products.product);
 
   const products = useSelector((store)=> store.products)
-
-  console.log('dataAdmin', dataAdmin);
   
   useEffect(() => {
     if (!search) {
@@ -56,8 +54,6 @@ function Navbar() {
   
  
   const numberInBasket = JSON.parse(localStorage.getItem('basketItems'))?.length;
-
-  console.log("All Products", allProducts)
   
   const filteredAllProducts = useDeferredValue(allProducts?.filter((prod) => prod.name.toLowerCase().includes(search.toLowerCase())));
 

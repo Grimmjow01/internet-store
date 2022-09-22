@@ -38,7 +38,8 @@ function App() {
       dispatch(addBasketFromLocal(JSON.parse(localStorage.getItem('basketItems'))))
     } else {
        
-    }
+    };
+  
   }, [dispatch]);
 
   return ( 

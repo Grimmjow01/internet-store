@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 
 import { addImagesProductAction, getAllProduct } from '../../store/products/action';
 
-import {  allRatingThunk } from '../../store/products/action';
+import {  allRatingThunk, getAllTypes } from '../../store/products/action';
 
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';
@@ -30,6 +30,18 @@ function Home() {
       });
       const products = await res.json();
       dispatch(getAllProduct(products));
+    })();
+
+    ( async () => {
+      const res = await fetch('http://localhost:3100/api/types', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const types = await res.json();
+      dispatch(getAllTypes(types));
     })();
 
     dispatch(allRatingThunk());

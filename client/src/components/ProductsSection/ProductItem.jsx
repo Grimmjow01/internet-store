@@ -11,11 +11,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 import { addToBasketHandler } from '../../store/products/action';
 
-
-
 function ProductItem({ product, deleteProductHandle, setAuth }) {
 
-  // console.log("retrewtretre prod" ,product)
 
 const { id, name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = product
 const pathImages = ProductImages['ProductImages.img']
