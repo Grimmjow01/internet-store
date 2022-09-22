@@ -14,11 +14,7 @@ function Chat() {
 
   const [room, setRoom] = useState(1);
 
-  const userDataInfo = useSelector((store) => store.auth.userData)
-
-
-  // console.log("user-data ===========", userDataInfo)
-
+  const userDataInfo = useSelector((store) => store.auth.userData);
 
   const [userName, setUserName] = useState('Онлайн поддержка');
 

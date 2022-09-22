@@ -15,6 +15,12 @@ const textStyle = { margin: '40px auto' };
 
 const textStyle2 = { margin: '20px auto' };
 
+const textStyle3 = { position: 'relative', top: '-25px' };
+
+const textStyleErrMail = { position: 'relative', top: '20px' };
+
+const textStyleErrPass = { position: 'relative', top: '-10px' };
+
 const orStyle = { margin: '20px 170px' };
 
 const signStyle = { margin: '20px 55px' };
@@ -61,7 +67,7 @@ const inputChange = (e) => {
         value={inputLogin.email} 
         fullWidth required />
         { errorMessage === 'Пользователь с таким email не найден' &&
-        <p>
+        <p style={textStyleErrMail}>
           {errorMessage}
         </p>
         }
@@ -75,7 +81,7 @@ const inputChange = (e) => {
         style={textStyle}
         fullWidth required />
         { errorMessage === 'Неверный пароль' &&
-        <p>
+        <p style={textStyleErrPass}>
           {errorMessage}
         </p>
         }
@@ -116,7 +122,7 @@ const inputChange = (e) => {
           style={textStyle} 
           fullWidth required />
           { errorMessage === `Пользователь с почтовым адресом${errorMessage.slice(31)}` &&
-        <p>
+        <p style={textStyle3} >
           {errorMessage}
         </p>
           }
