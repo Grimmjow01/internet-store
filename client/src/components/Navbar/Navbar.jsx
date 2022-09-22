@@ -55,7 +55,7 @@ function Navbar() {
  
   const numberInBasket = JSON.parse(localStorage.getItem('basketItems'))?.length;
 
-  console.log("All Products", allProducts)
+  // console.log("All Products", allProducts)
   
   const filteredAllProducts = useDeferredValue(allProducts?.filter((prod) => prod.name.toLowerCase().includes(search.toLowerCase())));
 
