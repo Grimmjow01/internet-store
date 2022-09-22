@@ -7,7 +7,7 @@ import axios from 'axios';
 import { changeRating } from '../../store/products/action';
 import { useParams } from 'react-router-dom';
 
-export default function BasicRatingReadOnly({ product }) {
+export default function BasicRatingReadOnly({ product, setRatingChange } ) {
 
   const [idParams, setIdParams] = useState(useParams().id);
   
@@ -39,6 +39,7 @@ export default function BasicRatingReadOnly({ product }) {
     { valueRating: newValue, user_id: userData.id, product_id: idParams });
     dispatch(changeRating(product.id, newValue));
     setUserRating(false)
+    setRatingChange((el) => el +1)
   };
 
 useEffect(() => {

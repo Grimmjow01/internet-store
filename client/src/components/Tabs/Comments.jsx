@@ -10,31 +10,33 @@ import BasicRatingReadOnly from "../ProductsSection/BasicRatingReadOnly";
 const Comments = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  const userDataInfo = useSelector((store) => store.auth.userData)
-  const allComments = useSelector((store) => store.products.comment)
   
-  const allRating = useSelector((store) => store.products.allRating)
+  useEffect(() => {
+  dispatch(getAllCommentsFromDatabase(id)) 
+  }, [id])
   
- 
-  const [inputs, setInputs] = useState('');
+  const userDataInfo = useSelector((store) => store.auth.userData);
+  const allComments = useSelector((store) => store.products);
+  const allRating = useSelector((store) => store.products.allRating);
+  const filterComments = allComments.comment.filter((comment) => comment.product_id === +id)
+  
+  const [inputs, setInputs] = useState("");
   const inputHandler = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
+  
   const newComment = {
-    user_id: userDataInfo.id,
-    content: inputs.content,
-    product_id: id,
-    rating_id: userDataInfo.id
-  };
+  user_id: userDataInfo.id,
+  content: inputs.content,
+  product_id: id,
+  }; 
 
   return (
     <div>
       <h1> Написать отзыв о товаре </h1>
-      <FormControl style={{ padding: "0px" }}
-        sx={{ border: "1px solid grey", boxShadow: 20, borderRadius: 20 }}
-        className="contactUsBox"
+      <FormControl style={{ padding: '10px' }}
+
+
       >
         <TextareaAutosize 
           name="content"
@@ -42,7 +44,7 @@ const Comments = () => {
           aria-label="minimum height"
           minRows={10}
           placeholder="Я очень доволен приобретенным товаром"
-          style={{ width: 900, height: 400 }}
+          style={{ width: 700, height: 100 }}
           onChange={inputHandler}
           
         />
@@ -58,7 +60,7 @@ const Comments = () => {
       <br /> <br />
       {filterComments
         ? filterComments.map((el) => (
-            <Paper key={el.id} style={{ padding: "20px 20px" }}>
+            <Paper key={el.id} style={{ padding: "-5px -5px" }}>
               
               <Grid container wrap="nowrap" spacing={2} >
                 

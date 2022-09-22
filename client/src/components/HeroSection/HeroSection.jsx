@@ -10,14 +10,14 @@ function HeroSection() {
   return (
     
     <Container className='heroSection'>
-        <Canvas camera={{ position: [1, 2, 2], zoom: 2.4}} className='heroCanvas'>
-          <OrbitControls target={[-.7, 1, 0]}/>
+        <Canvas camera={{ position: [2, 2, 2], zoom: 3.2}} className='heroCanvas'>
+          <OrbitControls target={[-.1, 1.13, -0.3]}/>
           <hemisphereLight intensity={0.40} />
           <SpotLight 
           position={[10, 10, 10]}
           angle={0.3}
           penumbra={1}
-          intensity={1}
+          intensity={13}
           castShadow/>
           <Suspense fallback={null}>
          <Model />

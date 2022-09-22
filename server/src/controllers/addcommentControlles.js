@@ -1,12 +1,12 @@
 const { Product, Comment, User } = require('../../db/models');
 
 const addcommentControlles = async (req, res) => {
-  console.log('======================addcommentControlles', 1);
   const { id } = req.params
+  console.log('======================addcommentControlles', req.params);
   try {
     const { user_id, content } = req.body;
-    console.log("addcommentControlles ~ req.body", req.body)
-    const newComment = await Comment.create({user_id, product_id: id, content });
+    const newComment = await Comment.create({user_id: user_id, product_id: id, content: content });
+    console.log("retrew====>" ,newComment)
     if(newComment) {
       res.json(newComment);
     }

@@ -31,6 +31,17 @@ function Basket() {
         setOpen(false);
       };
     
+    let discount = 0;
+    for (let i = 0; i < products.basket.length; i++) {
+       if(products.basket[i].type_id == 1){
+        discount += products.basket[i].price * 0.1
+       }
+      console.log("for", products.basket[i].type_id)
+  
+    }
+     
+
+    console.log("Discount -----", discount)
 
     return (
         <Box sx={{p: "20px"}}>
@@ -54,13 +65,12 @@ function Basket() {
         <br />
         {products.basket !==0 ?        
         <Box className='paymentBox'>
-        <span><h2>Счет:</h2></span>
         <span><h3>Добавленные товары:</h3> {products.basket.map(el=>{return el.name + `, `} )}</span>
         <br />
         <br />
-        <span><h3>Скидка: 0 руб.</h3></span>
-        <br />
-        <h3>Общая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0)} руб.</h3>
+        <span id='discount-text'><h3>Скидка: { discount}  руб.</h3></span>
+        <h4 id='total-price'>Общая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0)} руб.</h4>
+        <h3>Итоговая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0) - discount} руб.</h3>
        <Button variant="contained" color="secondary" alignItems="center" style={{maxWidth: 180 }} onClick={handleOrder}>
         Оформить заказ
         </Button>

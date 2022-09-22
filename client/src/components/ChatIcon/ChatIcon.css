@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 20px;
     right: 110px;
+    z-index: 111;
 }
 
 .chat-box-hidden{

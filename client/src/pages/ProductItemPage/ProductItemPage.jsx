@@ -31,21 +31,35 @@ function ProductItemPage() {
   
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   
   const dispatch = useDispatch();
   
-
-
+  
+  
   const products = useSelector((store) => store.products.product); 
   let snackbarState = useSelector((store) => store.snackbarState);
   const productImage = useSelector((store) => store.products.productImages)
-
+  
+  console.log("all Rating", )
+  
   console.log('products==========>', products);
   const handleClick = () => {
     // setOpen(true);
     dispatch(addToBasketHandler(item));
     dispatch(snackBarStatus(true));
   };
+  
+  
+  const { id } = useParams();
+
+  const allRating = useSelector((store) => store.products.allRating)
+  console.log("all Rating", allRating)
+  
+  const ratingForProduct = allRating.filter((el) => el.product_id === +id);
+
+  const [ratingChange, setRating] = useState(ratingForProduct.length);
+  const [ratingChange2, setRatingChange] = useState(ratingChange);
 
   const { name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = item
   const pathImages = ProductImages['ProductImages.img']
@@ -67,6 +81,7 @@ function ProductItemPage() {
   //   dispatch(allRatingThunk());
     
   // }, [dispatch]);
+
   
   useEffect(() => {
     ( async () => {
@@ -148,8 +163,8 @@ function ProductItemPage() {
               <Box>
                 Рейтинг:
               </Box>
-              <BasicRatingReadOnly product={products} />
-              <h5>{products[id].rating}</h5>
+              <BasicRatingReadOnly product={products} setRatingChange={setRatingChange} />
+              <h5>{ratingChange2}</h5>
             </Stack>
             <Box margin="0 0 24px">
               <h2 style={{color: "rgb(155, 47, 174)", margin: "0 0 4px"}}>{item.price} ₽</h2>

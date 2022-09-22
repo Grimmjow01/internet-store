@@ -4,16 +4,15 @@ import React, { useEffect, useState } from 'react';
 import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
-
 import { addImagesProductAction, getAllProduct } from '../../store/products/action';
-
 import {  allRatingThunk, getAllTypes } from '../../store/products/action';
-
 import { useSelector } from 'react-redux';
 import ChatIcon from '../../components/ChatIcon/ChatIcon';
 import './Home.css'
 import Carousel from '../../components/Carousel/Carousel';
 import CalculatorIcon from '../../components/CalculatorIcon/CalculatorIcon';
+import HeroSection from '../../components/HeroSection/HeroSection';
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
 function Home() { 
   const dispatch = useDispatch();
@@ -54,12 +53,13 @@ function Home() {
   
   return (
     <Box sx={{ backgroundColor: "#EAF0F6" }}>
-        <div className='heroHide'>
-          <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}>Спрятать</Button>
-        </div>
+       
 
 {/*         <CalculatorIcon/> */}
-       {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   */}
+        {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   
+        <div className='heroHide'>
+          <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}><UnfoldMoreIcon/></Button>
+        </div>
 
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar flex={2} />
