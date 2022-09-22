@@ -373,12 +373,152 @@ module.exports = {
       },
     ]
 
+    const comments = [
+      {
+        id: 1,
+        product_id: 1,
+        user_id: 1,
+        content: 'Заказали мебель для дочек, они рады. Качество отличное, но все равно считаю немного дороговато по цене. Хорошо хоть сэкономили на доставке: у фабрики есть пункт самовывоза. Ехать правда в Ленинградскую область (Всеволожский район), но для нас это не составило особых трудностей',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 2,
+        product_id: 2,
+        user_id: 1,
+        content: 'Решил написать отзыв спустя месяц использования)) пока что все хорошо, проблем никаких не было ни на этапах оформления заказа, ни при доставке. Сама тахта хорошая.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 3,
+        product_id: 3,
+        user_id: 1,
+        content: 'Заказывали через менеджера, прекрасная девушка, зовут Маргарита. Оформили быстро заказ и уже через 3 дня я была довольна доставкой. До этого момента все складывалось удачно, НО! Как это и бывает)) ничего не бывает идеально. Возникли проблемы со сборкой. Мы с мужем целый вечер убили на то, чтобы ее собрать. Детали не пронумерованы, никак не обозначены. Инструкция тоже странная. Пришлось все собирать буквально на глаз. И вот спустя часы мучений собрали! Моя мечта сбылась! Все остальное меня более, чем устраивает. Спасибо))',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 4,
+        product_id: 4,
+        user_id: 1,
+        content: 'Остановились на этом варианте именно из-за сроков доставки. В отличие от предложений других фирм этот вариант пришел к нам не через 2–3 недели, а через три дня',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 5,
+        product_id: 5,
+        user_id: 1,
+        content: 'Заказывал в начале июля, привезли 22 числа. отдельное спасибо Маргарите за консультацию)) по товару все хорошо, пришло без каких-либо нареканий. цвет чуть-чуть светлее, чем на фото',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 6,
+        product_id: 6,
+        user_id: 1,
+        content: 'Что ж, для своей цены неплохо. Из плюсов: 1, СТРОЙНИТ)). 2, среди аналогичных моделей это самое оптимальное решение цена-качество. 3, оно в полный рост. Для нас это было важно.  За свою цену пойдет.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 7,
+        product_id: 7,
+        user_id: 1,
+        content: 'Спасибо, быстро привезли! нареканий к товару и услугам нет :)',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 8,
+        product_id: 9,
+        user_id: 1,
+        content: 'Все быстро собралось, очень доволен',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 9,
+        product_id: 8,
+        user_id: 1,
+        content: 'Добрый день! Отличный товар, купил дочери в комнату. она довольна. единственное они продаются в комплекте=))))',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 10,
+        product_id: 2,
+        user_id: 1,
+        content: 'Благодарю за оперативность-привезли быстро,грузчики работают профессионально!Диван смотрится очень красиво,мягкий и удобный!При сидении задняя спинка высокая-даже голове удобно.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 11,
+        product_id: 10,
+        user_id: 1,
+        content: 'Очень хороший товар за свои деньги,собирается быстро,полный комплект.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 12,
+        product_id: 11,
+        user_id: 1,
+        content: 'Добрый день! Отличный товар, купил дочери в комнату. она довольна. единственное они продаются в комплекте=))))',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 13,
+        product_id: 12,
+        user_id: 1,
+        content: 'Спасибо, быстро привезли! нареканий к товару и услугам нет :)',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 14,
+        product_id: 2,
+        user_id: 1,
+        content: 'Заказали мебель для дочек, они рады. Качество отличное, но все равно считаю немного дороговато по цене.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 15,
+        product_id: 2,
+        user_id: 1,
+        content: 'Решил написать отзыв спустя месяц использования)) пока что все хорошо, проблем никаких не было ни на этапах оформления заказа',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 16,
+        product_id: 1,
+        user_id: 1,
+        content: 'Не очень понравилось мне качество оказанных услуг. НО! Сам товар супер! Стоит своих денег. Рекомендую.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        id: 17,
+        product_id: 2,
+        user_id: 1,
+        content: 'Товар не плохой, но заявленные фотографии не соответствует. схемы по сборки на сайте нету.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]
+
     await queryInterface.bulkInsert('Users', users);
     await queryInterface.bulkInsert('Types', types);
     await queryInterface.bulkInsert('Brands', brands);
     await queryInterface.bulkInsert('Products', products);
     await queryInterface.bulkInsert('ProductInfos', productsinfos);
     await queryInterface.bulkInsert('Ratings', ratings);
+    await queryInterface.bulkInsert('Comments', comments);
   },
 
   async down (queryInterface, Sequelize) {
