@@ -14,6 +14,7 @@ module.exports = {
           model: 'Products',
           key: 'id'
         },
+        onDelete: 'cascade',
       },
       user_id: {
         type: Sequelize.INTEGER,
@@ -21,6 +22,7 @@ module.exports = {
           model: 'Users',
           key: 'id'
         },
+        onDelete: 'cascade',
       },
       content: {
         type: Sequelize.TEXT
