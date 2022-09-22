@@ -26,6 +26,7 @@ const style = {
 
 function ProductItemPage() {
   const [item, setItem] = useState([])
+  const [fullItem, setFullItem] = useState([])
   const [arrayImage, setArrayImage] = useState('')
   const [open, setOpen] = useState(false);
   
@@ -45,14 +46,7 @@ function ProductItemPage() {
   console.log("all Rating", )
   
   console.log('products==========>', products);
-  const handleClick = () => {
-    // setOpen(true);
-    dispatch(addToBasketHandler(item));
-    dispatch(snackBarStatus(true));
-  };
   
-  
-
   const allRating = useSelector((store) => store.products.allRating)
   console.log("all Rating", allRating)
   
@@ -67,33 +61,34 @@ function ProductItemPage() {
   const pathOneImage = `http://localhost:3100/${productImage[0]?.img}`;
   
   // useEffect(() => {
-  //   ( async () => {
-  //     const res = await fetch('http://localhost:3100/api/products', {
-  //       method: 'GET',
-  //       credentials: 'include',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //     const products = await res.json();
-  //     dispatch(getAllProduct(products))
-  //   })();
-
-  //   dispatch(allRatingThunk());
-    
-  // }, [dispatch]);
-
-  
-  useEffect(() => {
-    ( async () => {
-      const res = await fetch(`http://localhost:3100/api/products/${id}`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
+    //   ( async () => {
+      //     const res = await fetch('http://localhost:3100/api/products', {
+        //       method: 'GET',
+        //       credentials: 'include',
+        //       headers: {
+          //         'Content-Type': 'application/json',
+          //       },
+          //     });
+          //     const products = await res.json();
+          //     dispatch(getAllProduct(products))
+          //   })();
+          
+          //   dispatch(allRatingThunk());
+          
+          // }, [dispatch]);
+          
+          
+          useEffect(() => {
+            ( async () => {
+              const res = await fetch(`http://localhost:3100/api/products/${id}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
           'Content-Type': 'application/json',
         },
       });
       const itemProduct = await res.json();
+      setFullItem(itemProduct);
       const [ item ] = itemProduct;
       const [, arrayImagesForOneProduct] = itemProduct;
       setItem(item);
@@ -103,6 +98,12 @@ function ProductItemPage() {
       
     })()
   }, [id]);
+  
+  const handleClick = () => {
+    // setOpen(true);
+    dispatch(addToBasketHandler(fullItem));
+    dispatch(snackBarStatus(true));
+  };
   
   return (
     <Box sx={{p: "20px"}}>
@@ -122,8 +123,8 @@ function ProductItemPage() {
                   open={open}
                   onClose={handleClose}
                   aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
+                  aria-describedby="modal-modal-description">
+                    
                   <Box sx={style}>
                     <img 
                       src={pathOneImage} 

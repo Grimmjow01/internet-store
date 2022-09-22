@@ -56,10 +56,10 @@ function Home() {
        
 
 {/*         <CalculatorIcon/> */}
-        {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   
+        {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   
         <div className='heroHide'>
           <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}><UnfoldMoreIcon/></Button>
-        </div> */}
+        </div> 
 
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar flex={2} />
