@@ -60,7 +60,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
     <Card 
       className="cardItem" 
       sx={{
-        maxWidth: 345, minWidth: 345, marginLeft: 2, marginBottom: 2,
+        maxWidth: 345, minWidth: 345, marginLeft: 2, marginBottom: 4,
       }} 
     >
 
@@ -68,13 +68,13 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
         className="cardMediaItem"
         onClick={() => navigate(`/products/${product.id}`)}
         component="img"
-        height="250"
+        height="200"
         maxWidth="300"
         image={pathOneImage}
         alt={description}
       />
     
-      <CardContent>
+      <CardContent sx={{padding: "16px 16px 0px 16px"}}>
         <Typography className="cardTypographyItem" gutterBottom variant="h6" component="div" onClick={() => navigate(`/products/${product.id}`)}>
           {product.name}
         </Typography>
@@ -92,7 +92,6 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
           <Box>
             {setAuth &&            
               <Stack direction="row" spacing={2}>
-                {console.log("product id==========>",product.id)}
                 <Button variant="contained" color="primary" onClick={() => navigate(`/api/products/${product.id}`)}><EditIcon /></Button>
                 <Button variant="contained" color="error" onClick={() => deleteProductHandle(product.id)}><ClearIcon /></Button>             
               </Stack>

@@ -79,7 +79,7 @@ export default function BasicTabs() {
     <>
     <div className='adminPanel-layout'>
     <Sidebar />
-    <Box sx={{ width: '80%' }}>
+    <Box p={3} sx={{ width: '80%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Редактирование товаров" {...a11yProps(0)} />

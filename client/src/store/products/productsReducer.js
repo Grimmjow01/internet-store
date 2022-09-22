@@ -16,14 +16,14 @@ export const productsReducer = (state = initState, action) => {
        return {...state, productImages: [...state.productImages, ...action.payload.obj]  }
 
        case productTypes.ADD_IMAGES_PRODUCT:
-       return {...state, productImages: [...state.productImages, ...action.payload.obj] }
+       return {...state, productImages: [...action.payload.obj] }
        
        case productTypes.DELETE__ONE_IMAGE_PRODUCT:
         const filteredImages = state.productImages.filter((el) => el.id !== action.payload.id)
        return {...state, productImages: filteredImages}
 
        case productTypes.EDIT_PRODUCT:
-       return {...state, product:  action.payload.obj}
+       return {...state, product: [...state.product, ...action.payload.obj]}
 
       case productTypes.DELETE_PRODUCT:
         return {

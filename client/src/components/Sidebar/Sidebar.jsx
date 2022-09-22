@@ -14,6 +14,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Sidebar() {
   };
   
   return (
-    <Box p={3} sx={{ display: { xs: "none", sm: "block" }}}>
+    <Box style={{padding: "24px 0px 24px 24px"}} flex={2} sx={{ display: { xs: "none", sm: "block" }}}>
       <Card>
         <List
           component="nav"
@@ -44,7 +45,7 @@ function Sidebar() {
           </ListItemButton>
           <ListItemButton onClick={() => navigate('/contacts')}>
             <ListItemIcon>
-              <HomeIcon />
+              <LocalPhoneIcon />
             </ListItemIcon>
             <ListItemText primary="Связатся с нами" />
           </ListItemButton>
