@@ -17,9 +17,9 @@ const textStyle2 = { margin: '20px auto' };
 
 const textStyle3 = { position: 'relative', top: '-25px' };
 
-const textStyleErrMail = { position: 'relative', top: '20px' };
+const textStyleErrMail = { position: 'relative', top: '20px', color: "red", fontWeight: "bold" };
 
-const textStyleErrPass = { position: 'relative', top: '-10px' };
+const textStyleErrPass = { position: 'relative', top: '-5px', color: "red", fontWeight: "bold" };
 
 const orStyle = { margin: '20px 170px' };
 

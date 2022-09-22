@@ -36,7 +36,7 @@ function ProductsTypes({setAuth, idTypes}) {
    return (
     <Box flex={5} p={3}>
       <div>
-        <Typography gutterBottom variant="h4" component="div">
+        <Typography gutterBottom variant="h4" component="div" fontWeight="bold">
           {nameTypesData[0].name}
         </Typography>
         <Stack
