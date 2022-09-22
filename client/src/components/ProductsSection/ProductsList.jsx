@@ -15,18 +15,14 @@ function ProductsList({setAuth}) {
   
   const productsSearch = useSelector((store) => store.products.searchProduct);
   const products = useSelector((store) => store.products);
-
-/*   const setAuth = useSelector((store) => store.auth.setAuth); */
-
+  const { product } = products;
   const [prodScroll, setProdScroll] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [fetching, setFetching] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
   
-  const { product } = products
+  const funcProdac = functionOriginalId(product);
   
-
- const funcProdac = functionOriginalId(product);
   
   useEffect(() => {
     if (fetching) {

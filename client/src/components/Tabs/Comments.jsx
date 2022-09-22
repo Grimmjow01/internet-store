@@ -11,16 +11,13 @@ const Comments = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllCommentsFromDatabase(id)) 
-}, [id])
-
-  const userDataInfo = useSelector((store) => store.auth.userData);
-  const allComments = useSelector((store) => store.products);
-  const allRating = useSelector((store) => store.products.allRating);
-  const filterComments = allComments.comment.filter((comment) => comment.product_id === +id)
-
-  const [inputs, setInputs] = useState("");
+  const userDataInfo = useSelector((store) => store.auth.userData)
+  const allComments = useSelector((store) => store.products.comment)
+  
+  const allRating = useSelector((store) => store.products.allRating)
+  
+ 
+  const [inputs, setInputs] = useState('');
   const inputHandler = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };

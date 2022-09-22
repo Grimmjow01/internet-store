@@ -32,11 +32,8 @@ const functionOriginalId = (prod) => {
 };
 
 function AutoPlayCarousel({products}) {
-  
-  // const { product } = products
-  // console.log('Carousel products', products)
+
   const funcProdac = functionOriginalId(products);
-  // console.log('Carousel funcProdac', funcProdac)
   const filteredProducts = funcProdac.filter(product => product.type_id === 1);
 
 

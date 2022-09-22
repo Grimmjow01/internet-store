@@ -22,8 +22,6 @@ function ProductsTypes({setAuth, idTypes}) {
   const { product } = products
   const [funcProdac, setFuncProdac] = useState([]);
 
-  console.log('funcProdac', funcProdac);
-
   useEffect(() => {
     setFuncProdac(functionOriginalId(product, idTypes));
   }, [idTypes]);
