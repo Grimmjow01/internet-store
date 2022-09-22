@@ -41,6 +41,7 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
 
   const handleClick = () => {
     setOpen(true);
+    console.log("1111", product)
     dispatch(addToBasketHandler(product))
 
   };

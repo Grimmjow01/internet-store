@@ -8,7 +8,9 @@ function BasketItem({product}) {
 
     const { id, name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = product
     const pathImages = ProductImages['ProductImages.img']
-    const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
+    const productImage = useSelector((store) => store.products.productImages)
+    console.log("productImage?", productImage)
+    const pathOneImage = `http://127.0.0.1:3100${productImage[0].img}`;
 
     const dispatch = useDispatch()
     const products = useSelector((store)=> store.products)

@@ -63,6 +63,7 @@ const res = await fetch(`http://localhost:3100/api/products/${obj.id}`, {
 };
 
 export const addToBasketHandler = (newitem) => (dispatch) =>{
+  console.log(newitem, "Image?")
     dispatch(addToBasketAction(newitem));
     const basketItems = JSON.parse(localStorage.getItem('basketItems')) || []
     basketItems.push(newitem)
