@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const path = require('path');
-const morgan = require('morgan');
+//const morgan = require('morgan');
 const cors = require('cors');
 const dbConnectCheck = require('../db/dbConnectionCheck')
 const productListRoutes = require('./routes/productListRoutes');
@@ -30,7 +30,7 @@ const typeRoute = require('./routes/typeRoute');
 
 const errorMiddlewares = require('./middlewares/errorMiddlewares');
 
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/images', express.static(path.join(__dirname, '../images')));

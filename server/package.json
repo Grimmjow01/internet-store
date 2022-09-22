@@ -29,7 +29,7 @@
     "nodemon": "^2.0.19"
   },
   "scripts": {
-    "start": "node src/app.js",
+    "start": "sequelize db:migrate && node src/app.js",
     "dev": "nodemon src/app.js --ignore sessions --ext js,jsx",
     "initdb": "npx sequelize db:create\nnpx sequelize-cli db:migrate:undo:all\nnpx sequelize-cli db:migrate\nnpx sequelize-cli db:seed:all\n",
     "dbr": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
