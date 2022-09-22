@@ -16,12 +16,12 @@ function SidebarItem() {
   const setAuth = useSelector((store) => store.auth.setAuth);
 
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "#EAF0F6" }}>
     
-    {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   
+    {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   
         <div className='heroHide'>
           <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}><UnfoldMoreIcon/></Button>
-        </div>
+        </div> */}
  <Stack direction="row" spacing={2} justifyContent="space-between">
    <Sidebar />
    <ProductsTypes setAuth={setAuth} idTypes={id} />

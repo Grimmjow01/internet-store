@@ -36,6 +36,7 @@ function ProductItemPage() {
   const dispatch = useDispatch();
   
   
+  const { id } = useParams();
   
   const products = useSelector((store) => store.products.product); 
   let snackbarState = useSelector((store) => store.snackbarState);
@@ -51,7 +52,6 @@ function ProductItemPage() {
   };
   
   
-  const { id } = useParams();
 
   const allRating = useSelector((store) => store.products.allRating)
   console.log("all Rating", allRating)
@@ -60,6 +60,7 @@ function ProductItemPage() {
 
   const [ratingChange, setRating] = useState(ratingForProduct.length);
   const [ratingChange2, setRatingChange] = useState(ratingChange);
+
 
   const { name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = item
   const pathImages = ProductImages['ProductImages.img']
