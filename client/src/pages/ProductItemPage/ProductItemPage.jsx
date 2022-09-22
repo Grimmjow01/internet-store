@@ -43,7 +43,7 @@ function ProductItemPage() {
   console.log('products==========>', products);
   const handleClick = () => {
     // setOpen(true);
-    dispatch(addToBasketHandler(products));
+    dispatch(addToBasketHandler(item));
     dispatch(snackBarStatus(true));
   };
 
@@ -51,22 +51,22 @@ function ProductItemPage() {
   const pathImages = ProductImages['ProductImages.img']
   const pathOneImage = `http://localhost:3100/${productImage[0]?.img}`;
   
-  useEffect(() => {
-    ( async () => {
-      const res = await fetch('http://localhost:3100/api/products', {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const products = await res.json();
-      dispatch(getAllProduct(products))
-    })();
+  // useEffect(() => {
+  //   ( async () => {
+  //     const res = await fetch('http://localhost:3100/api/products', {
+  //       method: 'GET',
+  //       credentials: 'include',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  //     const products = await res.json();
+  //     dispatch(getAllProduct(products))
+  //   })();
 
-    dispatch(allRatingThunk());
+  //   dispatch(allRatingThunk());
     
-  }, [dispatch]);
+  // }, [dispatch]);
   
   useEffect(() => {
     ( async () => {
@@ -86,7 +86,7 @@ function ProductItemPage() {
       dispatch(addImagesProductAction(arrayImagesForOneProduct));
       
     })()
-  }, []);
+  }, [id]);
   
   return (
     <Box sx={{p: "20px"}}>
@@ -141,7 +141,8 @@ function ProductItemPage() {
               <Box>
                 Бренд:
               </Box>
-              <h5>{item['Brand.name']}</h5>
+              <h5>Аскона</h5>
+              {/* <h5>{item['Brand.name']}</h5> */}
             </Stack>
             <Stack direction="row" spacing={2} alignItems="center" margin="0 0 16px">
               <Box>

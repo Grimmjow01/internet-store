@@ -2,6 +2,8 @@ import { Box, Stack, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProductHandler } from '../../store/products/action';
+import DiscountIcon from '../icons/DiscountIcon/DiscountIcon';
+import StarIcon from '../icons/StarIcon/StarIcon';
 import ProductItem from './ProductItem';
 import './ProductsList.css';
 
@@ -65,9 +67,12 @@ function ProductsList({setAuth}) {
    return (
     <Box flex={5} p={3}>
       <div>
-        <Typography gutterBottom variant="h4" component="div">
-          Популярные товары
-        </Typography>
+        <Stack direction="row" alignItems="center" spacing={1} paddingBottom="20px">
+          <StarIcon />
+          <Typography gutterBottom variant="h4" component="div" fontWeight="bold">
+            Популярные товары
+          </Typography>
+        </Stack>
         <Stack
           direction="row"
           spacing={0}

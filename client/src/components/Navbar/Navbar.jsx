@@ -77,7 +77,7 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" flex={7}>
       <StyledToolbar>
         {/* <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between"> */}        
           <Box className="logo">
