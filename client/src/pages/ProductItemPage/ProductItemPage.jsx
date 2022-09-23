@@ -7,9 +7,9 @@ import AddIcon from '@mui/icons-material/Add';
 import { snackBarStatus } from '../../store/snackBar/action';
 import Snackbar from '../../components/Snackbar/Snackbar'
 import BasicTabs from '../../components/Tabs/Tabs';
-import './ProductItemPage.module.css';
 import { useParams } from 'react-router-dom';
 import { addImagesProductAction, addToBasketHandler, allRatingThunk, getAllProduct, getOneProduct } from '../../store/products/action';
+import './ProductItemPage.css'
 
 const style = {
   position: 'absolute',
@@ -137,8 +137,8 @@ function ProductItemPage() {
                 <Stack sx={{display: {xs: "none", sm: "flex", md: "flex"}}} direction="row" spacing={2} justifyContent="space-around">
                   {productImage?.map((el) => 
                     <> {/* key={image_id} */} 
-                      <Box>
-                        <img 
+                      <Box className='z-ind-picture'>
+                        <img className='zoom'
                           src={(`http://localhost:3100` + el.img)} 
                           alt='jhjhkjh' 
                           width="150px"
