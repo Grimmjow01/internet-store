@@ -58,6 +58,7 @@ const ContactInfo = () => {
       <label>Ваше имя: <span className="red">*</span></label>
       <br />
         <TextField onChange={handleInput} inputProps={{maxLength: 12}} 
+        style={{ width: 493 }}
           name="customer_name"
           value={input.customer_name}
           className="menuItem"
@@ -67,6 +68,7 @@ const ContactInfo = () => {
         <label>Ваш телефон: <span className="red">*</span></label>
         <br />
         <TextField onChange={handleInput} inputProps={{maxLength: 12}} 
+        style={{ width: 493 }}
         name="customer_phone"
         value={input.customer_phone}
           className="menuItem"
@@ -76,6 +78,7 @@ const ContactInfo = () => {
         <label>Ваш email: <span className="red">*</span></label>
         <br />
         <TextField onChange={handleInput}
+        style={{ width: 493 }}
         name="customer_email"
         value={input.customer_email}
           className="menuItem"
@@ -88,7 +91,7 @@ const ContactInfo = () => {
         <InputLabel id="demo-simple-select-label">-- Выберите тему</InputLabel>
 
         <Select className="menuItem" onChange={handleInput}
-        
+           style={{ width: 500 }}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           label="Выберите тему"
@@ -128,7 +131,7 @@ const ContactInfo = () => {
     <Box className="mapYandex">
     <h1>Контакты:</h1>
       <p>
-        <span className="contHead">ул. Сыганак, 14/1, Нур-Султан (Астана), Казахстан</span>
+        <span className="contHead">ул. Сыганак, 14/1, Астана, Казахстан</span>
       </p>
       <div>
         +7 (902) 300-30-30
