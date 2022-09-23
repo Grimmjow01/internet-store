@@ -39,6 +39,12 @@ function Basket() {
       console.log("for", products.basket[i].type_id)
   
     }
+
+    let discountText = "";
+
+    if(discount !== 0){
+      discountText = "10%"
+    }
      
 
     console.log("Discount -----", discount)
@@ -68,7 +74,7 @@ function Basket() {
         <span><h3>Добавленные товары:</h3> {products.basket.map(el=>{return el.name + `, `} )}</span>
         <br />
         <br />
-        <span id='discount-text'><h3>Скидка: { discount}  руб.</h3></span>
+        <span id='discount-text'><h3>Скидка {discountText} : { discount}  руб.</h3></span>
         <h4 id='total-price'>Общая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0)} руб.</h4>
         <h3>Итоговая стоимость : {products.basket.reduce((acc, val) => acc + val.price, 0) - discount} руб.</h3>
        <Button variant="contained" color="secondary" alignItems="center" style={{maxWidth: 180 }} onClick={handleOrder}>
