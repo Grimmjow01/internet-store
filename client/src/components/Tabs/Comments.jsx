@@ -20,6 +20,12 @@ const Comments = () => {
   const allRating = useSelector((store) => store.products.allRating);
   const filterComments = allComments.comment.filter((comment) => comment.product_id === +id)
   
+  const userRating = allRating.filter(el => el.product_id === +id);
+  const rating = userRating.filter(el => el.user_id === filterComments.user_id);
+
+  console.log('userRating=====', userRating);
+  console.log('filterComments=====', filterComments);
+  console.log('rating=====', rating);
   const [inputs, setInputs] = useState("");
   const inputHandler = (e) => {
   setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -78,7 +84,7 @@ const Comments = () => {
                   </h4>
                   <p style={{ textAlign: "left", color: "blue" }}>
                   <Stack direction="row" spacing={2} alignItems="center" margin="0 0 16px">
-                  <Rating name="read" value={0} readOnly onChange={inputHandler}/>
+                  <Rating name="read" value={userRating?.filter(elems => elems.user_id === el.user_id)[0]?.rating} precision={0.5} readOnly onChange={inputHandler}/>
                </Stack > 
                     {el?.content } 
                   </p>

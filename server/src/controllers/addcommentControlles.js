@@ -5,12 +5,12 @@ const addcommentControlles = async (req, res) => {
   console.log('======================addcommentControlles', req.params);
   try {
     const { user_id, content } = req.body;
-    const newComment = await Comment.create({user_id: user_id, product_id: id, content: content });
-    console.log("retrew====>" ,newComment)
+    const newComment = await Comment.create({product_id: +id, user_id: user_id, content: content });
     if(newComment) {
       res.json(newComment);
     }
   } catch (e) {
+    console.log('e========', e);
     res.status(400).json({ message: 'error' });
   }
 }

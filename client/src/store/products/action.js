@@ -59,6 +59,8 @@ const res = await fetch(`http://localhost:3100/api/products/${obj.id}`, {
     body: JSON.stringify(obj),
   });
   const newProduct = await res.json()
+  console.log('newProduct========', newProduct);
+
    dispatch(editProductAction(newProduct));
 };
 
