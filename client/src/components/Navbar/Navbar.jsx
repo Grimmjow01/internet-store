@@ -64,7 +64,6 @@ function Navbar() {
 
   const handleClose = () => {
     setIsOpenSearch(false);
-    console.log('dfgdsgdsgdsgsdgsdgsgdsgdg');
   };
 
   const dialogHandleClosen = () => {
