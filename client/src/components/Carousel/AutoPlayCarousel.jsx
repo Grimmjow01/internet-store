@@ -8,7 +8,8 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", color: "black" }}
+      style={{ ...style, display: "block", color: "black", backgroundColor : '#3098ff',
+      borderRadius: '50%' }}
       onClick={onClick}
     />
   );
@@ -19,7 +20,8 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "green" }}
+      style={{ ...style, display: "block", color: "black", backgroundColor : '#3098ff',
+      borderRadius: '50%' }}
       onClick={onClick}
     />
   );
@@ -68,9 +70,9 @@ function AutoPlayCarousel({products}) {
           slidesToScroll: 1
         }
       }
-    ]
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />
+    ],
+     nextArrow: <SampleNextArrow />,
+     prevArrow: <SamplePrevArrow />
   };
 
   return (
