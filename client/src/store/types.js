@@ -23,6 +23,7 @@ export const authTypes = {
   AUTH_USERDATA : 'AUTH_USERDATA',
   AUTH_ERRORMESSAGE : 'AUTH_ERRORMESSAGE',
   AUTH_ADMIN : 'AUTH_ADMIN',
+  GET_ALL_LOGIN: 'GET_ALL_LOGIN',
 }
 
 export const basketTypes = {

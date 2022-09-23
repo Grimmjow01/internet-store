@@ -5,6 +5,7 @@ const initState = {
     userData: {},
     errorMessage: '',
     isAdmin: false,
+    usersLogins: [],
 };
 
 export const authReducers = (state = initState, action) => {
@@ -17,6 +18,8 @@ export const authReducers = (state = initState, action) => {
         return {...state, errorMessage : action.payload.message};
         case authTypes.AUTH_ADMIN:
         return {...state, isAdmin : action.payload.data};
+        case authTypes.GET_ALL_LOGIN:
+        return {...state, usersLogins : action.payload.login};
         default:
         return state;
     };
