@@ -163,7 +163,7 @@ function ProductItemPage() {
                 Рейтинг:
               </Box>
               <BasicRatingReadOnly product={products} setRatingChange={setRatingChange} />
-              <h5>{ratingChange2}</h5>
+              <h4>({ratingChange2})</h4>
             </Stack>
             <Box margin="0 0 24px">
               <h2 style={{color: "rgb(155, 47, 174)", margin: "0 0 4px"}}>{item.price} ₽</h2>
