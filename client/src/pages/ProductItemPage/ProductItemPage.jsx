@@ -46,9 +46,16 @@ function ProductItemPage() {
   console.log("all Rating", )
   
   console.log('products==========>', products);
+  const handleClick = () => {
+    // setOpen(true);
+    dispatch(addToBasketHandler(item));
+    dispatch(snackBarStatus(true));
+  };
   
+  
+
   const allRating = useSelector((store) => store.products.allRating)
-  console.log("all Rating", allRating)
+  
   
   const ratingForProduct = allRating.filter((el) => el.product_id === +id);
 

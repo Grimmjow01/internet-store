@@ -23,6 +23,7 @@ export const productsReducer = (state = initState, action) => {
        return {...state, productImages: filteredImages}
 
        case productTypes.EDIT_PRODUCT:
+        console.log('action.payload.obj===', action.payload.obj);
        return {...state, product: [...state.product, ...action.payload.obj] }
 
 
