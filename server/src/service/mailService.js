@@ -16,7 +16,7 @@ class MailService {
         await this.transporter.sendMail({
             from: '"Онлаин Магазин" <igor-polnikov@mail.ru>',
             to: 'igor-polnikov@mail.ru',
-            subject: 'Активация аккаунта' + process.env.API_URL,
+            subject: 'Активация аккаунта' + "https://mebel-tochka.herokuapp.com",
             text: '',
             html: `
                     <div>
