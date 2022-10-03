@@ -12,6 +12,9 @@ const socket = io.connect('http://localhost:3001')
 
 function Chat() {
 
+  let audio = new Audio('/sounds/message_sent.mp3');
+
+
   const [room, setRoom] = useState(1);
 
   const userDataInfo = useSelector((store) => store.auth.userData);
@@ -38,6 +41,8 @@ function Chat() {
 
   const sendMessage = async () => {
  
+    audio.play();
+
     if (currentMessage !== "") {
       
       const messageData = {

@@ -2,6 +2,7 @@ import React, { useState, useDeferredValue, useEffect } from 'react';
 import {
   AppBar, Badge, Button, Toolbar, Typography, Dialog, Box, styled, InputBase
 } from '@mui/material';
+import { ClickAwayListener } from '@mui/base';
 import { Stack } from '@mui/system';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
@@ -61,6 +62,10 @@ function Navbar() {
     setOpen(true);
   };
 
+  const handleClose = () => {
+    setIsOpenSearch(false);
+  };
+
   const dialogHandleClosen = () => {
     setOpen(false);
   };
@@ -77,7 +82,9 @@ function Navbar() {
   };
 
   return (
+    
     <AppBar position="sticky" flex={7}>
+      <ClickAwayListener onClickAway={handleClose}> 
       <StyledToolbar>
         {/* <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between"> */}        
           <Box className="logo">
@@ -97,6 +104,7 @@ function Navbar() {
           <ChairIcon fontSize="large" sx={{ display: { xs: "block", sm: "block", md: "none" }}} onClick={() => navigate('/')} />
           </Box>
           <Box sx={{ display: { xs: "none", sm: "block" }}}>
+          
             <Search>
               <SearchIcon color="black" />
               <InputBase 
@@ -109,12 +117,14 @@ function Navbar() {
               }}
               onClick={inputClickHandler} />
             </Search>
+            {isOpenSearch
+                && 
             <ul className="autocomplete">
-              {search && isOpenSearch
-                && filteredAllProducts?.map((product) => (
-                  <li key={product.id} className="autocomplete-Item" data-productid={product.id} onClick={itemHandler}>{product.name}</li>
+              {search && filteredAllProducts?.map((product, index) => (
+                  <li key={index} className="autocomplete-Item" data-productid={product.id} onClick={itemHandler}>{product.name}</li>
                 ))}
             </ul>
+}
           </Box>
           <Box>
             <Stack direction="row" spacing={2}>
@@ -150,7 +160,9 @@ function Navbar() {
           </Box>
         {/* </Stack> */}
       </StyledToolbar>
+      </ClickAwayListener>
     </AppBar>
+    
   );
 }
 

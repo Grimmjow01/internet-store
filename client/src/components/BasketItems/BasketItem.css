@@ -6,7 +6,7 @@
     align-content: space-evenly;
     align-items: center;
     margin:14px;
-    width: 700px;
+    width: 800px;
 }
 
 
@@ -17,9 +17,6 @@
 
 .basket-card-info{
     text-align: center;
-    
+    width: 200px;
 }
 
-#productName{
-    
-}

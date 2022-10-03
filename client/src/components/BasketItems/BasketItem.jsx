@@ -69,7 +69,7 @@ function BasketItem({product}) {
                         
                     </div>
                     <div variant="h6" component="div">
-                        <b>{product[0].description}</b>
+                        <p>{product[0].description}</p>
                     </div>
                     <div variant="h6" component="div">
                         <b style={{color: "rgb(155, 47, 174)"}}>{product[0].price} ₽</b>
@@ -99,10 +99,10 @@ function BasketItem({product}) {
                         
                     </div>
                     <div variant="h6" component="div">
-                        <b>{product.description}</b>
+                        <p maxlength="20">{product.description.slice(0, 120) + "..."}</p>
                     </div>
                     <div variant="h6" component="div">
-                        <b style={{color: "rgb(155, 47, 174)"}}>{product.price} ₽</b>
+                        <b style={{color: "rgb(155, 47, 174)"}}>{product.price}₽</b>
                     </div>
                 </CardContent>
                 <CardActions>

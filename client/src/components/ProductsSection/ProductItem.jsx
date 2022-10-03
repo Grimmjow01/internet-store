@@ -10,6 +10,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 import { addToBasketHandler } from '../../store/products/action';
+import DiscountIconAllProducts from '../icons/DiscountIcon/DiscountIconAllProducts';
 
 function ProductItem({ product, deleteProductHandle, setAuth }) {
 
@@ -32,6 +33,9 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
      dispatch(snackBarStatus(true))
 
   }
+
+
+
 
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -83,9 +87,14 @@ const pathOneImage = `http://127.0.0.1:3100${pathImages}`;
               Lizard
             </Typography> */}
             <BasicRating product={product} />
+            {type_id == 1 ?  <Typography gutterBottom variant="h6" component="div" color="secondary" fontWeight="bold">
+             <DiscountIconAllProducts /> {product.price * 0.90} ₽
+            </Typography>
+            :
             <Typography gutterBottom variant="h6" component="div" color="secondary" fontWeight="bold">
               {product.price} ₽
             </Typography>
+            }
           </Box>
           <Box>
             {setAuth &&            

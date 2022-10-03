@@ -56,7 +56,7 @@ function Home() {
        
 
 {/*         <CalculatorIcon/> */}
-        {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}   
+         {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}    
         <div className='heroHide'>
           <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}><UnfoldMoreIcon/></Button>
         </div> 

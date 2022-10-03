@@ -7,6 +7,7 @@ export const isAuth = (log) => ({type: authTypes.AUTH_LOG, payload: { log } });
 export const collectorData = (data) => ({type: authTypes.AUTH_USERDATA, payload: { data } });
 export const collectorErrorMessage = (message) => ({type: authTypes.AUTH_ERRORMESSAGE, payload: { message } });
 export const dataAdmin = (data) => ({type: authTypes.AUTH_ADMIN, payload: { data } });
+export const getUsersLogin = (login) => ({type: authTypes.GET_ALL_LOGIN, payload: {login} });
 
 export const loginThunk = (inputLogin, callback) => async (dispatch) => {
     try {
