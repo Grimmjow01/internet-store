@@ -1,0 +1,21 @@
+{
+  "name": "internet-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && npm start",
+    "build" : "cd client && npm i && npm run build && cd ../server && npm i && npx sequelize db:create\nnpx sequelize-cli db:migrate:undo:all\nnpx sequelize-cli db:migrate\nnpx sequelize-cli db:seed:all\n"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grimmjow01/internet-store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grimmjow01/internet-store/issues"
+  },
+  "homepage": "https://github.com/Grimmjow01/internet-store#readme"
+}
