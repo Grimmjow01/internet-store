@@ -17,7 +17,7 @@ const registrationService = async (login, email, password) => {
     const activationLink = uuid.v4();
     const user = await Models.User.create({ login, email, password: hashPassword, activationLink, role: 'user' });
         
-    await MailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
+    await MailService.sendActivationMail(email, `https://mebel-tochka.herokuapp.com/api/activate/${activationLink}`);
         
     const userDto = new UserDto(user);
     const tokens = generateTokens({ ... userDto});

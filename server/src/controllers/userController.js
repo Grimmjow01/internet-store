@@ -48,7 +48,7 @@ const registration = async (req, res, next) => {
     try {
         const activationLink = req.params.link;
         await activateService(activationLink);
-        return res.redirect(process.env.CLIENT_URL);
+        return res.redirect("https://mebel-tochka.herokuapp.com");
 
     } catch (error) {
         next(error);
