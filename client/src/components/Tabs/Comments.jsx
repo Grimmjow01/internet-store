@@ -19,7 +19,7 @@ const Comments = () => {
   useEffect(() => {
     
     ( async () => {
-      const res = await fetch('http://localhost:3100/api/allLogins', {
+      const res = await fetch('https://mebel-tochka.herokuapp.com/api/allLogins', {
         method: 'GET',
         credentials: 'include',
         headers: {

@@ -55,7 +55,7 @@ app.use(session(sessionConfig));
 
 const corsOptions = {
   credentials: true, 
-  origin: 'http://localhost:3000' 
+  origin: 'https://mebel-tochka.herokuapp.com' 
 }
 app.use(cors(corsOptions));
 

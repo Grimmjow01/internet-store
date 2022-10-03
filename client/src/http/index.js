@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = 'http://localhost:3100/api';
+export const API_URL = 'https://mebel-tochka.herokuapp.com/api';
 
 const $api = axios.create({
     withCredentials: true,

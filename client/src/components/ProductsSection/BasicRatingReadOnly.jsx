@@ -35,7 +35,7 @@ export default function BasicRatingReadOnly({ product, setRatingChange } ) {
   const [value, setValue] = useState(productRating[0]?.rating);
 
   const ratingHandler = (newValue) => {
-    axios.patch(`http://localhost:3100/api/addrating`, 
+    axios.patch(`https://mebel-tochka.herokuapp.com/api/addrating`, 
     { valueRating: newValue, user_id: userData.id, product_id: idParams });
     dispatch(changeRating(product.id, newValue));
     setUserRating(false)

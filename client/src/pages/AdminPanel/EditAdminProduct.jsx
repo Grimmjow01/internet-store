@@ -30,7 +30,7 @@ export const EditAdminProduct = () => {
  
   useEffect(() => {
     (async () => {
-      const res = await fetch(`http://localhost:3100/api/products/${id}`, {
+      const res = await fetch(`https://mebel-tochka.herokuapp.com/api/products/${id}`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -47,7 +47,7 @@ export const EditAdminProduct = () => {
       setFileStore(data[1].map((el) => (el.img))); 
       const [, arrayImages] = data
       setImage_id(arrayImages)
-      const result = await fetch(`http://localhost:3100/loadimageforoneproduct/${id}`, {
+      const result = await fetch(`https://mebel-tochka.herokuapp.com/loadimageforoneproduct/${id}`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -75,7 +75,7 @@ const submitHandler = async (e) => {
       dataFile.append('product_id', prod_id);
       dataFile.append('file', imageStore[i])
       dataFile.append('filePath', imageStore[i].name)
-      const res = await fetch(`http://localhost:3100/loadImg`, {
+      const res = await fetch(`https://mebel-tochka.herokuapp.com/loadImg`, {
       method: 'POST',
       body: dataFile,
       });
@@ -88,7 +88,7 @@ const submitHandler = async (e) => {
       const imageListFunc = () => {
         const pathOneImage = []
         if(productsImages) {
-          productsImages.forEach((el) =>  pathOneImage.push('http://localhost:3100/' + el.img))
+          productsImages.forEach((el) =>  pathOneImage.push('https://mebel-tochka.herokuapp.com/' + el.img))
         }
       return pathOneImage
       }
@@ -132,7 +132,7 @@ const submitHandler = async (e) => {
           <TextareaAutosize margin="dense" style={{ height: 238, width: 494 }} className="cardMediaItem" fullWidth  value={description || ''} onChange={e => setDescription(e.target.value)}/>
         </Box>
           { <div className='container'>
-          {productsImages?.map((el) => <> {/* key={image_id} */} <img src={(`http://localhost:3100` + el.img)} alt="..."/> 
+          {productsImages?.map((el) => <> {/* key={image_id} */} <img src={(`https://mebel-tochka.herokuapp.com` + el.img)} alt="..."/> 
            <button className="btn" onClick={(e) =>  dispatch(deleteImagesOneProductHandler(el.id))}>Удалить</button></>) }
         </div> }
         <br />

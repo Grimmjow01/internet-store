@@ -57,7 +57,7 @@ const submitHandler = async (e) => {
   formData.append('rating', 0);
   formData.append('description', inputs.description);
   
-  const response = await fetch('http://localhost:3100/admin', {
+  const response = await fetch('https://mebel-tochka.herokuapp.com/admin', {
     method: 'POST',
     body: formData,
   });
@@ -68,7 +68,7 @@ const submitHandler = async (e) => {
     dataFile.append('product_id', data.newProduct.id);
     dataFile.append('file', fileStore[i])
     dataFile.append('filePath', fileStore[i].name)
-    const res = await fetch('http://localhost:3100/loadImg', {
+    const res = await fetch('https://mebel-tochka.herokuapp.com/loadImg', {
     method: 'POST',
     body: dataFile,
     });

@@ -37,7 +37,7 @@ const ContactInfo = () => {
   } 
 
   const sendEmail = async () => {
-    const response = await axios.post('http://localhost:3100/contacts/sendemail',
+    const response = await axios.post('https://mebel-tochka.herokuapp.com/contacts/sendemail',
        {contactinfo : input}     
     )
     dispatch(snackBarStatus(true))
