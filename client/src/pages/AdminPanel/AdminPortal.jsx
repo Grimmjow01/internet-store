@@ -16,7 +16,7 @@ const dispatch = useDispatch();
 
 React.useEffect(() => {
   ( async () => {
-    const res = await fetch('http://localhost:3100/api/products', {
+    const res = await fetch('https://mebel-tochka.herokuapp.com/api/products', {
       method: 'GET',
       credentials: 'include',
       headers: {

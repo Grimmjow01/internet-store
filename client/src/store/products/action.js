@@ -26,7 +26,7 @@ export const getAllTypes = (type) => ({type: productTypes.GET_ALL_TYPES, payload
 
 export const deleteProductHandler = (id) => async (dispatch) => {
   console.log("ID=>>>>>>>>>>>>>>>>>>>>>>>>>>.", id)
-  await fetch(`http://localhost:3100/api/products/${id}`, {
+  await fetch(`https://mebel-tochka.herokuapp.com/api/products/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -37,11 +37,11 @@ export const deleteProductHandler = (id) => async (dispatch) => {
 };
 
 export const deleteImagesOneProductHandler = (id) => async (dispatch) => {
-   await fetch(`http://localhost:3100/loadimageforoneproduct`, {
+   await fetch(`https://mebel-tochka.herokuapp.com/loadimageforoneproduct`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'http://127.0.0.1:3000'
+      'Access-Control-Allow-Origin': 'https://mebel-tochka.herokuapp.com'
     },
     credentials: 'include',
     body: JSON.stringify({id})
@@ -50,7 +50,7 @@ export const deleteImagesOneProductHandler = (id) => async (dispatch) => {
 };
 
 export const editProductHandle = (obj) => async (dispatch) => {
-const res = await fetch(`http://localhost:3100/api/products/${obj.id}`, {
+const res = await fetch(`https://mebel-tochka.herokuapp.com/api/products/${obj.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ export const addBasketFromLocal = (basketitems) => (dispatch) => {
 
 export const allRatingThunk = () => async (dispatch) => {
   try {
-    const res = await fetch('http://localhost:3100/api/getrating', {
+    const res = await fetch('https://mebel-tochka.herokuapp.com/api/getrating', {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -96,7 +96,7 @@ export const allRatingThunk = () => async (dispatch) => {
 
 export const addCommentDatabaseAndStore = (newComment, id) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:3100/api/addcomment/${id}`, {
+    const res = await fetch(`https://mebel-tochka.herokuapp.com/api/addcomment/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ export const addCommentDatabaseAndStore = (newComment, id) => async (dispatch) =
 }
 export const getAllCommentsFromDatabase = (id) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:3100/api/addcomment/${id}`, {
+    const res = await fetch(`https://mebel-tochka.herokuapp.com/api/addcomment/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

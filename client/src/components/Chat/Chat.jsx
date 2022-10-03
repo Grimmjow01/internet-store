@@ -8,7 +8,7 @@ import {
   Dialog
 } from '@mui/material';
 
-const socket = io.connect('http://localhost:3001')
+const socket = io.connect('https://mebel-tochka.herokuapp.com/')
 
 function Chat() {
 

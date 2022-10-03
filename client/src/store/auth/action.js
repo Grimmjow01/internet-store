@@ -51,7 +51,7 @@ export const logoutThunk = () => async (dispatch) => {
 
 export const checkAuthThunk = () => async (dispatch) => {
     try {
-        const response = await axios.get(`http://localhost:3100/api/refresh`, 
+        const response = await axios.get(`https://mebel-tochka.herokuapp.com/api/refresh`, 
         { withCredentials: true });
         localStorage.setItem('token', response.data.accessToken);
         dispatch(collectorData(response.data.user));
