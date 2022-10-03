@@ -33,7 +33,7 @@ const errorMiddlewares = require('./middlewares/errorMiddlewares');
 
 //app.use(morgan('dev'));
 
-app.use(express.static(path.resolve(process.env.PWD, "../..", "client", "build")));
+app.use(express.static(path.resolve(process.env.PWD, "..", "client", "build")));
 app.use('/images', express.static(path.join(__dirname, '../images')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -113,7 +113,7 @@ server.listen(3001, () =>{
 })
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(process.env.PWD, "../..", "client", "build", "index.html"))
+  res.sendFile(path.resolve(process.env.PWD, "..", "client", "build", "index.html"))
 })
 
 app.listen(PORT, async () => {
