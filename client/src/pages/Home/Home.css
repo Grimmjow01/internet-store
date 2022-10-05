@@ -8,3 +8,7 @@
 #logo-tochka{
    width:  630px;
 }
+
+.home-container {
+    scroll-margin-top: 10px;
+}

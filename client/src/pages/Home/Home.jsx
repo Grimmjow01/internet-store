@@ -1,5 +1,5 @@
 import { Box, Button, Stack } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 // import HeroSection from '../../components/HeroSection/HeroSection';
 import ProductsList from '../../components/ProductsSection/ProductsList';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -13,6 +13,7 @@ import Carousel from '../../components/Carousel/Carousel';
 import CalculatorIcon from '../../components/CalculatorIcon/CalculatorIcon';
 import HeroSection from '../../components/HeroSection/HeroSection';
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+import HeroSectionImage from '../../components/HeroSectionImage/HeroSectionImage';
 
 function Home() { 
   const dispatch = useDispatch();
@@ -50,20 +51,22 @@ function Home() {
 
   const products = useSelector((store) => store.products);
   
-  
+  const myRef = useRef(null);
+  const executeScroll = () => myRef.current.scrollIntoView({behavior: "smooth"});
+
   return (
-    <Box sx={{ backgroundColor: "#EAF0F6" }}>
+    <Box className="home-container" sx={{ backgroundColor: "#EAF0F6" }}>
        
 
 {/*         <CalculatorIcon/> */}
-         {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}    
+         {/* {show && <Box sx={{ display: 'flex' }}><HeroSection /> </Box>}    
         <div className='heroHide'>
           <Button variant="outlined" size="large" onClick={() => setShow(prev => !prev)}><UnfoldMoreIcon/></Button>
-        </div> 
-
+        </div>  */}
+      <HeroSectionImage executeScroll={executeScroll} />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Sidebar flex={2} />
-        <Box flex={6}>
+        <Box flex={6} ref={myRef}>
           <Carousel products={products} />
           <ProductsList products={products} />
         </Box>
