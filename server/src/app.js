@@ -43,7 +43,7 @@ const PORT = process.env.PORT || 4000;
 const sessionConfig = {
   name: 'NameCookie',
   store: new FileStore(),
-  secret: process.env.SESSION_S ?? 'otherkey',
+  secret: 'gfdgdjytjgdfgdkfgjkdfgjkdgjkabdabdjabskjada' ?? 'otherkey',
   resave: false,
   saveUninitialized: false,
   cookie: {
