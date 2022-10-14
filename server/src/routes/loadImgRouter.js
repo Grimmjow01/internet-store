@@ -5,7 +5,7 @@ const multer = require('multer');
 const { loadImgControllers, loadAllImgControllers } = require('../controllers/loadImgControllers');
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, './server/public/img');
+    cb(null, 'server/public/img');
   },
   filename(req, file, cb) {
     cb(null, `${file.originalname}`);
