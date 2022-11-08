@@ -18,9 +18,9 @@ function BasketItem({product}) {
     let pathOneImage;
     if(product.length){
         console.log("fail???????????")
-        pathOneImage = `http://127.0.0.1:3100${product[1][0].img}`;
+        pathOneImage = `https://mebel-tochka.herokuapp.com${product[1][0].img}`;
     } else {
-            pathOneImage = `http://127.0.0.1:3100${pathImages}`;
+            pathOneImage = `hhttps://mebel-tochka.herokuapp.com${pathImages}`;
         }
 
     const dispatch = useDispatch()

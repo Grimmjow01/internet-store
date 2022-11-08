@@ -9,7 +9,7 @@ function CarouselItem({ product }) {
 
   const { id, name, price, rating, description, type_id, brand_id, start_date, end_date, createAt, updateAt, ...ProductImages } = product
   const pathImages = ProductImages['ProductImages.img']
-  const pathOneImage = `http://127.0.0.1:3100${pathImages}`
+  const pathOneImage = `https://mebel-tochka.herokuapp.com${pathImages}`
   
 
   const navigate = useNavigate();
