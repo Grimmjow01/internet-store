@@ -7,7 +7,8 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import axios from 'axios';
 import Snackbar from "../../components/Snackbar/Snackbar";
 import { useDispatch, useSelector } from 'react-redux';
-import { snackBarStatus } from '../../store/snackBar/action'
+import { snackBarStatus } from "../../store/snackBar/action.ts";
+
 
 const ContactInfo = () => {
 

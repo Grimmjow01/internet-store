@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BasicRatingReadOnly from '../../components/ProductsSection/BasicRatingReadOnly';
 import BasicRating from '../../components/ProductsSection/BasicRating';
 import AddIcon from '@mui/icons-material/Add';
-import { snackBarStatus } from '../../store/snackBar/action';
+import { snackBarStatus } from '../../store/snackBar/action.ts';
 import Snackbar from '../../components/Snackbar/Snackbar'
 import BasicTabs from '../../components/Tabs/Tabs';
 import { useParams } from 'react-router-dom';
