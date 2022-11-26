@@ -4,7 +4,7 @@ import {Button, FormControl, TextField, MenuItem, Select, Grid} from "@mui/mater
 import SendIcon from "@mui/icons-material/Send";
 import "./Adminpanel.css";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
-import Snackbar from "../../components/Snackbar/Snackbar";
+import Snackbar from "../../components/Snackbar/Snackbar.tsx";
 import { useDispatch, useSelector } from 'react-redux';
 import { snackBarStatus } from '../../store/snackBar/action.ts'
 

@@ -10,7 +10,11 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function CustomizedSnackbars({message}) {
+type PropsExpected = {
+  message : string
+}
+
+export default function CustomizedSnackbars({message }: PropsExpected) {
 
     const dispatch = useDispatch()
     
