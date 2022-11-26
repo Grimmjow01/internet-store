@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import Home from './pages/Home/Home';
+import Home from './pages/Home/Home.tsx';
 import Layout from './Layout/Layout';
 import ContactInfo from './pages/ContactUs/ContactInfo';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Basket from './pages/Basket/Basket';
 import AdminPortal from './pages/AdminPanel/AdminPortal';
 import Chat from './components/Chat/Chat';
-import ProductItemPage from './pages/ProductItemPage/ProductItemPage';
+import ProductItemPage from './pages/ProductItemPage/ProductItemPage.jsx';
 import { checkAuthThunk } from './store/auth/action';
 import { useDispatch } from 'react-redux';
 
