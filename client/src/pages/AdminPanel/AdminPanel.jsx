@@ -6,7 +6,7 @@ import "./Adminpanel.css";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import Snackbar from "../../components/Snackbar/Snackbar";
 import { useDispatch, useSelector } from 'react-redux';
-import { snackBarStatus } from '../../store/snackBar/action'
+import { snackBarStatus } from '../../store/snackBar/action.ts'
 
 import { PreviewBox } from './PreviewBox';
 import { addImageOneProductAction, addImagesProductAction } from "../../store/products/action";

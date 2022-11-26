@@ -44,6 +44,7 @@ function BasketItem({product}) {
                 items.splice(i, 1);
             }
         }
+
         items = JSON.stringify(items);
         localStorage.setItem("basketItems", items);
     }
@@ -78,8 +79,8 @@ function BasketItem({product}) {
                 <CardActions>
                     <Button onClick={deleteHandler} size="small" variant="outlined" color="error"><h3>Удалить</h3></Button>
                 </CardActions>
-            </Card>  :
-
+            </Card>  
+            :
                 <Card className = 'Card' >
                 <CardContent className='Card'>
                     <div >

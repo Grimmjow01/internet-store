@@ -5,7 +5,7 @@ import MuiAlert from '@mui/material/Alert';
 import AddIcon from '@mui/icons-material/Add';
 import BasicRating from './BasicRating';
 import { useDispatch, useSelector } from 'react-redux';
-import { snackBarStatus } from '../../store/snackBar/action'
+import { snackBarStatus } from '../../store/snackBar/action.ts'
 import ClearIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';

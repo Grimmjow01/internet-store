@@ -7,7 +7,7 @@ import { Box } from '@mui/system';
 import "./Adminpanel.css";
 import { PreviewBox } from './PreviewBox';
 import Snackbar from "../../components/Snackbar/Snackbar";
-import { snackBarStatus } from '../../store/snackBar/action';
+import { snackBarStatus } from '../../store/snackBar/action.ts';
 
 export const EditAdminProduct = () => {
   const dispatch = useDispatch();
