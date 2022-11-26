@@ -6,7 +6,7 @@ import { Button, MenuItem, Select, TextareaAutosize, TextField } from '@mui/mate
 import { Box } from '@mui/system';
 import "./Adminpanel.css";
 import { PreviewBox } from './PreviewBox';
-import Snackbar from "../../components/Snackbar/Snackbar";
+import Snackbar from "../../components/Snackbar/Snackbar.tsx";
 import { snackBarStatus } from '../../store/snackBar/action.ts';
 
 export const EditAdminProduct = () => {
