@@ -1,10 +1,14 @@
 import { snackBarTypes } from '../types';
 
+interface SnackInter {
+    type : string,
+    payload : string
+}
 
-const initState = { snackbarState : false, snackBarMessage : '' }
+const initState = { snackbarState : false , snackBarMessage : '' }
 
-export const snackBarReducer = (state = initState, action) => {
-    switch (action.type) {
+export const snackBarReducer = (state = initState, action : SnackInter) => {
+    switch (action.type ) {
         
         case snackBarTypes.SNACKBAR_STATE:
         return {...state, snackbarState : action.payload}

@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 
 import { authReducers } from './auth/authReducers';
 import { productsReducer } from './products/productsReducer';
-import { snackBarReducer } from './snackBar/reducer';
+import { snackBarReducer } from './snackBar/reducer.ts';
 
 const rootReducer = combineReducers({
   auth: authReducers,

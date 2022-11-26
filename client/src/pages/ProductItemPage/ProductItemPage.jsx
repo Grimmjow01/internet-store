@@ -39,7 +39,7 @@ function ProductItemPage() {
   
   const { id } = useParams();
   
-  const products = useSelector((store) => store.products.product); 
+  const products = useSelector((store ) => store.products.product); 
   let snackbarState = useSelector((store) => store.snackbarState);
   const productImage = useSelector((store) => store.products.productImages)
   

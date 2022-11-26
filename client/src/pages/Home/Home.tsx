@@ -49,7 +49,7 @@ function Home() {
 
   const [show, setShow] = useState(true);
 
-  const products = useSelector((store) => store.products);
+  const products = useSelector((store : {}) => store.products);
   
   const myRef = useRef(null);
   const executeScroll = () => myRef.current.scrollIntoView({behavior: "smooth"});
